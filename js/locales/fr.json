@@ -1,0 +1,135 @@
+{
+  "common": {
+    "nav": {
+      "home": "Accueil",
+      "contact": "Contact"
+    },
+    "cta": {
+      "contact": "Nous contacter"
+    },
+    "footer": {
+      "terms": "Conditions",
+      "privacy": "Confidentialité",
+      "help": "Centre d'aide",
+      "copyright": "Go play music 2025. Tous droits réservés."
+    }
+  },
+  "index": {
+    "title": "Go play music",
+    "meta": {
+      "description": "Nous façonnons l'avenir avec l'IA ! Des technologies qui repoussent les limites de l'innovation, des solutions intelligentes et la clé de la transformation numérique sont déjà là.",
+      "ogTitle": "Go play music",
+      "ogDescription": "Nous façonnons l'avenir avec l'IA ! Des technologies qui repoussent les limites de l'innovation, des solutions intelligentes et la clé de la transformation numérique sont déjà là.",
+      "twTitle": "Go play music",
+      "twDescription": "Nous façonnons l'avenir avec l'IA ! Des technologies qui repoussent les limites de l'innovation, des solutions intelligentes et la clé de la transformation numérique sont déjà là."
+    },
+    "hero": {
+      "title": "Go play music",
+      "lead": "À la croisée de la créativité et de la technologie, nous donnons vie à des idées ambitieuses. Notre mission est de repousser les limites du possible en offrant des solutions intelligentes pour un avenir meilleur.<br/>",
+      "bullets": [
+        "- Importez de la musique et des vidéos via le Wi‑Fi ou depuis Photos/Fichiers, puis lisez-les hors ligne<br/>",
+        "- La playlist intelligente peut être personnalisée selon vos préférences<br/>",
+        "- Le meilleur égaliseur pour ajuster le volume de chaque morceau<br/>",
+        "- De superbes fonds d'écran musicaux gratuits ; vous pouvez changer le thème de l'app<br/>"
+      ]
+    },
+    "about": {
+      "label": "À propos",
+      "title": "Qui nous sommes",
+      "body": "\"Chez Go play music, nous sommes une équipe d'innovateurs passionnés par la création d'expériences mobiles exceptionnelles. En tirant parti des derniers progrès de l'IA, nous visons à créer des applications qui dépassent les attentes des utilisateurs. Portés par l'innovation, l'excellence et une philosophie centrée sur l'utilisateur, nous résolvons les défis du quotidien avec des solutions intelligentes et fluides. Nous croyons au pouvoir transformateur de la technologie pour bâtir un avenir meilleur et améliorer la vie.\""
+    }
+  }
+  ,
+  "contact": {
+    "title": "Contact",
+    "meta": { "ogTitle": "Contact", "twTitle": "Contact" },
+    "hero": {
+      "title": "Nous contacter",
+      "lead": "N'hésitez pas à nous écrire ! Nous sommes toujours prêts à vous aider — contactez‑nous à tout moment et notre équipe vous répondra rapidement."
+    },
+    "form": {
+      "firstNameLabel": "Prénom*",
+      "firstName": "Prénom",
+      "lastNameLabel": "Nom",
+      "lastName": "Nom",
+      "emailLabel": "Adresse e‑mail *",
+      "email": "Adresse e‑mail ",
+      "subjectLabel": "Objet *",
+      "subject": "Objet",
+      "messageLabel": "Message *",
+      "message": "Message",
+      "submit": "Envoyer",
+      "success": "Merci de nous avoir contactés. Un membre de notre équipe vous répondra rapidement.",
+      "error": "Oups ! Une erreur s'est produite lors de l'envoi du formulaire.",
+      "submit_wait": "Veuillez patienter..."
+    }
+  }
+  ,
+  "privacy": {
+    "title": "Go play music - Politique de confidentialité",
+    "meta": {
+      "description": "Politique de confidentialité",
+      "ogTitle": "Go play music - Politique de confidentialité",
+      "ogDescription": "Politique de confidentialité",
+      "twTitle": "Go play music - Politique de confidentialité",
+      "twDescription": "Politique de confidentialité"
+    },
+    "sections": {
+      "intro": {"title": "Introduction<br/>", "body": "Voici la Politique de confidentialité des apps Go play music et de leurs versions suivantes (ci-après, \"nous\"). Elle est intégrée et soumise à nos Conditions d'utilisation sur https://wixmusic.github.io/terms-of-use. Nous appelons nos produits et services le \"Service\"."},
+      "collect": {"title": "Informations que nous collectons<br/>", "body": "Lorsque vous installez le Service et vous inscrivez, des informations personnelles peuvent être collectées..."},
+      "share": {"title": "Partage d'informations<br/>", "body": "Nous ne louerons ni ne vendrons vos informations à des tiers sans votre consentement, sauf tel qu'indiqué..."},
+      "use": {"title": "Comment nous utilisons les informations<br/>", "body": "Nous utilisons ou pouvons divulguer vos informations personnelles comme suit : vérifier l'identité ; connecter avec d'autres ; ..."},
+      "profile": {"title": "Votre profil utilisateur<br/>", "body": "Les informations saisies dans votre profil peuvent être partagées avec vos contacts..."},
+      "dataaccess": {"title": "Accès et suppression des données<br/>", "body": "Vous pouvez toujours contrôler les informations que vous partagez avec nous..."},
+      "providers": {"title": "Prestataires de services<br/>", "body": "Dans certains cas, nous faisons appel à des tiers pour fournir des produits/services liés au Service..."},
+      "links": {"title": "Liens sortants<br/>", "body": "Si vous accédez à des services tiers via le Service, ces tiers peuvent également collecter des informations..."},
+      "optout": {"title": "Communications promotionnelles - Désinscription<br/>", "body": "Vous pouvez refuser de recevoir des e‑mails promotionnels en suivant les instructions du message..."},
+      "security": {"title": "Sécurité<br/>", "body": "Nous protégeons la vie privée et les informations personnelles avec des efforts substantiels..."},
+      "facial": {"title": "Données faciales<br/>", "body": "Les données faciales sont supprimées un mois après leur création..."},
+      "age": {"title": "Âge<br/>", "body": "Le Service ne s'adresse pas aux moins de 13 ans..."},
+      "notify": {"title": "Notification des changements<br/>", "body": "Nous nous réservons le droit de modifier cette Politique..."},
+      "rights": {"title": "Vos droits<br/>", "body": "Vous pouvez exercer vos droits en écrivant à music.player.250617@gmail.com..."},
+      "contact": {"title": "Informations de contact<br/>", "body": "Pour toute question, contactez‑nous à music.player.250617@gmail.com..."},
+      "date": {"title": "Date<br/>", "body": "Cette politique a été publiée le 1 juillet 2025.<br/>"}
+    }
+  }
+  ,
+  "terms": {
+    "title": "Go play music - Conditions d'utilisation",
+    "meta": {
+      "description": "Conditions d'utilisation",
+      "ogTitle": "Go play music - Conditions d'utilisation",
+      "ogDescription": "Conditions d'utilisation",
+      "twTitle": "Go play music - Conditions d'utilisation",
+      "twDescription": "Conditions d'utilisation"
+    },
+    "sections": {
+      "title": "Conditions générales<br/>",
+      "intro": "En téléchargeant ou en utilisant l'app, ces conditions s'appliquent automatiquement...",
+      "abuse": {"title": "Prévention des abus et limitation de débit<br/>", "body": "Nos systèmes surveillent en continu pour prévenir tout abus..."},
+      "refund": {"title": "Remboursement et partage des journaux d'activité<br/>", "body": "Si vous demandez un remboursement, vos journaux d'activité peuvent être partagés avec la boutique..."},
+      "changes": {"title": "Modifications des présentes Conditions<br/>", "body": "Nous pouvons mettre à jour les conditions périodiquement..."},
+      "contact": {"title": "Nous contacter<br/>", "body": "Pour toute question concernant les Conditions, écrivez‑nous à music.player.250617@gmail.com<br/>"}
+    }
+  }
+  ,
+  "public": {
+    "index": {
+      "title": "Bienvenue sur Firebase Hosting",
+      "welcome": "Bienvenue",
+      "setupComplete": "Configuration de Firebase Hosting terminée",
+      "lead": "Vous voyez ceci car vous avez configuré Firebase Hosting avec succès. Il est temps de créer quelque chose d'extraordinaire !",
+      "openDocs": "Ouvrir la documentation Hosting",
+      "sdkLoading": "Chargement du SDK Firebase…"
+    },
+    "404": {
+      "title": "Page introuvable",
+      "heading": "Page introuvable",
+      "lead": "Le fichier spécifié est introuvable sur ce site. Veuillez vérifier l'URL et réessayer.",
+      "why": "Pourquoi vois‑je ceci ?",
+      "info": "Cette page a été générée par l'interface en ligne de commande Firebase. Pour la modifier, éditez le fichier 404.html dans le répertoire public configuré de votre projet."
+    }
+  }
+}
+
+

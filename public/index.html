@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title data-i18n="public.index.title">Welcome to Firebase Hosting</title>
 
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/11.10.0/firebase-app-compat.js"></script>
@@ -38,14 +38,22 @@
       }
     </style>
   </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
+  <body data-page="publicIndex">
+    <div style="position: absolute; top: 16px; right: 16px;">
+      <select aria-label="Language" data-lang-switch="select" style="background:transparent;border:1px solid #ccc;padding:4px 6px;border-radius:4px;">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="pt">Português</option>
+        <option value="fr">Français</option>
+      </select>
     </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+    <div id="message">
+      <h2 data-i18n="public.index.welcome">Welcome</h2>
+      <h1 data-i18n="public.index.setupComplete">Firebase Hosting Setup Complete</h1>
+      <p data-i18n="public.index.lead">You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/" data-i18n="public.index.openDocs">Open Hosting Documentation</a>
+    </div>
+    <p id="load" data-i18n="public.index.sdkLoading">Firebase SDK Loading&hellip;</p>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -85,5 +93,6 @@
         }
       });
     </script>
+    <script src="/js/i18n.js"></script>
   </body>
 </html>
