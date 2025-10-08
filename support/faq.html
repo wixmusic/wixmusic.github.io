@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Go Play Music</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6; /* Blue 500 */
+            --accent-color: #facc15; /* Yellow 400 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Deep Charcoal/Dark Gray background */
+            color: #e5e7eb; /* Light Gray text */
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+        .bg-gradient-primary {
+            background-image: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .accordion-item[aria-expanded="true"] .accordion-content {
+            max-height: 500px; /* Adjust based on expected content size */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Go Play Music</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../index.html#features" class="text-gray-300 hover:text-white transition">Features</a>
+                <a href="../index.html#about" class="text-gray-300 hover:text-white transition">About</a>
+                <a href="../index.html#cta" class="text-gray-300 hover:text-white transition">Download</a>
+                <a href="help.html" class="text-gray-300 hover:text-white transition">Help Center</a>
+                <a href="faq.html" class="text-gray-300 hover:text-white transition">FAQ</a>
+            </nav>
+            <a href="../index.html#cta" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white hidden md:block">
+                Download Now
+            </a>
+            <button class="md:hidden text-white text-xl">&#x2261;</button>
+        </div>
+    </header>
+
+    <!-- FAQ Hero Section -->
+    <section id="faq" class="py-20 md:py-28 bg-gray-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">
+                Questions? We Have <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-500">Answers.</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Find quick solutions to common queries about caching, sound customization, and our unique iOS 26 design.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="accordion" class="space-y-4">
+
+                <!-- Category: Offline Playback -->
+                <h2 class="text-3xl font-bold text-blue-400 pt-8 pb-4 border-b border-gray-700">Offline & Caching</h2>
+
+                <!-- Q1 -->
+                <div class="accordion-item rounded-xl bg-gray-800 border border-gray-700" aria-expanded="false">
+                    <button class="accordion-header flex justify-between items-center w-full p-6 text-left font-semibold text-white hover:text-yellow-400 transition" data-target="content-1">
+                        <span class="text-lg">How does Automatic Offline Playback work?</span>
+                        <span class="accordion-icon transform transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div id="content-1" class="accordion-content px-6 bg-gray-800/80">
+                        <p class="pb-6 text-gray-300">
+                            Go Play Music automatically saves a copy of every song you listen to onto your device. This means the second time you play it, it loads instantly from local storage, eliminating buffering and ensuring uninterrupted playback, regardless of network stability.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="accordion-item rounded-xl bg-gray-800 border border-gray-700" aria-expanded="false">
+                    <button class="accordion-header flex justify-between items-center w-full p-6 text-left font-semibold text-white hover:text-yellow-400 transition" data-target="content-2">
+                        <span class="text-lg">Can I manage which songs are saved?</span>
+                        <span class="accordion-icon transform transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div id="content-2" class="accordion-content px-6 bg-gray-800/80">
+                        <p class="pb-6 text-gray-300">
+                            Yes. While caching is automatic by default, you can manage your stored songs in the app settings, allowing you to clear older tracks or manually pin favorites to ensure they are always available.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Category: Sound Customization -->
+                <h2 class="text-3xl font-bold text-blue-400 pt-8 pb-4 border-b border-gray-700">Sound & Volume</h2>
+
+                <!-- Q3 -->
+                <div class="accordion-item rounded-xl bg-gray-800 border border-gray-700" aria-expanded="false">
+                    <button class="accordion-header flex justify-between items-center w-full p-6 text-left font-semibold text-white hover:text-yellow-400 transition" data-target="content-3">
+                        <span class="text-lg">Is Max Volume Boost safe for my speakers?</span>
+                        <span class="accordion-icon transform transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div id="content-3" class="accordion-content px-6 bg-gray-800/80">
+                        <p class="pb-6 text-gray-300">
+                            Max Volume Boost is designed to optimize the digital signal processing without causing immediate hardware damage. However, we strongly recommend using this feature responsibly and avoiding extremely high volumes for extended periods to protect your hearing and speaker health.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="accordion-item rounded-xl bg-gray-800 border border-gray-700" aria-expanded="false">
+                    <button class="accordion-header flex justify-between items-center w-full p-6 text-left font-semibold text-white hover:text-yellow-400 transition" data-target="content-4">
+                        <span class="text-lg">How customizable is the Equalizer?</span>
+                        <span class="accordion-icon transform transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div id="content-4" class="accordion-content px-6 bg-gray-800/80">
+                        <p class="pb-6 text-gray-300">
+                            Our Equalizer offers 10 bands of adjustment, along with several professional pre-sets (Rock, Pop, Classical, etc.). You can fine-tune frequencies from bass to treble to perfectly match your headphones or listening environment.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Category: Design & Features -->
+                <h2 class="text-3xl font-bold text-blue-400 pt-8 pb-4 border-b border-gray-700">Design & General Features</h2>
+
+                <!-- Q5 -->
+                <div class="accordion-item rounded-xl bg-gray-800 border border-gray-700" aria-expanded="false">
+                    <button class="accordion-header flex justify-between items-center w-full p-6 text-left font-semibold text-white hover:text-yellow-400 transition" data-target="content-5">
+                        <span class="text-lg">What is the "iOS 26 Frosted Glass Design"?</span>
+                        <span class="accordion-icon transform transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div id="content-5" class="accordion-content px-6 bg-gray-800/80">
+                        <p class="pb-6 text-gray-300">
+                            It refers to a proprietary UI aesthetic that uses real-time background blurring and subtle transparency effects, mirroring the design language expected in the hypothetical future release of iOS 26. This gives Go Play Music a clean, premium, and futuristic look unmatched by current music players.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Q6 -->
+                <div class="accordion-item rounded-xl bg-gray-800 border border-gray-700" aria-expanded="false">
+                    <button class="accordion-header flex justify-between items-center w-full p-6 text-left font-semibold text-white hover:text-yellow-400 transition" data-target="content-6">
+                        <span class="text-lg">Are Dynamic Lyrics available for all songs?</span>
+                        <span class="accordion-icon transform transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div id="content-6" class="accordion-content px-6 bg-gray-800/80">
+                        <p class="pb-6 text-gray-300">
+                            Dynamic (time-synced) lyrics are available for the vast majority of popular tracks in our library. For less common songs, the app will display static lyrics if they are available.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Q7 -->
+                <div class="accordion-item rounded-xl bg-gray-800 border border-gray-700" aria-expanded="false">
+                    <button class="accordion-header flex justify-between items-center w-full p-6 text-left font-semibold text-white hover:text-yellow-400 transition" data-target="content-7">
+                        <span class="text-lg">How do I change the app's skin and theme?</span>
+                        <span class="accordion-icon transform transition-transform duration-300 text-xl">+</span>
+                    </button>
+                    <div id="content-7" class="accordion-content px-6 bg-gray-800/80">
+                        <p class="pb-6 text-gray-300">
+                            In the app's settings menu, navigate to "Appearance." Here you can select from various color palettes and even upload your own custom background image to personalize your listening environment.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="text-xl text-gray-400 mb-6">Can't find your answer?</p>
+                <a href="mailto:music.player.250617@gmail.com" class="px-8 py-3 text-lg font-bold rounded-xl bg-blue-500 hover:bg-blue-600 transition text-white">
+                    Contact Support
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Matching Main Page Footer) -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Go Play Music. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+                <a href="legal/terms-of-use.html" class="hover:text-yellow-400 transition">Terms of Service</a>
+                <a href="mailto:music.player.250617@gmail.com" class="hover:text-yellow-400 transition">Contact Us</a>
+            </div>
+            <!-- Social Media Links -->
+            <div class="mt-6 pt-4 border-t border-gray-700/50 flex justify-center space-x-6 text-2xl">
+                <a href="https://x.com/IsabelZhan49462" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Follow us on X/Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/@OfflineMusicZ" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Visit our YouTube channel">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/music.player.250617/" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Accordion Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.closest('.accordion-item');
+                    const contentId = header.getAttribute('data-target');
+                    const content = document.getElementById(contentId);
+                    const isExpanded = item.getAttribute('aria-expanded') === 'true';
+                    const icon = header.querySelector('.accordion-icon');
+
+                    // Close all other items
+                    document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                        if (otherItem !== item && otherItem.getAttribute('aria-expanded') === 'true') {
+                            otherItem.setAttribute('aria-expanded', 'false');
+                            otherItem.querySelector('.accordion-content').style.maxHeight = 0;
+                            otherItem.querySelector('.accordion-icon').textContent = '+';
+                        }
+                    });
+
+                    // Toggle current item
+                    if (isExpanded) {
+                        item.setAttribute('aria-expanded', 'false');
+                        content.style.maxHeight = 0;
+                        icon.textContent = '+';
+                    } else {
+                        item.setAttribute('aria-expanded', 'true');
+                        content.style.maxHeight = content.scrollHeight + "px"; // Set max-height to scrollHeight for smooth transition
+                        icon.textContent = '-';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

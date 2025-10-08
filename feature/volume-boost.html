@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Volume Boost & EQ | Go Play Music</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3b82f6; /* Blue 500 */
+            --accent-color: #facc15; /* Yellow 400 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; 
+            color: #e5e7eb; 
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+        .bg-gradient-primary {
+            background-image: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
+        }
+        /* Custom Equalizer Styling for visual effect */
+        .eq-slider-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            height: 150px;
+            align-items: end;
+        }
+        .eq-bar {
+            width: 100%;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            transition: height 0.3s;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Go Play Music</a>
+            <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section: Max Volume Boost & EQ -->
+    <section class="relative pt-20 pb-24 md:pt-32 md:pb-32 overflow-hidden bg-gray-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight">
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-500">
+                    Max Volume Boost
+                </span>
+                <span class="block mt-2">Unleash the Full Power of Sound</span>
+            </h1>
+            <p class="mt-6 text-xl text-gray-400 max-w-3xl mx-auto">
+                Go Play Music is the only player that lets you break through your device's volume limits while providing a professional-grade Equalizer for total audio control.
+            </p>
+            
+            <!-- Visual Element Placeholder (Icon/Diagram) -->
+            <div class="mt-12 flex justify-center">
+                <div class="text-7xl p-8 rounded-full bg-gray-800/70 border border-blue-500/50 shadow-xl">
+                    <!-- Unicode Icon for sound/volume -->
+                    &#x1F50A;
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Feature: Volume Boost -->
+    <section class="py-20 md:py-28">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Volume Explanation -->
+                <div class="space-y-8 lg:order-1">
+                    <h2 class="text-4xl font-bold text-white mb-4">
+                        Pushing Past the <span class="text-accent">Limit</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg">
+                        Tired of maxing out your device volume only to still struggle to hear the music? Our **Max Volume Boost** feature uses sophisticated audio processing to safely amplify the signal beyond the standard software limit, revealing clarity and detail even in the loudest environments.
+                    </p>
+                    <div class="p-6 rounded-xl border border-yellow-400/50 bg-gray-800/50">
+                        <h3 class="text-xl font-semibold text-yellow-400 mb-2">Important Disclaimer:</h3>
+                        <p class="text-gray-400">
+                            Use the volume boost feature responsibly. Prolonged listening at high volumes can damage your hearing. Go Play Music provides tools to monitor and manage volume levels for your safety.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Equalizer Control -->
+                <div class="lg:order-2 space-y-8">
+                    <h2 class="text-4xl font-bold text-white mb-4">
+                        Precision Control with our <span class="text-accent">Equalizer</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg">
+                        Customize your sound signature for any genre, headphones, or speaker system. Go Play Music provides a multi-band graphic equalizer that lets you precisely adjust the audio frequency spectrum.
+                    </p>
+                    
+                    <!-- EQ Visual Mockup -->
+                    <div class="p-6 rounded-xl bg-gray-800 border border-blue-500/50">
+                        <p class="text-sm font-semibold text-white mb-4 text-center">Custom 10-Band EQ</p>
+                        <div class="eq-slider-container">
+                            <div class="flex flex-col items-center">
+                                <div class="eq-bar h-1/3 hover:h-2/3 bg-blue-500/80 transition-all cursor-pointer" style="height: 35%;"></div>
+                                <span class="text-xs text-gray-500 mt-1">32Hz</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="eq-bar h-2/3 hover:h-4/5 bg-yellow-500/80 transition-all cursor-pointer" style="height: 65%;"></div>
+                                <span class="text-xs text-gray-500 mt-1">125Hz</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="eq-bar h-4/5 hover:h-full bg-blue-500/80 transition-all cursor-pointer" style="height: 85%;"></div>
+                                <span class="text-xs text-gray-500 mt-1">500Hz</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="eq-bar h-1/2 hover:h-3/4 bg-yellow-500/80 transition-all cursor-pointer" style="height: 50%;"></div>
+                                <span class="text-xs text-gray-500 mt-1">2kHz</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="eq-bar h-1/4 hover:h-1/2 bg-blue-500/80 transition-all cursor-pointer" style="height: 25%;"></div>
+                                <span class="text-xs text-gray-500 mt-1">16kHz</span>
+                            </div>
+                        </div>
+                        <p class="text-sm text-center text-gray-400 mt-4">Fine-tune your bass, mids, and treble.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download CTA -->
+    <section class="py-16 md:py-20 text-center bg-gray-800/50 border-t border-gray-700">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Hear the Difference</h2>
+            <p class="text-xl text-gray-400 mb-8">
+                Take control of your audio experience with Max Volume Boost and our professional Equalizer.
+            </p>
+            <a href="../index.html#cta" class="btn-primary px-10 py-5 text-xl font-bold rounded-2xl shadow-2xl">
+                Download Go Play Music Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Go Play Music. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+                <a href="../legal/terms-of-use.html" class="hover:text-yellow-400 transition">Terms of Service</a>
+                <a href="../index.html#contact" class="hover:text-yellow-400 transition">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

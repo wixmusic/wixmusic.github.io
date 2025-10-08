@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center | Go Play Music</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6; /* Blue 500 */
+            --accent-color: #facc15; /* Yellow 400 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Deep Charcoal/Dark Gray background */
+            color: #e5e7eb; /* Light Gray text */
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+        .bg-gradient-primary {
+            background-image: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Go Play Music</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../index.html#features" class="text-gray-300 hover:text-white transition">Features</a>
+                <a href="../index.html#about" class="text-gray-300 hover:text-white transition">About</a>
+                <a href="../index.html#cta" class="text-gray-300 hover:text-white transition">Download</a>
+                <a href="help.html" class="text-gray-300 hover:text-white transition">Help Center</a>
+                <a href="faq.html" class="text-gray-300 hover:text-white transition">FAQ</a>
+            </nav>
+            <a href="../index.html#cta" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white hidden md:block">
+                Download Now
+            </a>
+            <button class="md:hidden text-white text-xl">&#x2261;</button>
+        </div>
+    </header>
+
+    <!-- Help Center Hero Section -->
+    <section id="help-hero" class="py-20 md:py-28 bg-gray-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-4">
+                Go Play Music <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-500">Help Center</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Comprehensive guides and documentation to help you master every feature of your ultimate music player.
+            </p>
+            <div class="mt-8 relative max-w-lg mx-auto">
+                <input type="search" placeholder="Search for 'offline playback' or 'equalizer settings'..." class="w-full p-4 pl-12 rounded-xl bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Navigation Grid -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white mb-10 text-center">Documentation Categories</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Setup & Installation -->
+                <a href="#" class="card-hover transition duration-300 block p-8 rounded-xl bg-gray-800 border border-gray-700 shadow-lg hover:shadow-blue-500/30">
+                    <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Getting Started</h3>
+                    <p class="text-gray-400">Step-by-step guides for downloading, installing, and setting up your first playlist.</p>
+                </a>
+                
+                <!-- Card 2: Features & Customization -->
+                <a href="#" class="card-hover transition duration-300 block p-8 rounded-xl bg-gray-800 border border-gray-700 shadow-lg hover:shadow-blue-500/30">
+                    <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Features Deep Dive</h3>
+                    <p class="text-gray-400">Detailed instructions on using the Equalizer, Volume Boost, and Dynamic Lyrics.</p>
+                </a>
+                
+                <!-- Card 3: Offline & Caching -->
+                <a href="offline.html" class="card-hover transition duration-300 block p-8 rounded-xl bg-gray-800 border border-gray-700 shadow-lg hover:shadow-blue-500/30">
+                    <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fa-solid fa-wifi-slash"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Offline Playback</h3>
+                    <p class="text-gray-400">Understand how automatic caching works and how to manage your local storage.</p>
+                </a>
+                
+                <!-- Card 4: Troubleshooting -->
+                <a href="#" class="card-hover transition duration-300 block p-8 rounded-xl bg-gray-800 border border-gray-700 shadow-lg hover:shadow-blue-500/30">
+                    <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Troubleshooting</h3>
+                    <p class="text-gray-400">Solutions for common issues like playback errors, app crashes, and connectivity problems.</p>
+                </a>
+                
+                <!-- Card 5: Account & Billing -->
+                <a href="#" class="card-hover transition duration-300 block p-8 rounded-xl bg-gray-800 border border-gray-700 shadow-lg hover:shadow-blue-500/30">
+                    <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fa-solid fa-user-circle"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Account Management</h3>
+                    <p class="text-gray-400">Guides for managing subscriptions, billing information, and password resets.</p>
+                </a>
+                
+                <!-- Card 6: Policy & Legal -->
+                <a href="privacy-policy.html" class="card-hover transition duration-300 block p-8 rounded-xl bg-gray-800 border border-gray-700 shadow-lg hover:shadow-blue-500/30">
+                    <div class="text-4xl text-yellow-400 mb-4">
+                        <i class="fa-solid fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Legal & Security</h3>
+                    <p class="text-gray-400">Information regarding data privacy, terms of service, and security protocols.</p>
+                </a>
+
+            </div>
+
+            <!-- Need More Help CTA -->
+            <div class="mt-16 text-center pt-10 border-t border-gray-800">
+                <h3 class="text-3xl font-bold text-white mb-4">Still Need Assistance?</h3>
+                <p class="text-xl text-gray-400 mb-8">If you can't find what you're looking for, our support team is ready to help.</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="faq.html" class="px-8 py-3 text-lg font-bold rounded-xl bg-gray-600 hover:bg-gray-700 transition text-white">
+                        Visit FAQ
+                    </a>
+                    <a href="mailto:music.player.250617@gmail.com" class="px-8 py-3 text-lg font-bold rounded-xl bg-blue-500 hover:bg-blue-600 transition text-white">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Matching Main Page Footer) -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Go Play Music. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+                <a href="../legal/terms-of-use.html" class="hover:text-yellow-400 transition">Terms of Service</a>
+                <a href="mailto:music.player.250617@gmail.com" class="hover:text-yellow-400 transition">Contact Us</a>
+            </div>
+            <!-- Social Media Links -->
+            <div class="mt-6 pt-4 border-t border-gray-700/50 flex justify-center space-x-6 text-2xl">
+                <a href="https://x.com/IsabelZhan49462" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Follow us on X/Twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://www.youtube.com/@OfflineMusicZ" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Visit our YouTube channel">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/music.player.250617/" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
