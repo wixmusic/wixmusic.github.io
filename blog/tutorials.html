@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials - Go Play Music Blog</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6; /* Blue 500 */
+            --accent-color: #facc15; /* Yellow 400 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Deep Charcoal/Dark Gray background */
+            color: #e5e7eb; /* Light Gray text */
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .bg-gradient-primary {
+            background-image: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.2), 0 4px 6px -2px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Go Play Music Blog</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../index.html" class="text-gray-300 hover:text-white transition">Home</a>
+                <a href="news.html" class="text-gray-300 hover:text-white transition">Tech News</a>
+                <a href="updates.html" class="text-gray-300 hover:text-white transition">Product Updates</a>
+                <a href="#" class="text-white font-semibold transition">Tutorials</a>
+            </nav>
+            <button class="md:hidden text-white text-xl">&#x2261;</button>
+        </div>
+    </header>
+
+    <!-- Page Title and Sub-Navigation -->
+    <section class="py-12 bg-gray-900/50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl font-extrabold text-white mb-3">
+                Mastering <span class="text-accent">Go Play Music</span>
+            </h1>
+            <p class="text-xl text-gray-400">
+                Step-by-step guides to help you utilize every powerful feature of the app.
+            </p>
+            <div class="mt-6 flex space-x-4">
+                <a href="#" class="px-4 py-2 text-sm rounded-full bg-blue-600 text-white font-semibold transition">All Guides</a>
+                <a href="#" class="px-4 py-2 text-sm rounded-full bg-gray-700 hover:bg-gray-600 text-gray-300 transition">Audio Setup</a>
+                <a href="#" class="px-4 py-2 text-sm rounded-full bg-gray-700 hover:bg-gray-600 text-gray-300 transition">Playlist Management</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial Grid -->
+    <section class="py-16 md:py-24 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Tutorial 1: Max Volume Boost Setup -->
+                <article class="card-hover transition duration-300 rounded-xl bg-gray-800 border border-gray-700 overflow-hidden shadow-lg hover:shadow-blue-500/30">
+                    <div class="h-48 w-full bg-cover bg-center flex items-center justify-center bg-gray-700/50">
+                        <i class="fas fa-volume-up text-5xl text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-blue-400 font-semibold mb-2 uppercase">Audio Setup</p>
+                        <h3 class="text-2xl font-bold text-white mb-3 leading-snug">
+                            How to Safely Activate Max Volume Boost for Your Headphones
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            A quick guide to maximizing your audio output while protecting your hearing and equipment with our built-in safety limits.
+                        </p>
+                        <div class="text-sm text-yellow-400 font-semibold">
+                            Read Guide <i class="fas fa-arrow-right ml-1"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tutorial 2: Smart Playlist Creation -->
+                <article class="card-hover transition duration-300 rounded-xl bg-gray-800 border border-gray-700 overflow-hidden shadow-lg hover:shadow-blue-500/30">
+                    <div class="h-48 w-full bg-cover bg-center flex items-center justify-center bg-gray-700/50">
+                        <i class="fas fa-list-alt text-5xl text-yellow-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-yellow-400 font-semibold mb-2 uppercase">Playlist Management</p>
+                        <h3 class="text-2xl font-bold text-white mb-3 leading-snug">
+                            Creating "Mood" Playlists Automatically with Smart Tags
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Learn how our Smart Playlist Creator automatically categorizes your library for every occasion, from workout to chill.
+                        </p>
+                        <div class="text-sm text-yellow-400 font-semibold">
+                            Read Guide <i class="fas fa-arrow-right ml-1"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tutorial 3: Caching Management -->
+                <article class="card-hover transition duration-300 rounded-xl bg-gray-800 border border-gray-700 overflow-hidden shadow-lg hover:shadow-blue-500/30">
+                    <div class="h-48 w-full bg-cover bg-center flex items-center justify-center bg-gray-700/50">
+                        <i class="fas fa-cloud-download-alt text-5xl text-blue-400"></i>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-xs text-blue-400 font-semibold mb-2 uppercase">Offline Use</p>
+                        <h3 class="text-2xl font-bold text-white mb-3 leading-snug">
+                            Optimizing Storage: Managing Automatic Offline Caching Limits
+                        </h3>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            A step-by-step tutorial on how to control which songs are cached and manage your local storage usage effectively.
+                        </p>
+                        <div class="text-sm text-yellow-400 font-semibold">
+                            Read Guide <i class="fas fa-arrow-right ml-1"></i>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <div class="mt-4 space-x-4">
+                <a href="../index.html" class="hover:text-yellow-400 transition">Go to Homepage</a>
+                <span class="text-gray-700">|</span>
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+                <a href="../legal/terms-of-use.html" class="hover:text-yellow-400 transition">Terms</a>
+            </div>
+            <p>&copy; 2025 Go Play Music. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

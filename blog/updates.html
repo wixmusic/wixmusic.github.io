@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Updates - Go Play Music Blog</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6; /* Blue 500 */
+            --accent-color: #facc15; /* Yellow 400 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Deep Charcoal/Dark Gray background */
+            color: #e5e7eb; /* Light Gray text */
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .bg-gradient-primary {
+            background-image: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+        .update-item {
+            position: relative;
+            padding-left: 2rem; /* Space for the timeline dot */
+        }
+        .update-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 2px solid #0d1117;
+            z-index: 10;
+        }
+        .update-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 5px; /* Centers the line */
+            top: 1.5rem;
+            bottom: -1rem;
+            width: 2px;
+            background-color: #1f2937; /* Dark line */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Go Play Music Blog</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="../index.html" class="text-gray-300 hover:text-white transition">Home</a>
+                <a href="news.html" class="text-gray-300 hover:text-white transition">Tech News</a>
+                <a href="#" class="text-white font-semibold transition">Product Updates</a>
+                <a href="tutorials.html" class="text-gray-300 hover:text-white transition">Tutorials</a>
+            </nav>
+            <button class="md:hidden text-white text-xl">&#x2261;</button>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="py-12 bg-gray-900/50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-5xl font-extrabold text-white mb-3">
+                Product <span class="text-accent">Updates</span>
+            </h1>
+            <p class="text-xl text-gray-400">
+                A chronological history of new features, performance enhancements, and fixes for the Go Play Music app.
+            </p>
+        </div>
+    </section>
+
+    <!-- Timeline of Updates -->
+    <section class="py-16 md:py-24 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="space-y-10">
+
+                <!-- Update 1.1.0 (Major Feature) -->
+                <div class="update-item p-6 rounded-xl bg-gray-800 shadow-xl border border-gray-700">
+                    <h2 class="text-3xl font-bold text-white mb-2">Version 1.1.0: Smart Playlist Engine & Hi-Res Audio Support</h2>
+                    <p class="text-sm text-gray-400 mb-4 flex items-center space-x-2">
+                        <i class="fas fa-calendar-alt text-blue-400"></i>
+                        <span>Released: July 15, 2025</span>
+                    </p>
+                    <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                        <li><strong class="text-yellow-400">NEW:</strong> Introduced the Smart Playlist Creator, automatically grouping music by artist and mood.</li>
+                        <li><strong class="text-yellow-400">NEW:</strong> Added native support for FLAC and $\text{ALAC}$ high-resolution audio formats.</li>
+                        <li><strong class="text-yellow-400">IMPROVEMENT:</strong> Enhanced the speed and reliability of the Automatic Offline Caching feature.</li>
+                        <li><strong class="text-red-400">FIX:</strong> Resolved an issue where the equalizer settings occasionally reset upon app restart.</li>
+                    </ul>
+                </div>
+
+                <!-- Update 1.0.5 (Minor Fixes) -->
+                <div class="update-item p-6 rounded-xl bg-gray-800 shadow-xl border border-gray-700">
+                    <h2 class="text-3xl font-bold text-white mb-2">Version 1.0.5: Stability and UI Polish</h2>
+                    <p class="text-sm text-gray-400 mb-4 flex items-center space-x-2">
+                        <i class="fas fa-calendar-alt text-blue-400"></i>
+                        <span>Released: June 20, 2025</span>
+                    </p>
+                    <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                        <li><strong class="text-yellow-400">IMPROVEMENT:</strong> Reduced application startup time by $20\%$.</li>
+                        <li><strong class="text-red-400">FIX:</strong> Addressed a crash related to rapid playlist switching.</li>
+                        <li><strong class="text-red-400">FIX:</strong> Minor visual adjustments to the Frosted Glass effect opacity on older $\text{iOS}$ devices.</li>
+                    </ul>
+                </div>
+
+                <!-- Update 1.0.0 (Launch Version) -->
+                <div class="update-item p-6 rounded-xl bg-gray-800 shadow-xl border border-gray-700">
+                    <h2 class="text-3xl font-bold text-white mb-2">Version 1.0.0: Initial Launch</h2>
+                    <p class="text-sm text-gray-400 mb-4 flex items-center space-x-2">
+                        <i class="fas fa-calendar-alt text-blue-400"></i>
+                        <span>Released: June 1, 2025</span>
+                    </p>
+                    <ul class="list-disc pl-5 text-gray-300 space-y-2">
+                        <li><strong class="text-yellow-400">NEW:</strong> Automatic Offline Caching, Volume Boost, Frosted Glass UI, and Dynamic Lyrics.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <div class="mt-4 space-x-4">
+                <a href="../index.html" class="hover:text-yellow-400 transition">Go to Homepage</a>
+                <span class="text-gray-700">|</span>
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+                <a href="../legal/terms-of-use.html" class="hover:text-yellow-400 transition">Terms</a>
+            </div>
+            <p>&copy; 2025 Go Play Music. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
