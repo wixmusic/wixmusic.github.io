@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Go Play Music | The Future of Audio</title>
+    <!-- Updated SEO Meta Description -->
+    <meta name="description" content="Stop buffering! Go Play Music is the only music player that automatically caches songs. Experience Max Volume Boost and the cutting-edge iOS 26 Frosted Glass design.">
+    <title>Go Play Music - Seamless Offline Music Player</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Font Awesome CDN for icons (New) -->
+    <!-- Font Awesome CDN for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
@@ -23,31 +25,47 @@
         .text-accent {
             color: var(--accent-color);
         }
-        .border-primary {
-            border-color: var(--primary-color);
-        }
         .bg-gradient-primary {
             background-image: linear-gradient(to right, var(--primary-color), var(--accent-color));
         }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);
-        }
-        /* Custom Frosted Glass Effect (Simulated) */
-        .frosted-panel {
-            backdrop-filter: blur(24px) saturate(180%);
-            -webkit-backdrop-filter: blur(24px) saturate(180%);
-            background-color: rgba(18, 26, 38, 0.7); /* Dark semi-transparent tint */
+        .frosted-glass {
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.05); /* Slightly visible overlay */
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.3);
-            border-color: var(--primary-color);
+        /* Custom classes for the specific mockup size (2/3 scale of 11:20) */
+        .mockup-wrapper {
+            width: 100%;
+            /* Calculated based on 11:20 ratio at 2/3 scale: max-width 320px * 2/3 * 11/9 = 260px (approx) */
+            max-width: 260px;
+        }
+        .mockup-screen {
+            /* Height: max-width * 20 / 11 */
+            height: 472px; 
+        }
+        @media (min-width: 640px) {
+            .mockup-wrapper {
+                /* Calculated based on 11:20 ratio at 2/3 scale: max-width 384px * 2/3 * 11/9 = 312px (approx) */
+                max-width: 312px;
+            }
+            .mockup-screen {
+                /* Height: max-width * 20 / 11 */
+                height: 567px; 
+            }
+        }
+        .carousel-slide {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-slide.active {
+            opacity: 1;
         }
     </style>
 </head>
@@ -56,265 +74,332 @@
     <!-- Header & Navigation -->
     <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-white tracking-widest">Go Play Music</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#features" class="text-gray-300 hover:text-white transition">Features</a>
-                <a href="#about" class="text-gray-300 hover:text-white transition">About</a>
-                <a href="#cta" class="text-gray-300 hover:text-white transition">Download</a>
-                <a href="support/help.html" class="text-gray-300 hover:text-white transition">Help Center</a>
+            <a href="index.html" class="text-2xl font-extrabold text-white tracking-widest">Go Play Music</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="index.html#features" class="text-gray-300 hover:text-white transition">Features</a>
                 <a href="support/faq.html" class="text-gray-300 hover:text-white transition">FAQ</a>
+                <a href="support/help.html" class="text-gray-300 hover:text-white transition">Help</a>
                 <a href="blog/news.html" class="text-gray-300 hover:text-white transition">Blog</a>
             </nav>
-            <a href="#cta" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white hidden md:block">
+            <a href="#download" class="hidden md:inline-block px-5 py-2 rounded-full bg-accent text-gray-900 font-semibold hover:bg-yellow-300 transition shadow-lg shadow-yellow-500/30">
                 Download Now
             </a>
-            <!-- Mobile Menu Placeholder -->
-            <button class="md:hidden text-white text-xl">&#x2261;</button>
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-toggle" class="md:hidden text-white text-xl p-2 rounded-lg hover:bg-gray-800 transition">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <nav id="mobile-menu" class="hidden absolute top-16 left-0 w-full bg-gray-900/90 backdrop-blur-md border-b border-gray-800 z-40 p-4 text-center">
+            <div class="flex flex-col space-y-4 font-medium">
+                <a href="index.html#features" class="text-gray-300 hover:text-accent transition border-b border-gray-800 pb-2" onclick="closeMobileMenu()">Features</a>
+                <a href="support/faq.html" class="text-gray-300 hover:text-accent transition border-b border-gray-800 pb-2" onclick="closeMobileMenu()">FAQ</a>
+                <a href="support/help.html" class="text-gray-300 hover:text-accent transition border-b border-gray-800 pb-2" onclick="closeMobileMenu()">Help</a>
+                <a href="blog/news.html" class="text-gray-300 hover:text-accent transition pb-2" onclick="closeMobileMenu()">Blog</a>
+                <!-- FIXED: Updated mobile Download button style for visibility -->
+                <a href="#download" class="mt-4 px-5 py-2 rounded-full bg-blue-600 text-white font-semibold hover:bg-blue-500 transition" onclick="closeMobileMenu()">Download Now</a>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative pt-20 pb-24 md:pt-32 md:pb-40 overflow-hidden bg-gray-900/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center">
+    <section class="relative pt-16 pb-24 lg:pt-32 lg:pb-40 overflow-hidden">
+        <!-- Background Blur/Glow -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full blur-3xl opacity-30 animate-pulse"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-yellow-400/10 rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 lg:flex lg:items-center">
             
-            <!-- Text Content -->
-            <div class="lg:w-1/2 lg:pr-12 text-center lg:text-left mb-12 lg:mb-0">
-                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-500">
-                        Go Play Music
-                    </span>
-                    <span class="block mt-2">Future-Proof Your Listening.</span>
+            <!-- Left Content -->
+            <div class="lg:w-1/2 lg:pr-12 text-center lg:text-left">
+                <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-6">
+                    Music That <span class="text-accent">Never Stops</span>. Even Offline.
                 </h1>
-                <p class="mt-6 text-xl text-gray-400 max-w-xl mx-auto lg:mx-0">
-                    The only music player with **Automatic Offline Caching**, **Max Volume Boost**, and the cutting-edge **iOS 26 Frosted Glass** design. Music freedom, perfected.
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">
+                    Go Play Music is the world's first player to automatically cache songs, ensuring seamless playback regardless of network stability.
                 </p>
-                <div class="mt-10 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
-                    <a href="#cta" class="btn-primary px-8 py-4 text-lg font-bold rounded-xl shadow-lg">
-                        Start Listening Now
+                
+                <!-- CTA Buttons -->
+                <div id="download" class="flex flex-col sm:flex-row justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 mb-10">
+                    <!-- App Store Button -->
+                    <a href="https://apps.apple.com/us/app/id6747974527?l=en-us" target="_blank" class="px-8 py-3 rounded-xl bg-white text-gray-900 font-bold text-lg hover:bg-gray-200 transition shadow-2xl shadow-blue-500/50 flex items-center justify-center">
+                        <i class="fab fa-apple text-2xl mr-2"></i> Download on App Store
                     </a>
-                    <a href="#features" class="px-8 py-4 text-lg font-bold rounded-xl border border-gray-600 text-white hover:border-blue-500 transition duration-300">
-                        Explore Features
-                    </a>
+                    <!-- Google Play Button is Hidden -->
                 </div>
+                
+                <p class="text-sm text-gray-500 mt-4">
+                    Optimized for seamless performance on iOS.
+                </p>
             </div>
 
-            <!-- Carousel Mockup (9:20 Ratio, 2/3 size) -->
-            <div class="w-full lg:w-1/2 flex justify-center relative mt-12 lg:mt-0">
-                <div class="relative w-full max-w-[213px] sm:max-w-[256px]">
-                    <!-- Outer Card for Styling -->
-                    <div class="rounded-[2.5rem] p-1.5 bg-gray-800 shadow-[0_0_80px_rgba(59,130,246,0.5)] border border-gray-700">
-                        <!-- Screen Container (9:20 Ratio) -->
-                        <div id="mockup-screen" class="relative w-full h-[474px] sm:h-[569px] overflow-hidden rounded-[2rem]">
-                            <!-- Frosted Glass Background (Static for effect) -->
-                            <div class="absolute inset-0 bg-cover bg-center z-0" style="background-image: url('https://placehold.co/800x1800/254473/FFFFFF?text=Go+Play+Music+Background');"></div>
-                            
-                            <!-- Image Carousel -->
-                            <div id="image-carousel" class="absolute inset-0">
-                                <!-- Carousel items (Images) -->
-                                <img src="img/en/1.jpg" class="carousel-item absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-100 transition-opacity duration-1000" onerror="this.onerror=null;this.src='https://placehold.co/320x711/1e293b/facc15?text=Feature+1';" data-slide="1">
-                                <img src="img/en/2.jpg" class="carousel-item absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000" onerror="this.onerror=null;this.src='https://placehold.co/320x711/1e293b/facc15?text=Feature+2';" data-slide="2">
-                                <img src="img/en/3.jpg" class="carousel-item absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000" onerror="this.onerror=null;this.src='https://placehold.co/320x711/1e293b/facc15?text=Feature+3';" data-slide="3">
-                                <img src="img/en/4.jpg" class="carousel-item absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000" onerror="this.onerror=null;this.src='https://placehold.co/320x711/1e293b/facc15?text=Feature+4';" data-slide="4">
-                                <img src="img/en/5.jpg" class="carousel-item absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000" onerror="this.onerror=null;this.src='https://placehold.co/320x711/1e293b/facc15?text=Feature+5';" data-slide="5">
-                                <img src="img/en/6.jpg" class="carousel-item absolute inset-0 w-full h-full object-cover rounded-[2rem] opacity-0 transition-opacity duration-1000" onerror="this.onerror=null;this.src='https://placehold.co/320x711/1e293b/facc15?text=Feature+6';" data-slide="6">
-                            </div>
+            <!-- Right Mockup Carousel -->
+            <div class="w-full lg:w-1/2 flex flex-col items-center relative mt-12 lg:mt-0">
+                
+                <div class="mockup-wrapper relative rounded-[3rem] p-3 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] border-[8px] border-gray-900/50 bg-gray-900/70">
+                    
+                    <!-- Inner Screen Container -->
+                    <div id="mockup-screen" class="mockup-screen relative rounded-[2rem] overflow-hidden frosted-glass border border-gray-700/50">
+                        
+                        <!-- Carousel Slides -->
+                        <div id="carousel-slides" class="w-full h-full">
+                            <!-- Slides are added dynamically by JS -->
+                            <!-- Images are sized to cover the entire container (11:20 aspect ratio) -->
+                            <img src="img/en/1.jpg" alt="Go Play Music Interface Slide 1" class="carousel-slide active object-cover">
+                            <img src="img/en/2.jpg" alt="Go Play Music Interface Slide 2" class="carousel-slide object-cover">
+                            <img src="img/en/3.jpg" alt="Go Play Music Interface Slide 3" class="carousel-slide object-cover">
+                            <img src="img/en/4.jpg" alt="Go Play Music Interface Slide 4" class="carousel-slide object-cover">
+                            <img src="img/en/5.jpg" alt="Go Play Music Interface Slide 5" class="carousel-slide object-cover">
+                            <img src="img/en/6.jpg" alt="Go Play Music Interface Slide 6" class="carousel-slide object-cover">
                         </div>
-                    </div>
-                    <!-- Carousel Indicators BELOW the mockup -->
-                    <div id="carousel-indicators" class="flex justify-center space-x-2 mt-4">
-                        <button data-slide-to="1" class="w-2.5 h-2.5 rounded-full bg-blue-500/70 opacity-100 transition-opacity"></button>
-                        <button data-slide-to="2" class="w-2.5 h-2.5 rounded-full bg-gray-600/70 opacity-50 transition-opacity"></button>
-                        <button data-slide-to="3" class="w-2.5 h-2.5 rounded-full bg-gray-600/70 opacity-50 transition-opacity"></button>
-                        <button data-slide-to="4" class="w-2.5 h-2.5 rounded-full bg-gray-600/70 opacity-50 transition-opacity"></button>
-                        <button data-slide-to="5" class="w-2.5 h-2.5 rounded-full bg-gray-600/70 opacity-50 transition-opacity"></button>
-                        <button data-slide-to="6" class="w-2.5 h-2.5 rounded-full bg-gray-600/70 opacity-50 transition-opacity"></button>
+                        
                     </div>
                 </div>
-            </div>
 
+                <!-- Carousel Indicators (Dots) -->
+                <div id="carousel-indicators" class="flex justify-center space-x-2 mt-6">
+                    <!-- Dots are added dynamically by JS -->
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Features Section (New Navigation Hub) -->
-    <section id="features" class="py-20 md:py-28 bg-gray-800/50 border-t border-gray-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
-                Unmatched Features. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-yellow-400">Perfect Playback.</span>
+    <!-- Features Section -->
+    <section id="features" class="py-16 md:py-24 bg-gray-900 border-t border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-center text-white mb-4">
+                Designed for the <span class="text-accent">Future of Audio</span>
             </h2>
-            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-16">
-                From revolutionary caching to groundbreaking design, Go Play Music is built different. Tap any feature to learn more.
+            <p class="text-xl text-gray-400 text-center mb-16 max-w-3xl mx-auto">
+                Discover the revolutionary features that set Go Play Music apart from every other player.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- Feature 1: Offline Playback -->
-                <a href="feature/offline.html" class="feature-card block p-6 rounded-xl bg-gray-900 border border-gray-700 transition duration-300 transform hover:scale-[1.02]">
-                    <div class="text-4xl mb-4 text-blue-400">&#x2728;</div>
-                    <h3 class="text-2xl font-semibold text-white mb-2">Automatic Offline Playback</h3>
-                    <p class="text-gray-400">Seamlessly cache songs as you play, ensuring zero interruptions even with no signal.</p>
-                </a>
-                
-                <!-- Feature 2: Smart Playlist -->
-                <a href="feature/smart-playlist.html" class="feature-card block p-6 rounded-xl bg-gray-900 border border-gray-700 transition duration-300 transform hover:scale-[1.02]">
-                    <div class="text-4xl mb-4 text-yellow-400">&#x1F5C3;</div>
-                    <h3 class="text-2xl font-semibold text-white mb-2">Smart Playlist Creator</h3>
-                    <p class="text-gray-400">Instantly organize your entire library with automatic categorization by artist.</p>
-                </a>
-                
-                <!-- Feature 3: Volume Boost & EQ -->
-                <a href="feature/volume-boost.html" class="feature-card block p-6 rounded-xl bg-gray-900 border border-gray-700 transition duration-300 transform hover:scale-[1.02]">
-                    <div class="text-4xl mb-4 text-blue-400">&#x1F50A;</div>
-                    <h3 class="text-2xl font-semibold text-white mb-2">Max Volume Boost & EQ</h3>
-                    <p class="text-gray-400">Break device limits and fine-tune your sound with professional-grade equalization.</p>
+                <a href="feature/offline.html" class="frosted-glass p-6 rounded-2xl flex flex-col items-start hover:border-blue-500 transition duration-300 transform hover:scale-[1.02]">
+                    <div class="p-3 rounded-xl bg-blue-600/30 text-blue-400 mb-4">
+                        <i class="fas fa-cloud-download-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Seamless Offline Play</h3>
+                    <p class="text-gray-400 text-sm flex-grow">
+                        Songs are **automatically cached** as you listen, guaranteeing uninterrupted music even when you lose network connection.
+                    </p>
+                    <span class="text-sm font-semibold text-accent mt-3">Learn More &rarr;</span>
                 </a>
 
-                <!-- Feature 4: Frosted Glass Design -->
-                <a href="feature/frosted-glass.html" class="feature-card block p-6 rounded-xl bg-gray-900 border border-gray-700 transition duration-300 transform hover:scale-[1.02]">
-                    <div class="text-4xl mb-4 text-yellow-400">&#x1F440;</div>
-                    <h3 class="text-2xl font-semibold text-white mb-2">Frosted Glass Design</h3>
-                    <p class="text-gray-400">The first music player to adopt the futuristic, elegant aesthetic of iOS 26 UI.</p>
+                <!-- Feature 2: Frosted Glass UI -->
+                <a href="feature/frosted-glass.html" class="frosted-glass p-6 rounded-2xl flex flex-col items-start hover:border-yellow-500 transition duration-300 transform hover:scale-[1.02]">
+                    <div class="p-3 rounded-xl bg-yellow-600/30 text-yellow-400 mb-4">
+                        <i class="fas fa-layer-group text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Frosted Glass Design</h3>
+                    <p class="text-gray-400 text-sm flex-grow">
+                        The first music app to adopt the stunning, futuristic **iOS 26** frosted glass and depth-of-field aesthetic.
+                    </p>
+                    <span class="text-sm font-semibold text-accent mt-3">Learn More &rarr;</span>
                 </a>
 
+                <!-- Feature 3: Smart Playlists -->
+                <a href="feature/smart-playlist.html" class="frosted-glass p-6 rounded-2xl flex flex-col items-start hover:border-blue-500 transition duration-300 transform hover:scale-[1.02]">
+                    <div class="p-3 rounded-xl bg-blue-600/30 text-blue-400 mb-4">
+                        <i class="fas fa-magic text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Smart Playlist Creator</h3>
+                    <p class="text-gray-400 text-sm flex-grow">
+                        Automatic categorization by artist, genre, and mood, simplifying large music libraries with intelligent playlists.
+                    </p>
+                    <span class="text-sm font-semibold text-accent mt-3">Learn More &rarr;</span>
+                </a>
+
+                <!-- Feature 4: Volume Boost & EQ -->
+                <a href="feature/volume-boost.html" class="frosted-glass p-6 rounded-2xl flex flex-col items-start hover:border-yellow-500 transition duration-300 transform hover:scale-[1.02]">
+                    <div class="p-3 rounded-xl bg-yellow-600/30 text-yellow-400 mb-4">
+                        <i class="fas fa-waveform text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Max Volume & EQ</h3>
+                    <p class="text-gray-400 text-sm flex-grow">
+                        Enhance your listening with Max Volume Boost and a powerful, customizable 10-band equalizer.
+                    </p>
+                    <span class="text-sm font-semibold text-accent mt-3">Learn More &rarr;</span>
+                </a>
+                
                 <!-- Feature 5: Dynamic Lyrics -->
-                <a href="feature/dynamic-lyrics.html" class="feature-card block p-6 rounded-xl bg-gray-900 border border-gray-700 transition duration-300 transform hover:scale-[1.02]">
-                    <div class="text-4xl mb-4 text-blue-400">&#x1F3A4;</div>
-                    <h3 class="text-2xl font-semibold text-white mb-2">Dynamic Lyrics</h3>
-                    <p class="text-gray-400">Perfectly synchronized, karaoke-style lyrics for an engaging, immersive experience.</p>
+                <a href="feature/dynamic-lyrics.html" class="frosted-glass p-6 rounded-2xl flex flex-col items-start hover:border-blue-500 transition duration-300 transform hover:scale-[1.02]">
+                    <div class="p-3 rounded-xl bg-blue-600/30 text-blue-400 mb-4">
+                        <i class="fas fa-microphone-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Dynamic Lyrics Sync</h3>
+                    <p class="text-gray-400 text-sm flex-grow">
+                        Enjoy perfectly synced, scrolling lyrics that follow the music in real-time, turning listening into a karaoke experience.
+                    </p>
+                    <span class="text-sm font-semibold text-accent mt-3">Learn More &rarr;</span>
                 </a>
-                
-                <!-- Placeholder / Call to Action Card -->
-                <div class="feature-card p-6 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 border border-blue-500 transition duration-300 transform hover:scale-[1.02] flex flex-col justify-center">
-                    <h3 class="text-2xl font-semibold text-white mb-2">Ready to Upgrade?</h3>
-                    <a href="#cta" class="bg-yellow-400 text-gray-900 font-bold py-3 rounded-lg mt-3 hover:bg-yellow-300 transition">
-                        Download Now
-                    </a>
-                </div>
-                
+
+                <!-- Feature 6: Themes & Skins -->
+                <a href="#" class="frosted-glass p-6 rounded-2xl flex flex-col items-start hover:border-yellow-500 transition duration-300 transform hover:scale-[1.02]">
+                    <div class="p-3 rounded-xl bg-yellow-600/30 text-yellow-400 mb-4">
+                        <i class="fas fa-palette text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Personalized Themes</h3>
+                    <p class="text-gray-400 text-sm flex-grow">
+                        Customize the app's entire look, including theme colors, accent hues, and background images, to match your mood.
+                    </p>
+                    <span class="text-sm font-semibold text-accent mt-3">Coming Soon &rarr;</span>
+                </a>
+
             </div>
         </div>
     </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-20 md:py-28">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
-                
-                <div class="lg:col-span-1">
-                    <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">
-                        Our <span class="text-accent">Mission</span>
-                    </h2>
-                </div>
-
-                <div class="lg:col-span-2 space-y-6 text-gray-300 text-lg">
-                    <p>Go Play Music was founded on a simple principle: music should be seamless, powerful, and beautiful. We saw the limitations of existing players—especially around network dependence and volume—and decided to build the solution.</p>
-                    <p>By blending next-generation UI design with robust, user-centric engineering, we deliver an audio experience that doesn't just meet expectations, but consistently exceeds them. We're committed to pushing the boundaries of what a mobile music player can be.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Download CTA Section -->
-    <section id="cta" class="py-20 md:py-32 bg-gray-900/50 border-t border-gray-700 text-center">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-white mb-4">
-                Get Go Play Music Today
-            </h2>
-            <p class="text-xl text-gray-400 mb-10">
-                Join the revolution in mobile music. Available for iOS.
-            </p>
-            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 justify-center">
-                <!-- App Store Link -->
-                <a href="https://apps.apple.com/us/app/id6747974527?l=en-us" class="btn-primary px-10 py-5 text-xl font-bold rounded-2xl shadow-2xl">
-                    App Store (iOS)
-                </a>
-                <!-- Google Play Link (Hidden as requested) -->
-                <a href="#" class="hidden px-10 py-5 text-xl font-bold rounded-2xl border border-gray-600 text-white hover:border-yellow-400 transition">
-                    Google Play (Android)
-                </a>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 Go Play Music. All rights reserved.</p>
-            <!-- Legal Links -->
-            <div class="mt-4 space-x-4">
-                <a href="legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
-                <a href="legal/terms-of-use.html" class="hover:text-yellow-400 transition">Terms of Service</a>
-                <a href="mailto:music.player.250617@gmail.com" class="hover:text-yellow-400 transition">Contact Us</a>
+    <footer class="py-12 border-t border-gray-800 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
+                
+                <!-- Brand Info -->
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-xl font-extrabold text-white mb-4 tracking-wider">Go Play Music</h4>
+                    <p class="text-gray-400">Future-proof audio experience.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="https://x.com/IsabelZhan49462" target="_blank" class="text-gray-400 hover:text-blue-500 transition text-lg" aria-label="Follow us on X/Twitter">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@OfflineMusicZ" target="_blank" class="text-gray-400 hover:text-red-600 transition text-lg" aria-label="Subscribe to our YouTube channel">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/music.player.250617/" target="_blank" class="text-gray-400 hover:text-pink-500 transition text-lg" aria-label="Follow us on Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Features Links -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Features</h4>
+                    <ul class="space-y-3">
+                        <li><a href="feature/offline.html" class="text-gray-400 hover:text-accent transition">Offline Playback</a></li>
+                        <li><a href="feature/smart-playlist.html" class="text-gray-400 hover:text-accent transition">Smart Playlists</a></li>
+                        <li><a href="feature/volume-boost.html" class="text-gray-400 hover:text-accent transition">Volume Boost & EQ</a></li>
+                        <li><a href="feature/frosted-glass.html" class="text-gray-400 hover:text-accent transition">Frosted Glass UI</a></li>
+                        <li><a href="feature/dynamic-lyrics.html" class="text-gray-400 hover:text-accent transition">Dynamic Lyrics</a></li>
+                    </ul>
+                </div>
+
+                <!-- Support & Blog -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Support & Blog</h4>
+                    <ul class="space-y-3">
+                        <li><a href="support/faq.html" class="text-gray-400 hover:text-accent transition">FAQ</a></li>
+                        <li><a href="support/help.html" class="text-gray-400 hover:text-accent transition">Help Center</a></li>
+                        <li><a href="blog/news.html" class="text-gray-400 hover:text-accent transition">Tech News</a></li>
+                        <li><a href="blog/updates.html" class="text-gray-400 hover:text-accent transition">Product Updates</a></li>
+                        <li><a href="blog/tutorials.html" class="text-gray-400 hover:text-accent transition">Tutorials</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal & Contact -->
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="legal/privacy-policy.html" class="text-gray-400 hover:text-accent transition">Privacy Policy</a></li>
+                        <li><a href="legal/terms-of-use.html" class="text-gray-400 hover:text-accent transition">Terms of Use</a></li>
+                        <li><a href="mailto:music.player.250617@gmail.com" class="text-gray-400 hover:text-accent transition">Contact</a></li>
+                    </ul>
+                </div>
             </div>
-            <!-- Social Media Links (New External Links with Font Awesome Icons) -->
-            <div class="mt-6 pt-4 border-t border-gray-700/50 flex justify-center space-x-6 text-2xl">
-                <a href="https://x.com/IsabelZhan49462" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Follow us on X/Twitter">
-                    <i class="fa-brands fa-x-twitter"></i>
-                </a>
-                <a href="https://www.youtube.com/@OfflineMusicZ" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Visit our YouTube channel">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-                <a href="https://www.instagram.com/music.player.250617/" target="_blank" class="text-gray-400 hover:text-blue-400 transition duration-300" aria-label="Follow us on Instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
+
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500">
+                <p>&copy; 2025 Go Play Music. All rights reserved. | Optimized for iOS.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Carousel Logic (Wrapped in DOMContentLoaded for stability) -->
+    <!-- JavaScript for Carousel and Mobile Menu -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const items = document.querySelectorAll('.carousel-item');
-            const indicators = document.querySelectorAll('#carousel-indicators button');
+            
+            // --- Carousel Logic ---
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicatorsContainer = document.getElementById('carousel-indicators');
             let currentIndex = 0;
-            const totalItems = items.length;
-            const intervalTime = 4000;
 
-            function updateCarousel(newIndex) {
-                // Ensure newIndex is within bounds
-                newIndex = (newIndex + totalItems) % totalItems;
-
-                items.forEach((item, index) => {
-                    if (index === newIndex) {
-                        item.classList.remove('opacity-0');
-                        item.classList.add('opacity-100');
-                    } else {
-                        item.classList.remove('opacity-100');
-                        item.classList.add('opacity-0');
+            if (slides.length && indicatorsContainer) {
+                // Initialize indicators
+                slides.forEach((slide, index) => {
+                    const button = document.createElement('button');
+                    button.classList.add('w-2.5', 'h-2.5', 'rounded-full', 'transition-all', 'duration-300', 'bg-gray-700', 'hover:bg-yellow-400');
+                    if (index === 0) {
+                        button.classList.replace('bg-gray-700', 'bg-yellow-400');
                     }
+                    button.addEventListener('click', () => {
+                        goToSlide(index);
+                    });
+                    indicatorsContainer.appendChild(button);
                 });
 
-                indicators.forEach((indicator, index) => {
-                    if (index === newIndex) {
-                        indicator.classList.remove('bg-gray-600/70', 'opacity-50');
-                        indicator.classList.add('bg-blue-500/70', 'opacity-100');
-                    } else {
-                        indicator.classList.remove('bg-blue-500/70', 'opacity-100');
-                        indicator.classList.add('bg-gray-600/70', 'opacity-50');
-                    }
-                });
-                currentIndex = newIndex;
+                const indicators = indicatorsContainer.querySelectorAll('button');
+
+                function updateCarousel() {
+                    slides.forEach((slide, index) => {
+                        slide.classList.remove('active');
+                        indicators[index].classList.replace('bg-yellow-400', 'bg-gray-700');
+                    });
+
+                    slides[currentIndex].classList.add('active');
+                    indicators[currentIndex].classList.replace('bg-gray-700', 'bg-yellow-400');
+                }
+
+                function goToSlide(index) {
+                    currentIndex = index;
+                    updateCarousel();
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    updateCarousel();
+                }
+
+                // Start auto-play
+                setInterval(nextSlide, 3000); // Change slide every 3 seconds
+
+                // Initial update
+                updateCarousel();
             }
 
-            function nextSlide() {
-                updateCarousel(currentIndex + 1);
+            // --- Mobile Menu Logic ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function toggleMobileMenu() {
+                mobileMenu.classList.toggle('hidden');
+                // Change icon from bars to times (X) for better UX
+                const icon = menuToggle.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
             }
 
-            function startCarousel() {
-                setInterval(nextSlide, intervalTime);
+            // Function to close the menu when a link is clicked
+            window.closeMobileMenu = function() {
+                mobileMenu.classList.add('hidden');
+                menuToggle.querySelector('i').classList.remove('fa-times');
+                menuToggle.querySelector('i').classList.add('fa-bars');
             }
 
-            indicators.forEach(indicator => {
-                indicator.addEventListener('click', (e) => {
-                    const slideTo = parseInt(e.target.dataset.slideTo) - 1;
-                    updateCarousel(slideTo);
-                });
-            });
-
-            // Start the carousel immediately
-            startCarousel(); 
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', toggleMobileMenu);
+            }
         });
     </script>
+
 </body>
 </html>
