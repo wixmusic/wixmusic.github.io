@@ -11,32 +11,5 @@ Disallow:
 User-agent: *
 Allow: /
 
-# *
-User-agent: *
-Disallow: /ar/VibeBox Music-all-version
-
-# *
-User-agent: *
-Disallow: /es/VibeBox Music-all-version
-
-# *
-User-agent: *
-Disallow: /ar/VibeBox Music-apk
-
-# *
-User-agent: *
-Disallow: /es/VibeBox Music-apk
-
-# *
-User-agent: *
-Disallow: /ar/VibeBox Music-update
-
-# *
-User-agent: *
-Disallow: /es/VibeBox Music-update
-
-# Host
-Host: https://www.VibeBox Musics.blog
-
 # Sitemaps
-Sitemap: https://www.VibeBox Musics.blog/sitemap.xml
+Sitemap: https://wixmusic.github.io/sitemap.xml

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Home Page -->
+    <url>
+        <loc>https://wixmusic.github.io/index.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Features Pages -->
+    <url>
+        <loc>https://wixmusic.github.io/feature/offline.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/feature/smart-playlist.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/feature/volume-boost.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/feature/frosted-glass.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/feature/dynamic-lyrics.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Support Pages -->
+    <url>
+        <loc>https://wixmusic.github.io/support/faq.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/support/help.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Blog Pages (Category Index) -->
+    <url>
+        <loc>https://wixmusic.github.io/blog/news.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/blog/updates.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/blog/tutorials.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://wixmusic.github.io/legal/privacy-policy.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://wixmusic.github.io/legal/terms-of-use.html</loc>
+        <lastmod>2025-10-08</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+</urlset>
