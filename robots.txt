@@ -1,7 +1,6 @@
 # *
 User-agent: *
-Disallow: /en
-Disallow: /en/
+Disallow: 
 
 # *
 User-agent: Google-adstxt
