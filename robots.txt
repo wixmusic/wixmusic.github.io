@@ -11,4 +11,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://wixmusic.github.io/sitemap.xml
+Sitemap: https://offline-music.com/sitemap.xml

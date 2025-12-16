@@ -9,7 +9,7 @@
     "redirects": [
       {
         "source": "/",
-        "destination": "https://wixmusic.github.io/",
+        "destination": "https://offline-music.com/",
         "type": 301
       }
     ]
