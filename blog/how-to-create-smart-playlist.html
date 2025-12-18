@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Create Smart Playlist - Offline Player Tutorial</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #e5e7eb;
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0d1117;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-12 md:pt-32 md:pb-16 overflow-hidden bg-gray-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                How To Create <span class="text-accent">Smart Playlist</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Learn how to use Offline Player's Smart Playlist Creator to automatically organize your music by artist, genre, mood, and more. Save hours of manual organization.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tutorial Content -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Introduction -->
+            <div class="mb-12 p-6 rounded-xl bg-yellow-900/20 border border-yellow-500/30">
+                <h2 class="text-2xl font-bold text-white mb-4">What are Smart Playlists?</h2>
+                <p class="text-gray-300">
+                    Smart Playlists automatically organize your music library based on criteria like artist, genre, mood, or listening frequency. They update automatically as you add new songs, keeping your library perfectly organized without any manual work.
+                </p>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">1</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Access Playlist Management</h3>
+                        <p class="text-gray-300 mb-4">
+                            Open Offline Player and navigate to the <strong class="text-white">Playlists</strong> section. Tap the <strong class="text-white">"+"</strong> or <strong class="text-white">"Create Playlist"</strong> button to start creating a new playlist.
+                        </p>
+                        <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                            <p class="text-sm text-gray-400"><i class="fas fa-info-circle text-blue-400 mr-2"></i>Tip: Smart Playlists are automatically created for each artist in your library. You can also create custom smart playlists.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">2</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Choose Smart Playlist Type</h3>
+                        <p class="text-gray-300 mb-4">
+                            Select <strong class="text-white">"Smart Playlist"</strong> from the creation options. You'll see several automatic organization types:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-gray-900/50 p-4 rounded-lg border border-blue-500/30">
+                                <p class="text-sm font-semibold text-white mb-2"><i class="fas fa-user text-blue-400 mr-2"></i>By Artist</p>
+                                <p class="text-xs text-gray-400">Automatically groups all songs by each artist</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-4 rounded-lg border border-yellow-500/30">
+                                <p class="text-sm font-semibold text-white mb-2"><i class="fas fa-music text-yellow-400 mr-2"></i>By Genre</p>
+                                <p class="text-xs text-gray-400">Organizes music by genre (Pop, Rock, Jazz, etc.)</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-4 rounded-lg border border-green-500/30">
+                                <p class="text-sm font-semibold text-white mb-2"><i class="fas fa-heart text-green-400 mr-2"></i>By Mood</p>
+                                <p class="text-xs text-gray-400">Creates playlists based on song mood (Happy, Chill, Energetic)</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-4 rounded-lg border border-purple-500/30">
+                                <p class="text-sm font-semibold text-white mb-2"><i class="fas fa-star text-purple-400 mr-2"></i>Most Played</p>
+                                <p class="text-xs text-gray-400">Groups your most frequently played songs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">3</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Configure Smart Playlist Rules</h3>
+                        <p class="text-gray-300 mb-4">
+                            After selecting a type, you can customize the rules for your Smart Playlist. For example:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4 mb-4">
+                            <li><strong class="text-white">Artist Playlists:</strong> Automatically include all songs by selected artists</li>
+                            <li><strong class="text-white">Genre Playlists:</strong> Choose specific genres to include or exclude</li>
+                            <li><strong class="text-white">Mood Playlists:</strong> Select mood tags (Workout, Relax, Party, etc.)</li>
+                            <li><strong class="text-white">Date Range:</strong> Include songs added within a specific time period</li>
+                            <li><strong class="text-white">Play Count:</strong> Filter by minimum or maximum play counts</li>
+                        </ul>
+                        <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                            <p class="text-sm text-gray-400"><i class="fas fa-magic text-yellow-400 mr-2"></i>You can combine multiple rules to create highly specific Smart Playlists.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">4</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Name and Save Your Playlist</h3>
+                        <p class="text-gray-300 mb-4">
+                            Give your Smart Playlist a descriptive name (e.g., "My Rock Collection" or "Chill Vibes Only"). Tap <strong class="text-white">"Create"</strong> to save it. The playlist will immediately populate with songs matching your criteria.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                            <li>Smart Playlists update automatically when you add new songs</li>
+                            <li>You can manually add or remove songs if needed</li>
+                            <li>Edit playlist rules anytime from playlist settings</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">5</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Manage and Edit Smart Playlists</h3>
+                        <p class="text-gray-300 mb-4">
+                            To edit a Smart Playlist, tap the three-dot menu (⋯) next to the playlist name and select <strong class="text-white">"Edit Rules"</strong>. You can:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                            <li>Modify existing rules or add new ones</li>
+                            <li>Change the playlist name and cover art</li>
+                            <li>Set playlist to auto-update or manual mode</li>
+                            <li>Delete the Smart Playlist if no longer needed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="mt-12 p-6 rounded-xl bg-gradient-to-r from-yellow-900/30 to-blue-900/30 border border-yellow-500/30">
+                <h3 class="text-2xl font-bold text-white mb-4"><i class="fas fa-lightbulb text-accent mr-2"></i>Pro Tips</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li><strong class="text-white">Auto-Artist Playlists:</strong> Offline Player automatically creates playlists for every artist in your library - no setup needed!</li>
+                    <li><strong class="text-white">Combine Rules:</strong> Use multiple criteria (e.g., "Rock songs from 2020-2024") for precise organization.</li>
+                    <li><strong class="text-white">Regular Updates:</strong> Smart Playlists refresh automatically, so new songs matching your criteria appear instantly.</li>
+                    <li><strong class="text-white">Export Playlists:</strong> Share your Smart Playlists with friends or export them for backup.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="py-12 bg-gray-900/50 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Related Tutorials</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="how-to-offline.html" class="p-4 rounded-lg bg-gray-800 border border-gray-700 hover:border-blue-500 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">How To Offline</h3>
+                    <p class="text-sm text-gray-400">Enable automatic offline caching</p>
+                </a>
+                <a href="how-to-use-dynamic-lyrics.html" class="p-4 rounded-lg bg-gray-800 border border-gray-700 hover:border-blue-500 transition">
+                    <h3 class="text-lg font-semibold text-white mb-2">How To Use Dynamic Lyrics</h3>
+                    <p class="text-sm text-gray-400">Master synchronized lyrics</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Offline Player. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="../index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="tutorials.html" class="hover:text-yellow-400 transition">All Tutorials</a>
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
