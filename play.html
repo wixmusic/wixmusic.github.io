@@ -198,19 +198,35 @@
         // Get URL parameters
         function getUrlParams() {
             const params = new URLSearchParams(window.location.search);
+            const song = params.get('song') || '';
+            const artist = params.get('artist') || '';
+            const rank = params.get('rank') || '';
+            
+            // Debug logging
+            console.log('URL Params:', { song, artist, rank });
+            
             return {
-                song: params.get('song') || '',
-                artist: params.get('artist') || '',
-                rank: params.get('rank') || ''
+                song: song,
+                artist: artist,
+                rank: rank
             };
+        }
+
+        // Normalize song title for matching
+        function normalizeTitle(title) {
+            return title.trim().replace(/\s+/g, ' ');
         }
 
         // Load video
         function loadVideo() {
             const params = getUrlParams();
-            const songTitle = decodeURIComponent(params.song);
-            const artist = decodeURIComponent(params.artist || '');
+            // Decode URL parameters and normalize
+            let songTitle = params.song ? decodeURIComponent(params.song) : '';
+            songTitle = normalizeTitle(songTitle);
+            const artist = params.artist ? decodeURIComponent(params.artist).trim() : '';
             const rank = params.rank;
+
+            console.log('Parsed params:', { songTitle, artist, rank });
 
             // Update song info
             document.getElementById('song-title').textContent = songTitle || 'Unknown Song';
@@ -222,24 +238,54 @@
                 document.getElementById('rank-number').textContent = '#' + rank;
             }
 
-            // Get video ID from mapping or use search
+            // Get video ID from mapping
             let videoId = null;
-            if (songMap[songTitle]) {
-                videoId = songMap[songTitle].videoId;
-            } else {
-                // If not in map, try to search YouTube (fallback)
-                // For now, we'll use a default video or show error
-                videoId = null;
+            let matchedKey = null;
+            
+            if (!songTitle) {
+                console.error('No song title provided');
+                document.getElementById('youtube-player').style.display = 'none';
+                document.getElementById('error-message').classList.remove('hidden');
+                return;
             }
 
+            // Try exact match first
+            if (songMap[songTitle]) {
+                videoId = songMap[songTitle].videoId;
+                matchedKey = songTitle;
+                console.log('✓ Exact match found:', songTitle, '->', videoId);
+            } else {
+                // Try case-insensitive and normalized match
+                const songTitleLower = songTitle.toLowerCase();
+                for (const key in songMap) {
+                    const normalizedKey = normalizeTitle(key);
+                    if (normalizedKey.toLowerCase() === songTitleLower) {
+                        videoId = songMap[key].videoId;
+                        matchedKey = key;
+                        console.log('✓ Case-insensitive match found:', key, '->', videoId, 'for input:', songTitle);
+                        break;
+                    }
+                }
+            }
+
+            // Load video if found
             if (videoId) {
                 const iframe = document.getElementById('youtube-player');
                 iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
                 document.getElementById('error-message').classList.add('hidden');
+                document.getElementById('youtube-player').style.display = 'block';
+                console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
             } else {
-                // Show error message
+                // Show error with YouTube search link
+                const searchQuery = encodeURIComponent(songTitle + (artist ? ' ' + artist : ''));
                 document.getElementById('youtube-player').style.display = 'none';
                 document.getElementById('error-message').classList.remove('hidden');
+                const errorMsg = document.querySelector('#error-message p:last-child');
+                if (errorMsg) {
+                    errorMsg.innerHTML = `The video for "${songTitle}" could not be found in our database. <a href="https://www.youtube.com/results?search_query=${searchQuery}" target="_blank" class="text-blue-400 hover:underline">Search on YouTube</a>`;
+                }
+                console.error('✗ Song not found in map:', songTitle);
+                console.log('Available songs in map:', Object.keys(songMap).slice(0, 10), '...');
             }
         }
 
