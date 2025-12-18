@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Music | Offline Player</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #e5e7eb;
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .frosted-glass {
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <a href="index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Player Section -->
+    <section class="py-12 md:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Song Info -->
+            <div class="mb-8 text-center">
+                <h1 id="song-title" class="text-4xl md:text-5xl font-extrabold text-white mb-3">
+                    Loading...
+                </h1>
+                <p id="song-artist" class="text-xl text-gray-400 mb-4">
+                    ...
+                </p>
+                <div id="song-rank" class="inline-block px-4 py-2 rounded-full bg-blue-600/30 text-blue-400 text-sm font-semibold mb-4" style="display: none;">
+                    <i class="fas fa-trophy mr-2"></i>Rank: <span id="rank-number"></span>
+                </div>
+            </div>
+
+            <!-- YouTube Video Player -->
+            <div class="frosted-glass p-6 rounded-2xl mb-8">
+                <div class="video-container">
+                    <iframe 
+                        id="youtube-player"
+                        src=""
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Related Actions -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <a href="index.html#charts" class="p-4 rounded-xl bg-gray-800 border border-gray-700 hover:border-blue-500 transition text-center">
+                    <i class="fas fa-chart-line text-2xl text-blue-400 mb-2"></i>
+                    <p class="text-sm font-semibold text-white">View Charts</p>
+                </a>
+                <a href="feature/offline.html" class="p-4 rounded-xl bg-gray-800 border border-gray-700 hover:border-yellow-500 transition text-center">
+                    <i class="fas fa-cloud-download-alt text-2xl text-yellow-400 mb-2"></i>
+                    <p class="text-sm font-semibold text-white">Offline Playback</p>
+                </a>
+                <a href="blog/how-to-offline.html" class="p-4 rounded-xl bg-gray-800 border border-gray-700 hover:border-green-500 transition text-center">
+                    <i class="fas fa-book text-2xl text-green-400 mb-2"></i>
+                    <p class="text-sm font-semibold text-white">How To Offline</p>
+                </a>
+            </div>
+
+            <!-- Error Message (hidden by default) -->
+            <div id="error-message" class="hidden p-6 rounded-xl bg-red-900/30 border border-red-500/50 text-center">
+                <i class="fas fa-exclamation-triangle text-3xl text-red-400 mb-3"></i>
+                <p class="text-red-400 font-semibold">Video not available</p>
+                <p class="text-gray-400 text-sm mt-2">The video for this song could not be loaded. Please try another song.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Offline Player. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="index.html#charts" class="hover:text-yellow-400 transition">Charts</a>
+                <a href="legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Video Loading -->
+    <script>
+        // Song to YouTube Video ID mapping
+        const songMap = {
+            // English Top Hits
+            'Opalite': { videoId: 'dQw4w9WgXcQ', artist: 'Taylor Swift' },
+            'Man I Need': { videoId: 'dQw4w9WgXcQ', artist: 'Olivia Dean' },
+            'All the Above': { videoId: 'dQw4w9WgXcQ', artist: 'Maino, T-Pain' },
+            'TIT FOR TAT': { videoId: 'dQw4w9WgXcQ', artist: 'Tate McRae' },
+            'DAISIES': { videoId: 'dQw4w9WgXcQ', artist: 'Justin Bieber' },
+            'Sally, When The Wine Runs Out': { videoId: 'dQw4w9WgXcQ', artist: 'ROLE MODEL' },
+            'Music Sounds Better with You': { videoId: 'dQw4w9WgXcQ', artist: 'NEIL FRANCES' },
+            'Roses': { videoId: 'dQw4w9WgXcQ', artist: 'The Chainsmokers, ROZES' },
+            'My Way': { videoId: 'dQw4w9WgXcQ', artist: 'Calvin Harris' },
+            'Wide Awake': { videoId: 'dQw4w9WgXcQ', artist: 'Katy Perry' },
+            'Thinking \'Bout You': { videoId: 'dQw4w9WgXcQ', artist: 'Dustin Lynch, MacKenzie Porter' },
+            'Stargazing': { videoId: 'dQw4w9WgXcQ', artist: 'Myles Smith' },
+            'Kids - Radio Mix [Edit]': { videoId: 'dQw4w9WgXcQ', artist: 'MGMT' },
+            'Used to Be in Love': { videoId: 'dQw4w9WgXcQ', artist: 'The Jungle Giants' },
+            'Amen': { videoId: 'dQw4w9WgXcQ', artist: 'Shaboozey, Jelly Roll' },
+            'I Had Some Help': { videoId: 'dQw4w9WgXcQ', artist: 'Post Malone, Morgan Wallen' },
+            'Leaveyourlove': { videoId: 'dQw4w9WgXcQ', artist: 'Parcels, Ximena Sariñana, Rawayana' },
+            'Whatever You Like': { videoId: 'dQw4w9WgXcQ', artist: 'T.I.' },
+            'misses': { videoId: 'dQw4w9WgXcQ', artist: 'Dominic Fike' },
+            'Illusion': { videoId: 'dQw4w9WgXcQ', artist: 'Dua Lipa' },
+            'The Tortured Poets Department': { videoId: 'dQw4w9WgXcQ', artist: 'Taylor Swift' },
+            'A Bar Song (Tipsy)': { videoId: 'dQw4w9WgXcQ', artist: 'Shaboozey' },
+            'MILLION DOLLAR BABY': { videoId: 'dQw4w9WgXcQ', artist: 'Tommy Richman' },
+            'Lose Control': { videoId: 'dQw4w9WgXcQ', artist: 'Teddy Swims' },
+            'Winterbreak - Tiësto\'s Deep House Remix': { videoId: 'dQw4w9WgXcQ', artist: 'MUNA, Tiësto' },
+            'This Is What You Came For': { videoId: 'dQw4w9WgXcQ', artist: 'Calvin Harris, Rihanna' },
+            'Dance The Night - From Barbie The Album': { videoId: 'dQw4w9WgXcQ', artist: 'Dua Lipa' },
+            'Where the Wild Things Are': { videoId: 'dQw4w9WgXcQ', artist: 'Luke Combs' },
+            'Run This Town': { videoId: 'dQw4w9WgXcQ', artist: 'JAY-Z, Rihanna, Kanye West' },
+            'we can\'t be friends (wait for your love)': { videoId: 'dQw4w9WgXcQ', artist: 'Ariana Grande' },
+            
+            // Portuguese Top Hits
+            'Happy Day': { videoId: 'dQw4w9WgXcQ', artist: 'Deejay Telio, Deedz B' },
+            'Teu Eternamente': { videoId: 'dQw4w9WgXcQ', artist: 'Slow J' },
+            'Ano Novo': { videoId: 'dQw4w9WgXcQ', artist: 'Jimmy P, Deejay Telio' },
+            'Como Eu': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
+            'Sudamericana': { videoId: 'dQw4w9WgXcQ', artist: 'Andra, Pachanga' },
+            'Eterno': { videoId: 'dQw4w9WgXcQ', artist: 'Anjos' },
+            'Quem Me Dera': { videoId: 'dQw4w9WgXcQ', artist: 'Mariza' },
+            'Vamos Fugir': { videoId: 'dQw4w9WgXcQ', artist: 'Djodje, Cuca Roseta' },
+            'Voltas': { videoId: 'dQw4w9WgXcQ', artist: 'Fernando Daniel' },
+            'Não Posso': { videoId: 'dQw4w9WgXcQ', artist: 'Yasmine' },
+            'Já Não Sei': { videoId: 'dQw4w9WgXcQ', artist: 'Badoxa, Yasmine' },
+            'Cuido de Você': { videoId: 'dQw4w9WgXcQ', artist: 'David Carreira, Kell Smith' },
+            'O Teu Nome': { videoId: 'dQw4w9WgXcQ', artist: 'Miguel Gameiro, Mariza' },
+            'Paraíso': { videoId: 'dQw4w9WgXcQ', artist: 'Diogo Piçarra' },
+            'Longe': { videoId: 'dQw4w9WgXcQ', artist: 'Nuno Ribeiro' },
+            'És o Teu Primeiro Amor': { videoId: 'dQw4w9WgXcQ', artist: 'Yasmine, Josslyn' },
+            'És Só Tu': { videoId: 'dQw4w9WgXcQ', artist: 'David Carreira, Inês Herédia' },
+            'Não Tem Que Encantar': { videoId: 'dQw4w9WgXcQ', artist: 'Tó Semedo, Yasmine' },
+            'Nem Sequer Doeu': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
+            'Respirar': { videoId: 'dQw4w9WgXcQ', artist: 'Agir, Carolina Deslandes, Diogo Piçarra' },
+            'E Se Eu': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
+            'Pertam': { videoId: 'dQw4w9WgXcQ', artist: 'Josslyn' },
+            'NÓS2': { videoId: 'dQw4w9WgXcQ', artist: 'Bispo, Deezy' },
+            'O Problema É Que Ela É Linda': { videoId: 'dQw4w9WgXcQ', artist: 'David Carreira, Deejay Telio, MC Zuka' },
+            'Nada Mais': { videoId: 'dQw4w9WgXcQ', artist: 'Fernando Daniel' },
+            'Agora Penso por Mim': { videoId: 'dQw4w9WgXcQ', artist: 'Soraia Ramos' },
+            'A Última Carta': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
+            'Meu Marido': { videoId: 'dQw4w9WgXcQ', artist: 'Soraia Ramos' },
+            'Nasty': { videoId: 'dQw4w9WgXcQ', artist: 'D.A.M.A' },
+            'Chora Agora': { videoId: 'dQw4w9WgXcQ', artist: 'Deejay Telio' }
+        };
+
+        // Get URL parameters
+        function getUrlParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                song: params.get('song') || '',
+                artist: params.get('artist') || '',
+                rank: params.get('rank') || ''
+            };
+        }
+
+        // Load video
+        function loadVideo() {
+            const params = getUrlParams();
+            const songTitle = decodeURIComponent(params.song);
+            const artist = decodeURIComponent(params.artist || '');
+            const rank = params.rank;
+
+            // Update song info
+            document.getElementById('song-title').textContent = songTitle || 'Unknown Song';
+            document.getElementById('song-artist').textContent = artist || 'Unknown Artist';
+
+            // Show rank if provided
+            if (rank) {
+                document.getElementById('song-rank').style.display = 'inline-block';
+                document.getElementById('rank-number').textContent = '#' + rank;
+            }
+
+            // Get video ID from mapping or use search
+            let videoId = null;
+            if (songMap[songTitle]) {
+                videoId = songMap[songTitle].videoId;
+            } else {
+                // If not in map, try to search YouTube (fallback)
+                // For now, we'll use a default video or show error
+                videoId = null;
+            }
+
+            if (videoId) {
+                const iframe = document.getElementById('youtube-player');
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+                document.getElementById('error-message').classList.add('hidden');
+            } else {
+                // Show error message
+                document.getElementById('youtube-player').style.display = 'none';
+                document.getElementById('error-message').classList.remove('hidden');
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadVideo);
+    </script>
+
+</body>
+</html>
+
