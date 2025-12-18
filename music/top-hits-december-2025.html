@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Hits - December 2025 | Offline Player</title>
+    <meta name="description" content="Discover the top hits of December 2025. Stream and download the hottest tracks with Offline Player's automatic caching feature.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #e5e7eb;
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .frosted-glass {
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .rank-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .rank-1 { background: linear-gradient(135deg, #FFD700, #FFA500); color: #0d1117; }
+        .rank-2 { background: linear-gradient(135deg, #C0C0C0, #808080); color: #0d1117; }
+        .rank-3 { background: linear-gradient(135deg, #CD7F32, #8B4513); color: #fff; }
+        .rank-other { background: rgba(59, 130, 246, 0.2); color: #e5e7eb; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .song-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .song-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="../index.html#features" class="text-gray-300 hover:text-white transition">Features</a>
+                <a href="../index.html#tutorials" class="text-gray-300 hover:text-white transition">Tutorials</a>
+                <a href="../blog/news.html" class="text-gray-300 hover:text-white transition">Blog</a>
+            </nav>
+            <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-12 md:pt-32 md:pb-16 overflow-hidden bg-gradient-to-b from-blue-900/20 to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-6">
+                <span class="inline-block px-4 py-2 rounded-full bg-blue-600/30 text-blue-400 text-sm font-semibold mb-4">
+                    <i class="fas fa-calendar-alt mr-2"></i>December 2025
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                Top Hits <span class="text-accent">Charts</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                Discover the hottest tracks of the month. Stream these top hits with Offline Player and enjoy automatic offline caching for uninterrupted playback.
+            </p>
+            <div class="flex items-center justify-center space-x-6 text-sm text-gray-500">
+                <span><i class="fas fa-music mr-2"></i>35 Tracks</span>
+                <span><i class="fas fa-headphones mr-2"></i>2,350+ Saves</span>
+                <span><i class="fas fa-chart-line mr-2"></i>Trending Now</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 3 Highlight -->
+    <section class="py-12 bg-gray-900/50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Top 3 This Month</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- #1 -->
+                <div class="frosted-glass p-6 rounded-2xl border-2 border-yellow-500/50 transform hover:scale-105 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="rank-badge rank-1 mr-4">1</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Opalite</h3>
+                            <p class="text-gray-400">Taylor Swift</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-yellow-400 text-sm font-semibold"><i class="fas fa-crown mr-1"></i>#1 Hit</span>
+                        <button class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </button>
+                    </div>
+                </div>
+
+                <!-- #2 -->
+                <div class="frosted-glass p-6 rounded-2xl border-2 border-gray-400/50 transform hover:scale-105 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="rank-badge rank-2 mr-4">2</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Man I Need</h3>
+                            <p class="text-gray-400">Olivia Dean</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-gray-400 text-sm font-semibold"><i class="fas fa-medal mr-1"></i>#2</span>
+                        <button class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </button>
+                    </div>
+                </div>
+
+                <!-- #3 -->
+                <div class="frosted-glass p-6 rounded-2xl border-2 border-orange-600/50 transform hover:scale-105 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="rank-badge rank-3 mr-4">3</div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">All the Above</h3>
+                            <p class="text-gray-400">Maino, T-Pain</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-orange-400 text-sm font-semibold"><i class="fas fa-medal mr-1"></i>#3</span>
+                        <button class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Chart List -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-white">Complete Chart</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-sm transition">
+                        <i class="fas fa-filter mr-2"></i>Filter
+                    </button>
+                    <button class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-sm transition">
+                        <i class="fas fa-sort mr-2"></i>Sort
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Chart Items -->
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">4</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">TIT FOR TAT</h3>
+                        <p class="text-gray-400 text-sm">Tate McRae</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">5</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">DAISIES</h3>
+                        <p class="text-gray-400 text-sm">Justin Bieber</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">6</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Sally, When The Wine Runs Out</h3>
+                        <p class="text-gray-400 text-sm">ROLE MODEL</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">7</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Music Sounds Better with You</h3>
+                        <p class="text-gray-400 text-sm">NEIL FRANCES</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">8</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Roses</h3>
+                        <p class="text-gray-400 text-sm">The Chainsmokers, ROZES</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">9</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">My Way</h3>
+                        <p class="text-gray-400 text-sm">Calvin Harris</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">10</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Wide Awake</h3>
+                        <p class="text-gray-400 text-sm">Katy Perry</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">11</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Thinking 'Bout You</h3>
+                        <p class="text-gray-400 text-sm">Dustin Lynch, MacKenzie Porter</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">12</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Stargazing</h3>
+                        <p class="text-gray-400 text-sm">Myles Smith</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">13</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Kids - Radio Mix [Edit]</h3>
+                        <p class="text-gray-400 text-sm">MGMT</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">14</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Used to Be in Love</h3>
+                        <p class="text-gray-400 text-sm">The Jungle Giants</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">15</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Amen</h3>
+                        <p class="text-gray-400 text-sm">Shaboozey, Jelly Roll</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">16</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">I Had Some Help</h3>
+                        <p class="text-gray-400 text-sm">Post Malone, Morgan Wallen</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">17</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Leaveyourlove</h3>
+                        <p class="text-gray-400 text-sm">Parcels, Ximena Sariñana, Rawayana</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">18</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Whatever You Like</h3>
+                        <p class="text-gray-400 text-sm">T.I.</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">19</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">misses</h3>
+                        <p class="text-gray-400 text-sm">Dominic Fike</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">20</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Illusion</h3>
+                        <p class="text-gray-400 text-sm">Dua Lipa</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">21</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">The Tortured Poets Department</h3>
+                        <p class="text-gray-400 text-sm">Taylor Swift</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">22</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">A Bar Song (Tipsy)</h3>
+                        <p class="text-gray-400 text-sm">Shaboozey</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">23</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">MILLION DOLLAR BABY</h3>
+                        <p class="text-gray-400 text-sm">Tommy Richman</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">24</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Lose Control</h3>
+                        <p class="text-gray-400 text-sm">Teddy Swims</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">25</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Winterbreak - Tiësto's Deep House Remix</h3>
+                        <p class="text-gray-400 text-sm">MUNA, Tiësto</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">26</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">This Is What You Came For</h3>
+                        <p class="text-gray-400 text-sm">Calvin Harris, Rihanna</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">27</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Dance The Night - From Barbie The Album</h3>
+                        <p class="text-gray-400 text-sm">Dua Lipa</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">28</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Where the Wild Things Are</h3>
+                        <p class="text-gray-400 text-sm">Luke Combs</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">29</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Run This Town</h3>
+                        <p class="text-gray-400 text-sm">JAY-Z, Rihanna, Kanye West</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">30</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">we can't be friends (wait for your love)</h3>
+                        <p class="text-gray-400 text-sm">Ariana Grande</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-blue-900/30 to-purple-900/30 border-t border-gray-700">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Stream These Hits Offline</h2>
+            <p class="text-xl text-gray-400 mb-8">
+                Download Offline Player to automatically cache these top hits and enjoy them anytime, anywhere - even without internet connection.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="../index.html#download" class="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg transition shadow-lg">
+                    <i class="fab fa-apple mr-2"></i>Download on App Store
+                </a>
+                <a href="../feature/offline.html" class="px-8 py-4 rounded-xl bg-gray-800 hover:bg-gray-700 text-white font-bold text-lg transition border border-gray-600">
+                    <i class="fas fa-info-circle mr-2"></i>Learn About Offline Playback
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="py-12 bg-gray-900/50 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Explore More</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="../feature/offline.html" class="p-5 rounded-xl bg-gray-800 border border-gray-700 hover:border-blue-500 transition">
+                    <i class="fas fa-cloud-download-alt text-3xl text-blue-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Offline Playback</h3>
+                    <p class="text-sm text-gray-400">Cache these hits automatically for offline listening</p>
+                </a>
+                <a href="../blog/how-to-offline.html" class="p-5 rounded-xl bg-gray-800 border border-gray-700 hover:border-yellow-500 transition">
+                    <i class="fas fa-book text-3xl text-yellow-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">How To Offline</h3>
+                    <p class="text-sm text-gray-400">Learn how to enable automatic caching</p>
+                </a>
+                <a href="../blog/news.html" class="p-5 rounded-xl bg-gray-800 border border-gray-700 hover:border-purple-500 transition">
+                    <i class="fas fa-newspaper text-3xl text-purple-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Music News</h3>
+                    <p class="text-sm text-gray-400">Stay updated with latest music trends</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Offline Player. All rights reserved.</p>
+            <p class="mt-2 text-xs text-gray-600">Chart data sourced from <a href="https://open.spotify.com/playlist/1SuYY9zRsmuVFsOrDNqsR3" target="_blank" class="text-blue-400 hover:underline">Spotify</a></p>
+            <div class="mt-4 space-x-4">
+                <a href="../index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="../blog/news.html" class="hover:text-yellow-400 transition">Blog</a>
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
