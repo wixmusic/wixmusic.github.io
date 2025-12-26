@@ -71,6 +71,33 @@
         .carousel-slide.active {
             opacity: 1;
         }
+        /* Logo Styles */
+        .logo {
+            height: 40px;
+            width: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        .logo:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        .logo-header {
+            height: 45px;
+        }
+        .logo-footer {
+            height: 48px;
+            margin-bottom: 1rem;
+        }
+        .brand-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .logo-header {
+                height: 50px;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -78,7 +105,10 @@
     <!-- Header & Navigation -->
     <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-extrabold text-white tracking-widest">Offline Player</a>
+            <a href="index.html" class="brand-logo-wrapper">
+                <img src="img/logo.jpg" alt="Offline Player Logo" class="logo logo-header">
+                <span class="text-2xl font-extrabold text-white tracking-widest hidden sm:inline">Offline Player</span>
+            </a>
             <nav class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="index.html#features" class="text-gray-300 hover:text-white transition">Features</a>
                 <a href="index.html#tutorials" class="text-gray-300 hover:text-white transition">Tutorials</a>
@@ -599,6 +629,7 @@
                 
                 <!-- Brand Info -->
                 <div class="col-span-2 md:col-span-1">
+                    <img src="img/logo.jpg" alt="Offline Player Logo" class="logo logo-footer">
                     <h4 class="text-xl font-extrabold text-white mb-4 tracking-wider">Offline Player</h4>
                     <p class="text-gray-400">Future-proof audio experience.</p>
                     <div class="flex space-x-4 mt-6">
