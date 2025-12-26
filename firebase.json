@@ -1,16 +1,21 @@
 {
   "hosting": {
-    "public": "public",
+    "public": ".",
     "ignore": [
       "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+      ".firebaserc",
+      ".git/**",
+      ".gitignore"
     ],
-    "redirects": [
+    "headers": [
       {
-        "source": "/",
-        "destination": "https://offline-music.com/",
-        "type": 301
+        "source": "**/*.@(html|js|css|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|eot)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=3600"
+          }
+        ]
       }
     ]
   }
