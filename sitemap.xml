@@ -33,11 +33,6 @@
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://offline-music.com/feature/offline.html</loc>
-  <lastmod>2025-12-19T09:49:07+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
   <loc>https://offline-music.com/feature/frosted-glass.html</loc>
   <lastmod>2025-12-19T09:49:07+00:00</lastmod>
   <priority>0.80</priority>
@@ -76,11 +71,6 @@
   <loc>https://offline-music.com/legal/terms-of-use.html</loc>
   <lastmod>2025-12-19T09:49:07+00:00</lastmod>
   <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://offline-music.com/blog/how-to-offline.html</loc>
-  <lastmod>2025-12-19T09:49:07+00:00</lastmod>
-  <priority>0.75</priority>
 </url>
 <url>
   <loc>https://offline-music.com/blog/how-to-boost-volume.html</loc>
