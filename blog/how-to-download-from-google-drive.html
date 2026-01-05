@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Download from Google Drive - Offline Player Tutorial</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #e5e7eb;
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0d1117;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-12 md:pt-32 md:pb-16 overflow-hidden bg-gray-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                How To Download from <span class="text-accent">Google Drive</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Learn how to import and play music files directly from your Google Drive account in Offline Player.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tutorial Content -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Introduction -->
+            <div class="mb-12 p-6 rounded-xl bg-blue-900/20 border border-blue-500/30">
+                <h2 class="text-2xl font-bold text-white mb-4">Import Music from Google Drive</h2>
+                <p class="text-gray-300 mb-4">
+                    Offline Player allows you to seamlessly connect to your Google Drive account and import music files directly into your library. This feature makes it easy to access your music collection stored in the cloud.
+                </p>
+                <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                    <p class="text-sm text-gray-400"><i class="fas fa-info-circle text-blue-400 mr-2"></i><strong>Supported Formats:</strong> MP3, M4A, FLAC, WAV, and other common audio formats.</p>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">1</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Open Import Menu</h3>
+                        <p class="text-gray-300 mb-4">
+                            Launch Offline Player and tap the <strong class="text-white">"+"</strong> button or navigate to <strong class="text-white">Settings → Import Music</strong>. You'll see various import options including Google Drive.
+                        </p>
+                        <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                            <p class="text-sm text-gray-400"><i class="fas fa-info-circle text-blue-400 mr-2"></i>Tip: You can also access the import menu from the main library screen by tapping the menu icon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">2</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Connect Google Drive</h3>
+                        <p class="text-gray-300 mb-4">
+                            Select <strong class="text-white">"Google Drive"</strong> from the import options. You'll be prompted to sign in to your Google account. Tap <strong class="text-white">"Sign in with Google"</strong> and authorize Offline Player to access your Drive files.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                            <li>Make sure you're signed in to the correct Google account</li>
+                            <li>Grant necessary permissions for file access</li>
+                            <li>Your credentials are securely stored and encrypted</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">3</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Browse and Select Files</h3>
+                        <p class="text-gray-300 mb-4">
+                            Once connected, you'll see your Google Drive file structure. Navigate through folders to find your music files. You can:
+                        </p>
+                        <div class="grid grid-cols-1 gap-4 mb-4">
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white mb-1"><i class="fas fa-folder text-blue-400 mr-2"></i>Browse Folders</p>
+                                <p class="text-xs text-gray-400">Navigate through your Drive folders to locate music files</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white mb-1"><i class="fas fa-search text-green-400 mr-2"></i>Search Files</p>
+                                <p class="text-xs text-gray-400">Use the search function to quickly find specific songs or albums</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white mb-1"><i class="fas fa-check-square text-yellow-400 mr-2"></i>Select Multiple</p>
+                                <p class="text-xs text-gray-400">Tap and hold to select multiple files at once for batch import</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">4</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Import to Library</h3>
+                        <p class="text-gray-300 mb-4">
+                            After selecting your music files, tap <strong class="text-white">"Import"</strong> or <strong class="text-white">"Add to Library"</strong>. The files will begin downloading to your device and will be automatically added to your Offline Player library.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                            <li>Monitor the import progress in the notification area</li>
+                            <li>Large files may take some time to download</li>
+                            <li>You can continue using the app while files are importing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">5</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Access Your Music</h3>
+                        <p class="text-gray-300 mb-4">
+                            Once the import is complete, your music will appear in your library. You can find it in:
+                        </p>
+                        <div class="grid grid-cols-1 gap-3 mb-4">
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white"><i class="fas fa-music text-purple-400 mr-2"></i>All Songs - Browse all imported tracks</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white"><i class="fas fa-folder-open text-green-400 mr-2"></i>Albums - Organized by album metadata</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white"><i class="fas fa-user text-blue-400 mr-2"></i>Artists - Grouped by artist name</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="mt-12 p-6 rounded-xl bg-gradient-to-r from-blue-900/30 to-yellow-900/30 border border-blue-500/30">
+                <h3 class="text-2xl font-bold text-white mb-4"><i class="fas fa-lightbulb text-accent mr-2"></i>Pro Tips</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li><strong class="text-white">Organize First:</strong> Organize your music files in Google Drive folders before importing for easier navigation.</li>
+                    <li><strong class="text-white">Batch Import:</strong> Import entire folders at once to save time when adding large music collections.</li>
+                    <li><strong class="text-white">Storage Management:</strong> Monitor your device storage as imported files are downloaded locally.</li>
+                    <li><strong class="text-white">Re-import Updates:</strong> If you add new files to Google Drive, you can re-import to sync your library.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="py-12 bg-gray-900/50 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Related Tutorials & Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <a href="how-to-download-from-dropbox.html" class="p-4 rounded-lg bg-gray-800 border border-gray-700 hover:border-blue-500 transition">
+                    <div class="flex items-center mb-2">
+                        <i class="fab fa-dropbox text-blue-400 mr-2"></i>
+                        <h3 class="text-lg font-semibold text-white">Download from Dropbox</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Import music from Dropbox</p>
+                </a>
+                <a href="how-to-create-smart-playlist.html" class="p-4 rounded-lg bg-gray-800 border border-gray-700 hover:border-green-500 transition">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-list-alt text-green-400 mr-2"></i>
+                        <h3 class="text-lg font-semibold text-white">Create Smart Playlist</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Organize your imported music</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Offline Player. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="../index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="tutorials.html" class="hover:text-yellow-400 transition">All Tutorials</a>
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+

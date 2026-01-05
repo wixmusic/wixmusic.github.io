@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To Download from Dropbox - Offline Player Tutorial</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #e5e7eb;
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0d1117;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-12 md:pt-32 md:pb-16 overflow-hidden bg-gray-900/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                How To Download from <span class="text-accent">Dropbox</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Learn how to import and play music files directly from your Dropbox account in Offline Player.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tutorial Content -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Introduction -->
+            <div class="mb-12 p-6 rounded-xl bg-blue-900/20 border border-blue-500/30">
+                <h2 class="text-2xl font-bold text-white mb-4">Import Music from Dropbox</h2>
+                <p class="text-gray-300 mb-4">
+                    Offline Player seamlessly integrates with Dropbox, allowing you to access and import your music files stored in the cloud. This feature makes it convenient to sync your music collection across devices.
+                </p>
+                <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                    <p class="text-sm text-gray-400"><i class="fas fa-info-circle text-blue-400 mr-2"></i><strong>Supported Formats:</strong> MP3, M4A, FLAC, WAV, and other common audio formats.</p>
+                </div>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">1</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Access Import Options</h3>
+                        <p class="text-gray-300 mb-4">
+                            Open Offline Player and tap the <strong class="text-white">"+"</strong> button or go to <strong class="text-white">Settings → Import Music</strong>. You'll see a list of cloud storage options including Dropbox.
+                        </p>
+                        <div class="bg-gray-900/50 p-4 rounded-lg border border-gray-700">
+                            <p class="text-sm text-gray-400"><i class="fas fa-info-circle text-blue-400 mr-2"></i>Tip: The import menu is also accessible from the main library screen via the menu icon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">2</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Connect Dropbox Account</h3>
+                        <p class="text-gray-300 mb-4">
+                            Select <strong class="text-white">"Dropbox"</strong> from the import options. You'll be redirected to sign in to your Dropbox account. Tap <strong class="text-white">"Sign in with Dropbox"</strong> and authorize Offline Player to access your files.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                            <li>Ensure you're logged into the correct Dropbox account</li>
+                            <li>Grant file access permissions when prompted</li>
+                            <li>Your authentication is securely handled and encrypted</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">3</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Navigate and Select Music</h3>
+                        <p class="text-gray-300 mb-4">
+                            After connecting, browse your Dropbox folders to locate music files. The interface allows you to:
+                        </p>
+                        <div class="grid grid-cols-1 gap-4 mb-4">
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white mb-1"><i class="fas fa-folder text-blue-400 mr-2"></i>Explore Folders</p>
+                                <p class="text-xs text-gray-400">Browse through your Dropbox directory structure to find music files</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white mb-1"><i class="fas fa-search text-green-400 mr-2"></i>Quick Search</p>
+                                <p class="text-xs text-gray-400">Use the search bar to find specific songs, albums, or artists quickly</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white mb-1"><i class="fas fa-check-double text-yellow-400 mr-2"></i>Multi-Select</p>
+                                <p class="text-xs text-gray-400">Select multiple files or entire folders for batch import</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">4</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Start Import Process</h3>
+                        <p class="text-gray-300 mb-4">
+                            Once you've selected your music files, tap <strong class="text-white">"Import"</strong> or <strong class="text-white">"Add to Library"</strong>. The app will begin downloading the selected files from Dropbox to your device.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 space-y-2 ml-4">
+                            <li>Track import progress in real-time via notifications</li>
+                            <li>Large files or multiple files may require more time</li>
+                            <li>The app remains fully functional during the import process</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="mb-8 p-6 rounded-xl bg-gray-800 border border-gray-700">
+                <div class="flex items-start space-x-4">
+                    <div class="step-number">5</div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold text-white mb-3">Enjoy Your Music</h3>
+                        <p class="text-gray-300 mb-4">
+                            When the import completes, your music will be available in your library. You can access it through:
+                        </p>
+                        <div class="grid grid-cols-1 gap-3 mb-4">
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white"><i class="fas fa-music text-purple-400 mr-2"></i>All Songs - Complete list of imported tracks</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white"><i class="fas fa-compact-disc text-green-400 mr-2"></i>Albums - Music organized by album</p>
+                            </div>
+                            <div class="bg-gray-900/50 p-3 rounded-lg">
+                                <p class="text-sm font-semibold text-white"><i class="fas fa-user-circle text-blue-400 mr-2"></i>Artists - Songs grouped by artist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Section -->
+            <div class="mt-12 p-6 rounded-xl bg-gradient-to-r from-blue-900/30 to-yellow-900/30 border border-blue-500/30">
+                <h3 class="text-2xl font-bold text-white mb-4"><i class="fas fa-lightbulb text-accent mr-2"></i>Pro Tips</h3>
+                <ul class="space-y-3 text-gray-300">
+                    <li><strong class="text-white">Folder Structure:</strong> Maintain organized folders in Dropbox for easier music discovery and import.</li>
+                    <li><strong class="text-white">Efficient Importing:</strong> Import entire music folders at once to streamline the process for large collections.</li>
+                    <li><strong class="text-white">Storage Awareness:</strong> Keep track of your device's available storage space when importing large files.</li>
+                    <li><strong class="text-white">Sync Updates:</strong> Re-import from Dropbox whenever you add new music files to keep your library up to date.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="py-12 bg-gray-900/50 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Related Tutorials & Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+                <a href="how-to-download-from-google-drive.html" class="p-4 rounded-lg bg-gray-800 border border-gray-700 hover:border-blue-500 transition">
+                    <div class="flex items-center mb-2">
+                        <i class="fab fa-google-drive text-blue-400 mr-2"></i>
+                        <h3 class="text-lg font-semibold text-white">Download from Google Drive</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Import music from Google Drive</p>
+                </a>
+                <a href="how-to-create-smart-playlist.html" class="p-4 rounded-lg bg-gray-800 border border-gray-700 hover:border-green-500 transition">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-list-alt text-green-400 mr-2"></i>
+                        <h3 class="text-lg font-semibold text-white">Create Smart Playlist</h3>
+                    </div>
+                    <p class="text-sm text-gray-400">Organize your imported music</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Offline Player. All rights reserved.</p>
+            <div class="mt-4 space-x-4">
+                <a href="../index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="tutorials.html" class="hover:text-yellow-400 transition">All Tutorials</a>
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
