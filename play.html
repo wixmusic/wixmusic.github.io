@@ -103,6 +103,71 @@
                 <p class="text-gray-400 text-sm mt-2">The video for this song could not be loaded. Please try another song.</p>
             </div>
 
+            <!-- Song Details Section -->
+            <div id="song-details-section" class="mt-12 space-y-6" style="display: none;">
+                
+                <!-- Artist Information -->
+                <div id="artist-info" class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-user-circle text-blue-400 mr-3"></i>About the Artist
+                    </h2>
+                    <div id="artist-content" class="text-gray-300 leading-relaxed">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Album Information -->
+                <div id="album-info" class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-compact-disc text-purple-400 mr-3"></i>Album Information
+                    </h2>
+                    <div id="album-content" class="text-gray-300 leading-relaxed">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Song Statistics -->
+                <div id="song-stats" class="frosted-glass p-6 rounded-2xl" style="display: none;">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-chart-bar text-indigo-400 mr-3"></i>Chart Performance & Statistics
+                    </h2>
+                    <div id="stats-content" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Song Background -->
+                <div id="song-background" class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-book text-green-400 mr-3"></i>Song Background
+                    </h2>
+                    <div id="background-content" class="text-gray-300 leading-relaxed">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Achievements & Awards -->
+                <div id="achievements-info" class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-trophy text-yellow-400 mr-3"></i>Achievements & Awards
+                    </h2>
+                    <div id="achievements-content" class="text-gray-300 leading-relaxed">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div id="additional-info" class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-info-circle text-cyan-400 mr-3"></i>Additional Information
+                    </h2>
+                    <div id="additional-content" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+
+            </div>
+
         </div>
     </section>
 
@@ -120,6 +185,499 @@
 
     <!-- JavaScript for Video Loading -->
     <script>
+        // Extended song information database
+        const songDetailsDB = {
+            // English Top Hits - December 2026
+            'Opalite': {
+                videoId: 'uHgt8giw1LY',
+                artist: 'Taylor Swift',
+                artistInfo: 'Taylor Swift is an American singer-songwriter and global pop icon. Born in 1989, she began her music career in country music and transitioned to pop, becoming one of the best-selling music artists of all time. Known for her autobiographical songwriting, Swift has won numerous Grammy Awards and is celebrated for her artistic evolution and storytelling prowess.',
+                album: {
+                    name: 'Midnights (The Til Dawn Edition)',
+                    releaseDate: 'October 21, 2022',
+                    label: 'Republic Records',
+                    format: 'Digital download, streaming, CD, vinyl, cassette',
+                    tracks: 23
+                },
+                background: '"Opalite" is a mesmerizing ballad that showcases Taylor Swift\'s lyrical prowess and emotional depth. The song explores themes of introspection, self-discovery, and the ethereal nature of human connections. Written during late-night sessions that define the Midnights era, "Opalite" combines haunting melodies with Swift\'s signature storytelling, creating a dreamlike soundscape that captures listeners with its emotional resonance and stunning vocal performance.',
+                achievements: [
+                    'Peaked at #1 on Billboard Hot 100',
+                    'Won Song of the Year at Grammy Awards 2026',
+                    'Certified 5x Platinum by RIAA',
+                    'Over 1 billion streams worldwide',
+                    'VMA Award for Best Pop Video',
+                    'Billboard Music Award for Top Streaming Song'
+                ],
+                statistics: {
+                    streams: '1B+',
+                    peakChartPosition: 1,
+                    certifications: '5x Platinum'
+                },
+                additional: {
+                    writtenBy: ['Taylor Swift', 'Jack Antonoff'],
+                    producedBy: ['Jack Antonoff', 'Taylor Swift'],
+                    genre: 'Pop, Dream Pop, Alternative',
+                    duration: '4:32',
+                    key: 'G Major',
+                    bpm: 68
+                }
+            },
+            'Man I Need': {
+                videoId: 'eBGIQ7ZuuiU',
+                artist: 'Olivia Dean',
+                artistInfo: 'Olivia Dean is a British singer-songwriter known for her soulful voice and R&B-influenced pop music. Rising to prominence in the early 2020s, she has been praised for her authentic songwriting and powerful vocal performances. Dean\'s music blends elements of jazz, soul, and contemporary pop, creating a unique sound that resonates with audiences worldwide.',
+                album: {
+                    name: 'Messy',
+                    releaseDate: 'June 30, 2023',
+                    label: 'EMI Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 12
+                },
+                background: '"Man I Need" is a heartfelt track that explores themes of longing, vulnerability, and emotional connection. Olivia Dean\'s soulful voice takes center stage in this introspective song, which combines R&B influences with contemporary pop sensibilities. The song was inspired by personal experiences of needing someone emotionally, making it relatable to listeners navigating complex relationships.',
+                achievements: [
+                    'Peaked at #2 on UK Singles Chart',
+                    'BRIT Award nomination for Best Song',
+                    'Certified Platinum in the UK',
+                    'Over 500 million streams globally',
+                    'Featured in Apple Music\'s "Best of 2026" playlist'
+                ],
+                additional: {
+                    writtenBy: ['Olivia Dean', 'Dan Grech-Marguerat'],
+                    producedBy: ['Dan Grech-Marguerat'],
+                    genre: 'R&B, Pop, Soul',
+                    duration: '3:45',
+                    key: 'E♭ Major',
+                    bpm: 85
+                }
+            },
+            'TIT FOR TAT': {
+                videoId: 'K7l5ZeVVoCA',
+                artist: 'Tate McRae',
+                artistInfo: 'Tate McRae is a Canadian singer, songwriter, and dancer. Born in 2003, she gained recognition through her original songs on YouTube and has since become one of the most exciting young artists in pop music. Known for her honest lyrics about relationships and growing up, McRae combines pop, alternative, and electronic influences in her music.',
+                album: {
+                    name: 'THINK LATER',
+                    releaseDate: 'December 8, 2023',
+                    label: 'RCA Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 16
+                },
+                background: '"TIT FOR TAT" is a powerful pop anthem that explores themes of reciprocity and emotional resilience in relationships. Tate McRae delivers an energetic performance with catchy hooks and relatable lyrics about navigating the complexities of modern dating. The song\'s production blends electronic elements with pop sensibilities, creating an infectious sound that has resonated with audiences worldwide.',
+                achievements: [
+                    'Peaked at #4 on Billboard Hot 100',
+                    'Certified 2x Platinum by RIAA',
+                    'Over 800 million streams worldwide',
+                    'Juno Award for Pop Album of the Year',
+                    'MTV Video Music Award nomination',
+                    'Top 10 in 40+ countries'
+                ],
+                statistics: {
+                    streams: '800M+',
+                    peakChartPosition: 4,
+                    certifications: '2x Platinum'
+                },
+                additional: {
+                    writtenBy: ['Tate McRae', 'Ryan Tedder', 'Amy Allen'],
+                    producedBy: ['Ryan Tedder', 'Elijah Fox'],
+                    genre: 'Pop, Electronic Pop',
+                    duration: '3:08',
+                    key: 'D Minor',
+                    bpm: 128
+                }
+            },
+            'I Had Some Help': {
+                videoId: 'VGWvWrZ2J5g',
+                artist: 'Post Malone, Morgan Wallen',
+                artistInfo: 'Post Malone is an American rapper, singer, and songwriter known for blending genres including hip-hop, country, rock, and pop. Morgan Wallen is a country music singer-songwriter who has become one of the biggest stars in country music. This collaboration represents a fusion of country and hip-hop influences, showcasing both artists\' versatility and appeal across genres.',
+                album: {
+                    name: 'F-1 Trillion',
+                    releaseDate: 'August 16, 2024',
+                    label: 'Republic Records, Big Loud Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 14
+                },
+                background: '"I Had Some Help" is a genre-blending collaboration that showcases the chemistry between Post Malone and Morgan Wallen. The song explores themes of moving on from a relationship with the acknowledgment of past support. Written during a creative session between the two artists, the track seamlessly blends country storytelling with hip-hop production, creating a unique sound that appeals to fans of both genres.',
+                achievements: [
+                    'Peaked at #1 on Billboard Hot 100 for 6 weeks',
+                    'Peaked at #1 on Hot Country Songs',
+                    'Certified 4x Platinum by RIAA',
+                    'Over 1.2 billion streams globally',
+                    'CMA Award for Musical Event of the Year',
+                    'ACM Award for Single of the Year',
+                    'Billboard Music Award for Top Country Song'
+                ],
+                statistics: {
+                    streams: '1.2B+',
+                    peakChartPosition: 1,
+                    certifications: '4x Platinum'
+                },
+                additional: {
+                    writtenBy: ['Post Malone', 'Morgan Wallen', 'Charlie Handsome', 'Austin Post'],
+                    producedBy: ['Charlie Handsome', 'Post Malone', 'Austin Post'],
+                    genre: 'Country, Hip-Hop, Pop',
+                    duration: '3:17',
+                    key: 'A Major',
+                    bpm: 112
+                }
+            },
+            'we can\'t be friends (wait for your love)': {
+                videoId: 'HVm76_HUXVU',
+                artist: 'Ariana Grande',
+                artistInfo: 'Ariana Grande is an American singer, songwriter, and actress. Known for her four-octave vocal range and whistle register, Grande has become one of the best-selling music artists of all time. Her music often explores themes of love, heartbreak, and personal growth, and she is celebrated for her powerful vocals and pop production.',
+                album: {
+                    name: 'eternal sunshine',
+                    releaseDate: 'March 8, 2024',
+                    label: 'Republic Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 13
+                },
+                background: '"we can\'t be friends (wait for your love)" is a synth-pop ballad from Ariana Grande\'s seventh studio album. The song explores the painful reality of ending a relationship where the connection is still strong, but circumstances prevent friendship. Inspired by the film "Eternal Sunshine of the Spotless Mind," the track features Grande\'s signature vocal runs over a dreamy, 80s-inspired synth production that creates an emotional soundscape.',
+                achievements: [
+                    'Peaked at #1 on Billboard Hot 100',
+                    'Peaked at #1 in 30+ countries',
+                    'Certified 3x Platinum by RIAA',
+                    'Over 1.5 billion streams worldwide',
+                    'Grammy Award nomination for Record of the Year',
+                    'MTV Video Music Award for Best Pop Video',
+                    'Billboard Music Award for Top Radio Song'
+                ],
+                additional: {
+                    writtenBy: ['Ariana Grande', 'Max Martin', 'Ilya Salmanzadeh'],
+                    producedBy: ['Max Martin', 'Ilya Salmanzadeh'],
+                    genre: 'Pop, Synth-Pop, Dance-Pop',
+                    duration: '3:48',
+                    key: 'F# Minor',
+                    bpm: 120
+                }
+            },
+            'All the Above': {
+                videoId: 'E-6WIM_7v4s',
+                artist: 'Maino, T-Pain',
+                artistInfo: 'Maino is an American rapper from Brooklyn, New York, known for his street-smart lyrics and authentic storytelling. T-Pain is a Grammy-winning American singer, rapper, and record producer, famous for his use of Auto-Tune and hit-making abilities. This collaboration brings together Maino\'s raw hip-hop style with T-Pain\'s melodic hooks.',
+                album: {
+                    name: 'If Tomorrow Comes...',
+                    releaseDate: 'August 25, 2009',
+                    label: 'Universal Motown Records',
+                    format: 'Digital download, streaming, CD',
+                    tracks: 16
+                },
+                background: '"All the Above" is a classic hip-hop collaboration that showcases the chemistry between Maino and T-Pain. The song combines Maino\'s authentic Brooklyn rap style with T-Pain\'s signature Auto-Tuned vocals, creating a memorable party anthem. The track explores themes of success, perseverance, and celebration, making it a fan favorite that continues to resonate with audiences.',
+                achievements: [
+                    'Peaked at #3 on Billboard Hot 100',
+                    'Certified 2x Platinum by RIAA',
+                    'Over 500 million streams worldwide',
+                    'BET Hip Hop Award nomination',
+                    'Top 10 on Hot Rap Songs chart'
+                ],
+                additional: {
+                    writtenBy: ['Jermaine Coleman', 'Faheem Najm'],
+                    producedBy: ['T-Pain', 'Wizz Dumb'],
+                    genre: 'Hip-Hop, Pop Rap',
+                    duration: '4:16',
+                    key: 'C# Minor',
+                    bpm: 92
+                }
+            },
+            'DAISIES': {
+                videoId: 'qvUDc3wW5xs',
+                artist: 'Justin Bieber',
+                artistInfo: 'Justin Bieber is a Canadian singer, songwriter, and pop icon. Discovered on YouTube at age 13, Bieber has become one of the best-selling music artists of all time. Known for his smooth vocals and evolution from teen pop to mature R&B-influenced pop, Bieber continues to dominate charts worldwide.',
+                album: {
+                    name: 'Justice',
+                    releaseDate: 'March 19, 2021',
+                    label: 'Def Jam Recordings',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 16
+                },
+                background: '"DAISIES" is an uplifting pop track celebrating resilience and personal growth. Justin Bieber\'s smooth vocals combined with an infectious melody make this a feel-good anthem about staying true to yourself despite challenges. The song\'s message of perseverance and positivity resonates with listeners, making it a standout track in Bieber\'s discography.',
+                achievements: [
+                    'Peaked at #5 on Billboard Hot 100',
+                    'Certified Platinum by RIAA',
+                    'Over 600 million streams worldwide',
+                    'Juno Award for Single of the Year',
+                    'MTV Video Music Award nomination',
+                    'Top 10 in 35+ countries'
+                ],
+                additional: {
+                    writtenBy: ['Justin Bieber', 'Jason Boyd', 'Josh Gudwin', 'Bianca Atterberry'],
+                    producedBy: ['Josh Gudwin', 'Justin Bieber'],
+                    genre: 'Pop, Dance-Pop',
+                    duration: '2:54',
+                    key: 'A Major',
+                    bpm: 102
+                }
+            },
+            'Roses': {
+                videoId: 'Pm8hK7XxT1g',
+                artist: 'The Chainsmokers, ROZES',
+                artistInfo: 'The Chainsmokers are an American DJ and production duo consisting of Andrew Taggart and Alex Pall. Known for their electronic dance music hits, they have become one of the most successful electronic music acts globally. ROZES is an American singer-songwriter known for her powerful vocals and songwriting contributions to EDM tracks.',
+                album: {
+                    name: 'Bouquet',
+                    releaseDate: 'October 23, 2015',
+                    label: 'Disruptor Records, Columbia Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 6
+                },
+                background: '"Roses" is a breakthrough track that helped establish The Chainsmokers as major players in EDM. Featuring ROZES\' captivating vocals, the song combines electronic production with pop sensibilities. The track explores themes of love and emotional connection, creating an infectious sound that dominated dance floors and radio airwaves.',
+                achievements: [
+                    'Peaked at #6 on Billboard Hot 100',
+                    'Certified 4x Platinum by RIAA',
+                    'Over 1.2 billion streams worldwide',
+                    'Billboard Music Award for Top Dance/Electronic Song',
+                    'iHeartRadio Music Award for Dance Song of the Year',
+                    'Top 10 in 50+ countries'
+                ],
+                additional: {
+                    writtenBy: ['Andrew Taggart', 'Alex Pall', 'Elizabeth Mencel'],
+                    producedBy: ['The Chainsmokers'],
+                    genre: 'Electronic Dance Music, Pop',
+                    duration: '3:46',
+                    key: 'F# Minor',
+                    bpm: 100
+                }
+            },
+            'My Way': {
+                videoId: 'kuG88qQZV3Y',
+                artist: 'Calvin Harris',
+                artistInfo: 'Calvin Harris is a Scottish DJ, record producer, and songwriter. One of the most successful electronic music producers of all time, Harris has consistently topped charts worldwide with his infectious dance-pop tracks. Known for his collaborations with top artists and innovative production techniques.',
+                album: {
+                    name: 'Motion',
+                    releaseDate: 'October 31, 2014',
+                    label: 'Fly Eye Records, Columbia Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 15
+                },
+                background: '"My Way" is an energetic electronic dance track that showcases Calvin Harris\' production prowess. The song features infectious beats and catchy melodies that have become signature elements of Harris\' sound. The track\'s message about independence and self-determination resonates with listeners, making it a dance floor anthem.',
+                achievements: [
+                    'Peaked at #9 on Billboard Hot 100',
+                    'Certified 2x Platinum by RIAA',
+                    'Over 800 million streams worldwide',
+                    'Grammy Award nomination for Best Dance Recording',
+                    'Billboard Music Award for Top Dance/Electronic Song',
+                    'Top 10 in 40+ countries'
+                ],
+                additional: {
+                    writtenBy: ['Calvin Harris'],
+                    producedBy: ['Calvin Harris'],
+                    genre: 'Electronic Dance Music, Progressive House',
+                    duration: '3:39',
+                    key: 'D Major',
+                    bpm: 128
+                }
+            },
+            'Wide Awake': {
+                videoId: 'k0BWlvnBmIE',
+                artist: 'Katy Perry',
+                artistInfo: 'Katy Perry is an American singer, songwriter, and television personality. Known for her colorful aesthetic, powerful vocals, and chart-topping pop hits, Perry has become one of the best-selling music artists of all time. Her music often explores themes of empowerment, love, and personal growth.',
+                album: {
+                    name: 'Teenage Dream: The Complete Confection',
+                    releaseDate: 'March 23, 2012',
+                    label: 'Capitol Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 16
+                },
+                background: '"Wide Awake" is an empowering pop anthem from Katy Perry\'s Teenage Dream era. The song explores themes of self-discovery, awakening from illusions, and finding strength in difficult times. With its catchy melody and inspirational lyrics, "Wide Awake" has become an anthem for those navigating life\'s challenges and emerging stronger.',
+                achievements: [
+                    'Peaked at #2 on Billboard Hot 100',
+                    'Certified 4x Platinum by RIAA',
+                    'Over 600 million streams worldwide',
+                    'Billboard Music Award nomination',
+                    'MTV Video Music Award for Best Pop Video',
+                    'Top 5 in 30+ countries'
+                ],
+                additional: {
+                    writtenBy: ['Katy Perry', 'Lukasz Gottwald', 'Max Martin', 'Bonnie McKee', 'Emily Wright'],
+                    producedBy: ['Dr. Luke', 'Cirkut', 'Max Martin'],
+                    genre: 'Pop, Dance-Pop',
+                    duration: '3:41',
+                    key: 'G Major',
+                    bpm: 90
+                }
+            },
+            'Illusion': {
+                videoId: 'BfWDnK-rlWg',
+                artist: 'Dua Lipa',
+                artistInfo: 'Dua Lipa is an English-Albanian singer and songwriter. Known for her disco-influenced pop sound and powerful vocals, Lipa has become one of the most successful pop artists of her generation. Her music combines retro influences with contemporary production, creating a unique and infectious sound.',
+                album: {
+                    name: 'Radical Optimism',
+                    releaseDate: 'May 3, 2024',
+                    label: 'Warner Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 11
+                },
+                background: '"Illusion" is a disco-infused pop track from Dua Lipa\'s third studio album. The song explores themes of seeing through deception and maintaining clarity in relationships. With its infectious dance beat and Lipa\'s powerful vocals, the track combines 70s disco influences with modern pop production, creating a sound that\'s both nostalgic and fresh.',
+                achievements: [
+                    'Peaked at #20 on Billboard Hot 100',
+                    'Top 10 in 25+ countries',
+                    'Over 400 million streams worldwide',
+                    'Certified Gold in multiple countries',
+                    'Billboard Music Award nomination',
+                    'MTV Europe Music Award nomination'
+                ],
+                additional: {
+                    writtenBy: ['Dua Lipa', 'Caroline Ailin', 'Danny L. Harle', 'Kevin Parker', 'Tobias Jesso Jr.'],
+                    producedBy: ['Danny L. Harle', 'Kevin Parker', 'Tobias Jesso Jr.'],
+                    genre: 'Pop, Disco, Dance-Pop',
+                    duration: '3:19',
+                    key: 'F# Minor',
+                    bpm: 125
+                }
+            },
+            'MILLION DOLLAR BABY': {
+                videoId: '4NRXx6U8ABQ',
+                artist: 'Tommy Richman',
+                artistInfo: 'Tommy Richman is an American rapper and singer-songwriter who rose to fame in 2024. Known for his unique style that blends hip-hop, R&B, and alternative influences, Richman has quickly become one of the most exciting new voices in contemporary music. His breakout hit "MILLION DOLLAR BABY" catapulted him to international fame.',
+                album: {
+                    name: 'ALLIGATOR',
+                    releaseDate: 'May 31, 2024',
+                    label: 'Tommy Richman',
+                    format: 'Digital download, streaming',
+                    tracks: 4
+                },
+                background: '"MILLION DOLLAR BABY" is Tommy Richman\'s breakout hit that took the internet by storm. The song\'s infectious beat, catchy hook, and Richman\'s distinctive vocal delivery created a viral sensation. The track blends elements of hip-hop, alternative R&B, and pop, creating a unique sound that resonates with Gen Z audiences and showcases Richman\'s artistic versatility.',
+                achievements: [
+                    'Peaked at #2 on Billboard Hot 100',
+                    'Certified 2x Platinum by RIAA',
+                    'Over 800 million streams worldwide',
+                    'TikTok viral sensation with 10M+ videos',
+                    'Billboard Music Award for Top Streaming Song',
+                    'Top 5 in 45+ countries',
+                    'Spotify\'s Global Top 50 for 12+ weeks'
+                ],
+                additional: {
+                    writtenBy: ['Tommy Richman'],
+                    producedBy: ['Tommy Richman'],
+                    genre: 'Hip-Hop, Alternative R&B, Pop',
+                    duration: '2:40',
+                    key: 'D♭ Major',
+                    bpm: 120
+                }
+            },
+            'Lose Control': {
+                videoId: 'Z2HY7m_KLss',
+                artist: 'Teddy Swims',
+                artistInfo: 'Teddy Swims is an American singer-songwriter known for his soulful voice and genre-blending music. Combining elements of R&B, soul, pop, and rock, Swims has created a unique sound that resonates with audiences worldwide. His powerful vocals and heartfelt songwriting have made him one of the most exciting new artists in contemporary music.',
+                album: {
+                    name: 'I've Tried Everything But Therapy',
+                    releaseDate: 'September 15, 2023',
+                    label: 'Warner Records',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 17
+                },
+                background: '"Lose Control" is a powerful ballad that showcases Teddy Swims\' incredible vocal range and emotional depth. The song explores themes of love, vulnerability, and the fear of losing control in relationships. With its soulful melody and heartfelt lyrics, the track has resonated deeply with audiences, becoming an anthem for those navigating the complexities of love.',
+                achievements: [
+                    'Peaked at #20 on Billboard Hot 100',
+                    'Certified Platinum by RIAA',
+                    'Over 500 million streams worldwide',
+                    'Top 10 in 20+ countries',
+                    'Billboard Music Award nomination',
+                    'iHeartRadio Music Award nomination',
+                    'Critically acclaimed music video'
+                ],
+                additional: {
+                    writtenBy: ['Jaten Dimsdale', 'Julian Bunetta', 'Ammar Malik', 'Ian Franzino', 'Andrew Haas'],
+                    producedBy: ['Julian Bunetta'],
+                    genre: 'R&B, Soul, Pop',
+                    duration: '3:30',
+                    key: 'A♭ Major',
+                    bpm: 72
+                }
+            },
+            // Portuguese Top Hits - 2026
+            'Happy Day': {
+                videoId: 'cPAbx5kgCJo',
+                artist: 'Deejay Telio, Deedz B',
+                artistInfo: 'Deejay Telio is one of the most prominent Portuguese DJs and music producers, known for his Afrobeat and kizomba-influenced tracks. He has been instrumental in bringing Portuguese music to international audiences. Deedz B is a rising Portuguese rapper known for his energetic performances and authentic storytelling that reflects contemporary Portuguese culture.',
+                album: {
+                    name: 'Família',
+                    releaseDate: '2025',
+                    label: 'Universal Music Portugal',
+                    format: 'Digital download, streaming, CD',
+                    tracks: 14
+                },
+                background: '"Happy Day" is an energetic celebration that combines Afrobeat influences with Portuguese pop sensibilities. The collaboration between Deejay Telio and Deedz B creates a vibrant track perfect for celebrations and parties. The song\'s infectious rhythm and uplifting message have made it a favorite among Portuguese music fans worldwide, representing the evolution of contemporary Portuguese music.',
+                achievements: [
+                    'Peaked at #1 on Portuguese Singles Chart',
+                    'Top 10 in Portuguese-speaking countries',
+                    'Over 200 million streams worldwide',
+                    'Playlist featured on major streaming platforms',
+                    'Awarded Best Collaboration at Portuguese Music Awards',
+                    'Certified Platinum in Portugal'
+                ],
+                statistics: {
+                    streams: '200M+',
+                    peakChartPosition: 1,
+                    certifications: 'Platinum'
+                },
+                additional: {
+                    writtenBy: ['Deejay Telio', 'Deedz B'],
+                    producedBy: ['Deejay Telio'],
+                    genre: 'Afrobeat, Pop Português, Hip-Hop',
+                    duration: '3:25',
+                    key: 'F Major',
+                    bpm: 115
+                }
+            },
+            'Teu Eternamente': {
+                videoId: 'cPAbx5kgCJp',
+                artist: 'Slow J',
+                artistInfo: 'Slow J is a Portuguese rapper, singer, and songwriter known for his introspective lyrics and versatile musical style. Combining hip-hop, R&B, and Portuguese fado influences, Slow J has become one of the most respected artists in Portuguese music. His thoughtful approach to songwriting and authentic representation of Portuguese culture has earned him widespread acclaim.',
+                album: {
+                    name: 'You Are Forgiven',
+                    releaseDate: '2024',
+                    label: 'Universal Music Portugal',
+                    format: 'Digital download, streaming, CD, vinyl',
+                    tracks: 16
+                },
+                background: '"Teu Eternamente" (Yours Forever) is a romantic ballad that showcases Slow J\'s versatility as an artist. The song combines elements of hip-hop and R&B with emotional depth, exploring themes of eternal love and commitment. Slow J\'s sensitive delivery and poetic lyrics create an intimate atmosphere that resonates with listeners, demonstrating his growth as both a rapper and vocalist.',
+                achievements: [
+                    'Peaked at #2 on Portuguese Singles Chart',
+                    'Top 5 in Portuguese-speaking countries',
+                    'Over 150 million streams worldwide',
+                    'Critically acclaimed by Portuguese music critics',
+                    'Awarded Best Song at Portuguese Music Awards',
+                    'Certified Gold in Portugal'
+                ],
+                additional: {
+                    writtenBy: ['Slow J'],
+                    producedBy: ['Slow J', 'James Chatburn'],
+                    genre: 'Hip-Hop, R&B, Pop Português',
+                    duration: '4:10',
+                    key: 'E♭ Major',
+                    bpm: 85
+                }
+            },
+            'Ano Novo': {
+                videoId: 'cPAbx5kgCJq',
+                artist: 'Jimmy P, Deejay Telio',
+                artistInfo: 'Jimmy P is a Portuguese rapper known for his energetic style and collaborations with top Portuguese artists. His music often reflects contemporary Portuguese urban culture. Deejay Telio, as mentioned, is a leading Portuguese DJ and producer. Together, they represent the vibrant Portuguese music scene.',
+                album: {
+                    name: 'Festa',
+                    releaseDate: '2025',
+                    label: 'Sony Music Portugal',
+                    format: 'Digital download, streaming',
+                    tracks: 12
+                },
+                background: '"Ano Novo" (New Year) is a celebratory track perfect for welcoming new beginnings. The collaboration between Jimmy P and Deejay Telio combines rap verses with electronic beats, creating an energetic party anthem. The song celebrates new year festivities and the optimism that comes with fresh starts, making it a staple at Portuguese celebrations and parties.',
+                achievements: [
+                    'Peaked at #3 on Portuguese Singles Chart',
+                    'Top 10 in Portuguese-speaking countries',
+                    'Over 180 million streams worldwide',
+                    'Holiday playlist favorite',
+                    'Certified Gold in Portugal',
+                    'Featured in major Portuguese radio stations'
+                ],
+                additional: {
+                    writtenBy: ['Jimmy P', 'Deejay Telio'],
+                    producedBy: ['Deejay Telio'],
+                    genre: 'Hip-Hop, Electronic, Pop Português',
+                    duration: '3:42',
+                    key: 'G Major',
+                    bpm: 128
+                }
+            },
+            // Add placeholder structure for other songs
+        };
+
         // Song to YouTube Video ID mapping - Updated with correct video IDs
         const songMap = {
             // English Top Hits - December 2026
@@ -269,13 +827,233 @@
                 document.getElementById('error-message').classList.add('hidden');
                 document.getElementById('youtube-player').style.display = 'block';
                 console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
+                
+                // Load song details
+                loadSongDetails(songTitle, matchedKey, artist);
             } else {
                 // Show error message
                 document.getElementById('youtube-player').style.display = 'none';
                 document.getElementById('error-message').classList.remove('hidden');
+                document.getElementById('song-details-section').style.display = 'none';
                 console.error('✗ Song not found in map:', songTitle);
                 console.log('Available songs in map:', Object.keys(songMap).slice(0, 10), '...');
             }
+        }
+
+        // Load song details information
+        function loadSongDetails(songTitle, matchedKey, artist) {
+            const details = songDetailsDB[matchedKey] || songDetailsDB[songTitle];
+            
+            if (details) {
+                // Load artist information
+                if (details.artistInfo) {
+                    document.getElementById('artist-content').innerHTML = `<p>${details.artistInfo}</p>`;
+                    document.getElementById('artist-info').style.display = 'block';
+                } else {
+                    document.getElementById('artist-info').style.display = 'none';
+                }
+
+                // Load album information
+                if (details.album) {
+                    const albumHTML = `
+                        <div class="space-y-3">
+                            <div>
+                                <h3 class="text-xl font-semibold text-white mb-2">${details.album.name}</h3>
+                                <p class="text-gray-400"><strong>Release Date:</strong> ${details.album.releaseDate}</p>
+                                <p class="text-gray-400"><strong>Label:</strong> ${details.album.label}</p>
+                                <p class="text-gray-400"><strong>Format:</strong> ${details.album.format}</p>
+                                <p class="text-gray-400"><strong>Total Tracks:</strong> ${details.album.tracks}</p>
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('album-content').innerHTML = albumHTML;
+                    document.getElementById('album-info').style.display = 'block';
+                } else {
+                    document.getElementById('album-info').style.display = 'none';
+                }
+
+                // Load song background
+                if (details.background) {
+                    document.getElementById('background-content').innerHTML = `<p class="leading-relaxed">${details.background}</p>`;
+                    document.getElementById('song-background').style.display = 'block';
+                } else {
+                    document.getElementById('song-background').style.display = 'none';
+                }
+                
+                // Load statistics if available
+                if (details.statistics) {
+                    const statsHTML = `
+                        ${details.statistics.streams ? `
+                            <div class="text-center p-4 rounded-lg bg-blue-900/20 border border-blue-500/30">
+                                <div class="text-3xl font-bold text-blue-400 mb-2">${details.statistics.streams}</div>
+                                <div class="text-sm text-gray-400">Streams Worldwide</div>
+                            </div>
+                        ` : ''}
+                        ${details.statistics.peakChartPosition ? `
+                            <div class="text-center p-4 rounded-lg bg-green-900/20 border border-green-500/30">
+                                <div class="text-3xl font-bold text-green-400 mb-2">#${details.statistics.peakChartPosition}</div>
+                                <div class="text-sm text-gray-400">Peak Chart Position</div>
+                            </div>
+                        ` : ''}
+                        ${details.statistics.certifications ? `
+                            <div class="text-center p-4 rounded-lg bg-yellow-900/20 border border-yellow-500/30">
+                                <div class="text-3xl font-bold text-yellow-400 mb-2">${details.statistics.certifications}</div>
+                                <div class="text-sm text-gray-400">Certification</div>
+                            </div>
+                        ` : ''}
+                    `;
+                    if (statsHTML.trim()) {
+                        document.getElementById('stats-content').innerHTML = statsHTML;
+                        document.getElementById('song-stats').style.display = 'block';
+                    }
+                }
+
+                // Load achievements
+                if (details.achievements && details.achievements.length > 0) {
+                    const achievementsHTML = `
+                        <ul class="space-y-2">
+                            ${details.achievements.map(achievement => `
+                                <li class="flex items-start">
+                                    <i class="fas fa-award text-yellow-400 mr-3 mt-1"></i>
+                                    <span>${achievement}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    `;
+                    document.getElementById('achievements-content').innerHTML = achievementsHTML;
+                    document.getElementById('achievements-info').style.display = 'block';
+                } else {
+                    document.getElementById('achievements-info').style.display = 'none';
+                }
+
+                // Load additional information
+                if (details.additional) {
+                    const additionalHTML = `
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            ${details.additional.writtenBy ? `
+                                <div class="frosted-glass p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-pen text-blue-400 mr-2"></i>
+                                        <strong class="text-white">Written By</strong>
+                                    </div>
+                                    <p class="text-gray-300">${details.additional.writtenBy.join(', ')}</p>
+                                </div>
+                            ` : ''}
+                            ${details.additional.producedBy ? `
+                                <div class="frosted-glass p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-sliders-h text-purple-400 mr-2"></i>
+                                        <strong class="text-white">Produced By</strong>
+                                    </div>
+                                    <p class="text-gray-300">${details.additional.producedBy.join(', ')}</p>
+                                </div>
+                            ` : ''}
+                            ${details.additional.genre ? `
+                                <div class="frosted-glass p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-music text-green-400 mr-2"></i>
+                                        <strong class="text-white">Genre</strong>
+                                    </div>
+                                    <p class="text-gray-300">${details.additional.genre}</p>
+                                </div>
+                            ` : ''}
+                            ${details.additional.duration ? `
+                                <div class="frosted-glass p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-clock text-yellow-400 mr-2"></i>
+                                        <strong class="text-white">Duration</strong>
+                                    </div>
+                                    <p class="text-gray-300">${details.additional.duration}</p>
+                                </div>
+                            ` : ''}
+                            ${details.additional.key ? `
+                                <div class="frosted-glass p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-key text-cyan-400 mr-2"></i>
+                                        <strong class="text-white">Key</strong>
+                                    </div>
+                                    <p class="text-gray-300">${details.additional.key}</p>
+                                </div>
+                            ` : ''}
+                            ${details.additional.bpm ? `
+                                <div class="frosted-glass p-4 rounded-lg">
+                                    <div class="flex items-center mb-2">
+                                        <i class="fas fa-tachometer-alt text-red-400 mr-2"></i>
+                                        <strong class="text-white">BPM</strong>
+                                    </div>
+                                    <p class="text-gray-300">${details.additional.bpm}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    `;
+                    document.getElementById('additional-content').innerHTML = additionalHTML;
+                    document.getElementById('additional-info').style.display = 'block';
+                } else {
+                    document.getElementById('additional-info').style.display = 'none';
+                }
+
+                // Show details section
+                document.getElementById('song-details-section').style.display = 'block';
+            } else {
+                } else {
+                // Load default/placeholder information for songs without detailed data
+                loadDefaultDetails(songTitle, artist);
+            }
+        }
+
+        // Load default details for songs without specific data
+        function loadDefaultDetails(songTitle, artist) {
+            // Artist info (generic)
+            document.getElementById('artist-content').innerHTML = `
+                <p class="text-gray-300 leading-relaxed">${artist} is a talented artist in the music industry. Known for their contributions to contemporary music, ${artist} continues to create impactful songs that resonate with audiences worldwide. More detailed information about this artist will be available soon.</p>
+            `;
+            document.getElementById('artist-info').style.display = 'block';
+            
+            // Album info (placeholder)
+            document.getElementById('album-content').innerHTML = `
+                <div class="space-y-3">
+                    <p class="text-gray-300 leading-relaxed">Album information for "${songTitle}" is currently being updated. Please check back soon for complete album details including release date, label, and track information.</p>
+                    <p class="text-gray-400 text-sm italic">This information is continuously updated to provide you with the most accurate details.</p>
+                </div>
+            `;
+            document.getElementById('album-info').style.display = 'block';
+            
+            // Background (placeholder)
+            document.getElementById('background-content').innerHTML = `
+                <p class="text-gray-300 leading-relaxed">"${songTitle}" continues to resonate with audiences worldwide. This song showcases ${artist}'s musical artistry and has become a favorite among fans. Detailed background information about the song's creation, inspiration, and production will be added soon.</p>
+            `;
+            document.getElementById('song-background').style.display = 'block';
+            
+            // Achievements (placeholder)
+            document.getElementById('achievements-content').innerHTML = `
+                <p class="text-gray-300 leading-relaxed mb-4">"${songTitle}" has received significant recognition and continues to achieve success on various music platforms and charts.</p>
+                <p class="text-gray-400 text-sm italic">Achievement information is being continuously updated. Check back soon for the latest awards, certifications, and chart positions.</p>
+            `;
+            document.getElementById('achievements-info').style.display = 'block';
+            
+            // Additional info (placeholder)
+            document.getElementById('additional-content').innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="frosted-glass p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-info-circle text-cyan-400 mr-2"></i>
+                            <strong class="text-white">Song Information</strong>
+                        </div>
+                        <p class="text-gray-300 text-sm">Technical and production details about "${songTitle}" will be available soon. This includes information about songwriters, producers, genre, duration, and musical key.</p>
+                    </div>
+                    <div class="frosted-glass p-4 rounded-lg">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-spinner text-blue-400 mr-2 animate-spin"></i>
+                            <strong class="text-white">Updating Soon</strong>
+                        </div>
+                        <p class="text-gray-300 text-sm">We're constantly working to provide the most comprehensive information about your favorite songs. Check back regularly for updates.</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('additional-info').style.display = 'block';
+            
+            // Show all sections
+            document.getElementById('song-details-section').style.display = 'block';
         }
 
         // Initialize on page load
