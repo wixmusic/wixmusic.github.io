@@ -771,80 +771,110 @@
 
         // Load video
         function loadVideo() {
-            const params = getUrlParams();
-            // Decode URL parameters and normalize
-            let songTitle = params.song ? decodeURIComponent(params.song) : '';
-            songTitle = normalizeTitle(songTitle);
-            const artist = params.artist ? decodeURIComponent(params.artist).trim() : '';
-            const rank = params.rank;
+            try {
+                const params = getUrlParams();
+                // Decode URL parameters and normalize
+                let songTitle = params.song ? decodeURIComponent(params.song) : '';
+                songTitle = normalizeTitle(songTitle);
+                const artist = params.artist ? decodeURIComponent(params.artist).trim() : '';
+                const rank = params.rank;
 
-            console.log('Parsed params:', { songTitle, artist, rank });
+                console.log('Parsed params:', { songTitle, artist, rank });
 
-            // Update song info
-            document.getElementById('song-title').textContent = songTitle || 'Unknown Song';
-            document.getElementById('song-artist').textContent = artist || 'Unknown Artist';
+                // Update song info - Ensure elements exist
+                const titleElement = document.getElementById('song-title');
+                const artistElement = document.getElementById('song-artist');
+                
+                if (!titleElement || !artistElement) {
+                    console.error('Required DOM elements not found');
+                    return;
+                }
 
-            // Show rank if provided
-            if (rank) {
-                document.getElementById('song-rank').style.display = 'inline-block';
-                document.getElementById('rank-number').textContent = '#' + rank;
-            }
+                titleElement.textContent = songTitle || 'Unknown Song';
+                artistElement.textContent = artist || 'Unknown Artist';
 
-            // Get video ID from mapping
-            let videoId = null;
-            let matchedKey = null;
-            
-            if (!songTitle) {
-                console.error('No song title provided');
-                document.getElementById('youtube-player').style.display = 'none';
-                document.getElementById('error-message').classList.remove('hidden');
-                return;
-            }
-
-            // Try exact match first
-            if (songMap[songTitle]) {
-                videoId = songMap[songTitle].videoId;
-                matchedKey = songTitle;
-                console.log('✓ Exact match found:', songTitle, '->', videoId);
-            } else {
-                // Try case-insensitive and normalized match
-                const songTitleLower = songTitle.toLowerCase();
-                for (const key in songMap) {
-                    const normalizedKey = normalizeTitle(key);
-                    if (normalizedKey.toLowerCase() === songTitleLower) {
-                        videoId = songMap[key].videoId;
-                        matchedKey = key;
-                        console.log('✓ Case-insensitive match found:', key, '->', videoId, 'for input:', songTitle);
-                        break;
+                // Show rank if provided
+                if (rank) {
+                    const rankElement = document.getElementById('song-rank');
+                    const rankNumberElement = document.getElementById('rank-number');
+                    if (rankElement && rankNumberElement) {
+                        rankElement.style.display = 'inline-block';
+                        rankNumberElement.textContent = '#' + rank;
                     }
                 }
-            }
 
-            // Load video if found
-            if (videoId) {
-                const iframe = document.getElementById('youtube-player');
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
-                document.getElementById('error-message').classList.add('hidden');
-                document.getElementById('youtube-player').style.display = 'block';
-                console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
+                // Get video ID from mapping
+                let videoId = null;
+                let matchedKey = null;
                 
-                // Load song details
-                loadSongDetails(songTitle, matchedKey, artist);
-            } else {
-                // Show error message
-                document.getElementById('youtube-player').style.display = 'none';
-                document.getElementById('error-message').classList.remove('hidden');
-                document.getElementById('song-details-section').style.display = 'none';
-                console.error('✗ Song not found in map:', songTitle);
-                console.log('Available songs in map:', Object.keys(songMap).slice(0, 10), '...');
+                if (!songTitle) {
+                    console.error('No song title provided');
+                    const youtubePlayer = document.getElementById('youtube-player');
+                    const errorMessage = document.getElementById('error-message');
+                    if (youtubePlayer) youtubePlayer.style.display = 'none';
+                    if (errorMessage) errorMessage.classList.remove('hidden');
+                    return;
+                }
+
+                // Try exact match first
+                if (songMap[songTitle]) {
+                    videoId = songMap[songTitle].videoId;
+                    matchedKey = songTitle;
+                    console.log('✓ Exact match found:', songTitle, '->', videoId);
+                } else {
+                    // Try case-insensitive and normalized match
+                    const songTitleLower = songTitle.toLowerCase();
+                    for (const key in songMap) {
+                        const normalizedKey = normalizeTitle(key);
+                        if (normalizedKey.toLowerCase() === songTitleLower) {
+                            videoId = songMap[key].videoId;
+                            matchedKey = key;
+                            console.log('✓ Case-insensitive match found:', key, '->', videoId, 'for input:', songTitle);
+                            break;
+                        }
+                    }
+                }
+
+                // Load video if found
+                if (videoId) {
+                    const iframe = document.getElementById('youtube-player');
+                    const errorMessage = document.getElementById('error-message');
+                    if (iframe) {
+                        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+                        iframe.style.display = 'block';
+                    }
+                    if (errorMessage) errorMessage.classList.add('hidden');
+                    console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
+                    
+                    // Load song details
+                    loadSongDetails(songTitle, matchedKey, artist);
+                } else {
+                    // Show error message
+                    const youtubePlayer = document.getElementById('youtube-player');
+                    const errorMessage = document.getElementById('error-message');
+                    const detailsSection = document.getElementById('song-details-section');
+                    if (youtubePlayer) youtubePlayer.style.display = 'none';
+                    if (errorMessage) errorMessage.classList.remove('hidden');
+                    if (detailsSection) detailsSection.style.display = 'none';
+                    console.error('✗ Song not found in map:', songTitle);
+                    console.log('Available songs in map:', Object.keys(songMap).slice(0, 10), '...');
+                }
+            } catch (error) {
+                console.error('Error in loadVideo:', error);
+                // Update title even on error
+                const titleElement = document.getElementById('song-title');
+                if (titleElement) {
+                    titleElement.textContent = 'Error Loading Song';
+                }
             }
         }
 
         // Load song details information
         function loadSongDetails(songTitle, matchedKey, artist) {
-            const details = songDetailsDB[matchedKey] || songDetailsDB[songTitle];
-            
-            if (details) {
+            try {
+                const details = songDetailsDB[matchedKey] || songDetailsDB[songTitle];
+                
+                if (details) {
                 // Load artist information
                 if (details.artistInfo) {
                     document.getElementById('artist-content').innerHTML = `<p>${details.artistInfo}</p>`;
@@ -994,70 +1024,106 @@
 
                 // Show details section
                 document.getElementById('song-details-section').style.display = 'block';
-            } else {
                 } else {
-                // Load default/placeholder information for songs without detailed data
+                    // Load default/placeholder information for songs without detailed data
+                    loadDefaultDetails(songTitle, artist);
+                }
+            } catch (error) {
+                console.error('Error in loadSongDetails:', error);
+                // Load default details on error
                 loadDefaultDetails(songTitle, artist);
             }
         }
 
         // Load default details for songs without specific data
         function loadDefaultDetails(songTitle, artist) {
-            // Artist info (generic)
-            document.getElementById('artist-content').innerHTML = `
-                <p class="text-gray-300 leading-relaxed">${artist} is a talented artist in the music industry. Known for their contributions to contemporary music, ${artist} continues to create impactful songs that resonate with audiences worldwide. More detailed information about this artist will be available soon.</p>
-            `;
-            document.getElementById('artist-info').style.display = 'block';
-            
-            // Album info (placeholder)
-            document.getElementById('album-content').innerHTML = `
-                <div class="space-y-3">
-                    <p class="text-gray-300 leading-relaxed">Album information for "${songTitle}" is currently being updated. Please check back soon for complete album details including release date, label, and track information.</p>
-                    <p class="text-gray-400 text-sm italic">This information is continuously updated to provide you with the most accurate details.</p>
-                </div>
-            `;
-            document.getElementById('album-info').style.display = 'block';
-            
-            // Background (placeholder)
-            document.getElementById('background-content').innerHTML = `
-                <p class="text-gray-300 leading-relaxed">"${songTitle}" continues to resonate with audiences worldwide. This song showcases ${artist}'s musical artistry and has become a favorite among fans. Detailed background information about the song's creation, inspiration, and production will be added soon.</p>
-            `;
-            document.getElementById('song-background').style.display = 'block';
-            
-            // Achievements (placeholder)
-            document.getElementById('achievements-content').innerHTML = `
-                <p class="text-gray-300 leading-relaxed mb-4">"${songTitle}" has received significant recognition and continues to achieve success on various music platforms and charts.</p>
-                <p class="text-gray-400 text-sm italic">Achievement information is being continuously updated. Check back soon for the latest awards, certifications, and chart positions.</p>
-            `;
-            document.getElementById('achievements-info').style.display = 'block';
-            
-            // Additional info (placeholder)
-            document.getElementById('additional-content').innerHTML = `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="frosted-glass p-4 rounded-lg">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-info-circle text-cyan-400 mr-2"></i>
-                            <strong class="text-white">Song Information</strong>
+            try {
+                // Artist info (generic)
+                const artistContentEl = document.getElementById('artist-content');
+                const artistInfoEl = document.getElementById('artist-info');
+                if (artistContentEl && artistInfoEl) {
+                    artistContentEl.innerHTML = `
+                        <p class="text-gray-300 leading-relaxed">${artist} is a talented artist in the music industry. Known for their contributions to contemporary music, ${artist} continues to create impactful songs that resonate with audiences worldwide. More detailed information about this artist will be available soon.</p>
+                    `;
+                    artistInfoEl.style.display = 'block';
+                }
+                
+                // Album info (placeholder)
+                const albumContentEl = document.getElementById('album-content');
+                const albumInfoEl = document.getElementById('album-info');
+                if (albumContentEl && albumInfoEl) {
+                    albumContentEl.innerHTML = `
+                        <div class="space-y-3">
+                            <p class="text-gray-300 leading-relaxed">Album information for "${songTitle}" is currently being updated. Please check back soon for complete album details including release date, label, and track information.</p>
+                            <p class="text-gray-400 text-sm italic">This information is continuously updated to provide you with the most accurate details.</p>
                         </div>
-                        <p class="text-gray-300 text-sm">Technical and production details about "${songTitle}" will be available soon. This includes information about songwriters, producers, genre, duration, and musical key.</p>
-                    </div>
-                    <div class="frosted-glass p-4 rounded-lg">
-                        <div class="flex items-center mb-2">
-                            <i class="fas fa-spinner text-blue-400 mr-2 animate-spin"></i>
-                            <strong class="text-white">Updating Soon</strong>
+                    `;
+                    albumInfoEl.style.display = 'block';
+                }
+                
+                // Background (placeholder)
+                const backgroundContentEl = document.getElementById('background-content');
+                const songBackgroundEl = document.getElementById('song-background');
+                if (backgroundContentEl && songBackgroundEl) {
+                    backgroundContentEl.innerHTML = `
+                        <p class="text-gray-300 leading-relaxed">"${songTitle}" continues to resonate with audiences worldwide. This song showcases ${artist}'s musical artistry and has become a favorite among fans. Detailed background information about the song's creation, inspiration, and production will be added soon.</p>
+                    `;
+                    songBackgroundEl.style.display = 'block';
+                }
+                
+                // Achievements (placeholder)
+                const achievementsContentEl = document.getElementById('achievements-content');
+                const achievementsInfoEl = document.getElementById('achievements-info');
+                if (achievementsContentEl && achievementsInfoEl) {
+                    achievementsContentEl.innerHTML = `
+                        <p class="text-gray-300 leading-relaxed mb-4">"${songTitle}" has received significant recognition and continues to achieve success on various music platforms and charts.</p>
+                        <p class="text-gray-400 text-sm italic">Achievement information is being continuously updated. Check back soon for the latest awards, certifications, and chart positions.</p>
+                    `;
+                    achievementsInfoEl.style.display = 'block';
+                }
+                
+                // Additional info (placeholder)
+                const additionalContentEl = document.getElementById('additional-content');
+                const additionalInfoEl = document.getElementById('additional-info');
+                if (additionalContentEl && additionalInfoEl) {
+                    additionalContentEl.innerHTML = `
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="frosted-glass p-4 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-info-circle text-cyan-400 mr-2"></i>
+                                    <strong class="text-white">Song Information</strong>
+                                </div>
+                                <p class="text-gray-300 text-sm">Technical and production details about "${songTitle}" will be available soon. This includes information about songwriters, producers, genre, duration, and musical key.</p>
+                            </div>
+                            <div class="frosted-glass p-4 rounded-lg">
+                                <div class="flex items-center mb-2">
+                                    <i class="fas fa-spinner text-blue-400 mr-2 animate-spin"></i>
+                                    <strong class="text-white">Updating Soon</strong>
+                                </div>
+                                <p class="text-gray-300 text-sm">We're constantly working to provide the most comprehensive information about your favorite songs. Check back regularly for updates.</p>
+                            </div>
                         </div>
-                        <p class="text-gray-300 text-sm">We're constantly working to provide the most comprehensive information about your favorite songs. Check back regularly for updates.</p>
-                    </div>
-                </div>
-            `;
-            document.getElementById('additional-info').style.display = 'block';
-            
-            // Show all sections
-            document.getElementById('song-details-section').style.display = 'block';
+                    `;
+                    additionalInfoEl.style.display = 'block';
+                }
+                
+                // Show all sections
+                const detailsSection = document.getElementById('song-details-section');
+                if (detailsSection) {
+                    detailsSection.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error in loadDefaultDetails:', error);
+            }
         }
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', loadVideo);
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadVideo);
+        } else {
+            // DOM is already loaded
+            loadVideo();
+        }
     </script>
 
 </body>
