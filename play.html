@@ -557,7 +557,7 @@
                 artist: 'Teddy Swims',
                 artistInfo: 'Teddy Swims is an American singer-songwriter known for his soulful voice and genre-blending music. Combining elements of R&B, soul, pop, and rock, Swims has created a unique sound that resonates with audiences worldwide. His powerful vocals and heartfelt songwriting have made him one of the most exciting new artists in contemporary music.',
                 album: {
-                    name: 'I've Tried Everything But Therapy',
+                    name: 'I\'ve Tried Everything But Therapy',
                     releaseDate: 'September 15, 2023',
                     label: 'Warner Records',
                     format: 'Digital download, streaming, CD, vinyl',
@@ -1042,8 +1042,9 @@
                 const artistContentEl = document.getElementById('artist-content');
                 const artistInfoEl = document.getElementById('artist-info');
                 if (artistContentEl && artistInfoEl) {
+                    const safeArtist = (artist || '').replace(/'/g, "\\'");
                     artistContentEl.innerHTML = `
-                        <p class="text-gray-300 leading-relaxed">${artist} is a talented artist in the music industry. Known for their contributions to contemporary music, ${artist} continues to create impactful songs that resonate with audiences worldwide. More detailed information about this artist will be available soon.</p>
+                        <p class="text-gray-300 leading-relaxed">${safeArtist} is a talented artist in the music industry. Known for their contributions to contemporary music, ${safeArtist} continues to create impactful songs that resonate with audiences worldwide. More detailed information about this artist will be available soon.</p>
                     `;
                     artistInfoEl.style.display = 'block';
                 }
@@ -1052,9 +1053,10 @@
                 const albumContentEl = document.getElementById('album-content');
                 const albumInfoEl = document.getElementById('album-info');
                 if (albumContentEl && albumInfoEl) {
+                    const safeSongTitleForAlbum = (songTitle || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                     albumContentEl.innerHTML = `
                         <div class="space-y-3">
-                            <p class="text-gray-300 leading-relaxed">Album information for "${songTitle}" is currently being updated. Please check back soon for complete album details including release date, label, and track information.</p>
+                            <p class="text-gray-300 leading-relaxed">Album information for "${safeSongTitleForAlbum}" is currently being updated. Please check back soon for complete album details including release date, label, and track information.</p>
                             <p class="text-gray-400 text-sm italic">This information is continuously updated to provide you with the most accurate details.</p>
                         </div>
                     `;
@@ -1065,8 +1067,10 @@
                 const backgroundContentEl = document.getElementById('background-content');
                 const songBackgroundEl = document.getElementById('song-background');
                 if (backgroundContentEl && songBackgroundEl) {
+                    const safeSongTitle = (songTitle || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+                    const safeArtistForDisplay = (artist || '').replace(/'/g, "\\'");
                     backgroundContentEl.innerHTML = `
-                        <p class="text-gray-300 leading-relaxed">"${songTitle}" continues to resonate with audiences worldwide. This song showcases ${artist}'s musical artistry and has become a favorite among fans. Detailed background information about the song's creation, inspiration, and production will be added soon.</p>
+                        <p class="text-gray-300 leading-relaxed">"${safeSongTitle}" continues to resonate with audiences worldwide. This song showcases ${safeArtistForDisplay}'s musical artistry and has become a favorite among fans. Detailed background information about the song's creation, inspiration, and production will be added soon.</p>
                     `;
                     songBackgroundEl.style.display = 'block';
                 }
@@ -1075,8 +1079,9 @@
                 const achievementsContentEl = document.getElementById('achievements-content');
                 const achievementsInfoEl = document.getElementById('achievements-info');
                 if (achievementsContentEl && achievementsInfoEl) {
+                    const safeSongTitleForAchievements = (songTitle || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                     achievementsContentEl.innerHTML = `
-                        <p class="text-gray-300 leading-relaxed mb-4">"${songTitle}" has received significant recognition and continues to achieve success on various music platforms and charts.</p>
+                        <p class="text-gray-300 leading-relaxed mb-4">"${safeSongTitleForAchievements}" has received significant recognition and continues to achieve success on various music platforms and charts.</p>
                         <p class="text-gray-400 text-sm italic">Achievement information is being continuously updated. Check back soon for the latest awards, certifications, and chart positions.</p>
                     `;
                     achievementsInfoEl.style.display = 'block';
@@ -1086,6 +1091,7 @@
                 const additionalContentEl = document.getElementById('additional-content');
                 const additionalInfoEl = document.getElementById('additional-info');
                 if (additionalContentEl && additionalInfoEl) {
+                    const safeSongTitleForAdditional = (songTitle || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
                     additionalContentEl.innerHTML = `
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="frosted-glass p-4 rounded-lg">
@@ -1093,14 +1099,14 @@
                                     <i class="fas fa-info-circle text-cyan-400 mr-2"></i>
                                     <strong class="text-white">Song Information</strong>
                                 </div>
-                                <p class="text-gray-300 text-sm">Technical and production details about "${songTitle}" will be available soon. This includes information about songwriters, producers, genre, duration, and musical key.</p>
+                                <p class="text-gray-300 text-sm">Technical and production details about "${safeSongTitleForAdditional}" will be available soon. This includes information about songwriters, producers, genre, duration, and musical key.</p>
                             </div>
                             <div class="frosted-glass p-4 rounded-lg">
                                 <div class="flex items-center mb-2">
                                     <i class="fas fa-spinner text-blue-400 mr-2 animate-spin"></i>
                                     <strong class="text-white">Updating Soon</strong>
                                 </div>
-                                <p class="text-gray-300 text-sm">We're constantly working to provide the most comprehensive information about your favorite songs. Check back regularly for updates.</p>
+                                <p class="text-gray-300 text-sm">We are constantly working to provide the most comprehensive information about your favorite songs. Check back regularly for updates.</p>
                             </div>
                         </div>
                     `;
