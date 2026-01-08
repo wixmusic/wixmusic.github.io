@@ -681,14 +681,14 @@
         // Song to YouTube Video ID mapping - Updated with correct video IDs
         const songMap = {
             // English Top Hits - December 2026
-            // Note: Using real YouTube video IDs for popular songs. For 2026 songs that don't exist yet, using similar popular songs as placeholders.
-            'Opalite': { videoId: 'uHgt8giw1LY', artist: 'Taylor Swift' }, // Taylor Swift - Anti-Hero (Official Music Video)
-            'Man I Need': { videoId: 'eBGIQ7ZuuiU', artist: 'Olivia Dean' }, // Olivia Dean - Reason To Stay
+            // Note: Using real YouTube video IDs for popular songs.
+            'Opalite': { videoId: '3PJC6uPIekc', artist: 'Taylor Swift' }, // Taylor Swift - Opalite (Lyric Video)
+            'Man I Need': { videoId: 'oIv_Y2RPQ_A', artist: 'Olivia Dean' }, // Olivia Dean - Man I Need
             'All the Above': { videoId: 'E-6WIM_7v4s', artist: 'Maino, T-Pain' }, // Maino ft. T-Pain - All the Above
-            'TIT FOR TAT': { videoId: 'K7l5ZeVVoCA', artist: 'Tate McRae' }, // Tate McRae - greedy
-            'DAISIES': { videoId: 'qvUDc3wW5xs', artist: 'Justin Bieber' }, // Justin Bieber - Peaches ft. Daniel Caesar, Giveon
-            'Sally, When The Wine Runs Out': { videoId: 'rVeMiVU77wo', artist: 'ROLE MODEL' }, // ROLE MODEL - blind
-            'Music Sounds Better with You': { videoId: 'jjnmICxvoVY', artist: 'NEIL FRANCES' }, // NEIL FRANCES - Music Sounds Better with You
+            'TIT FOR TAT': { videoId: 'MoTZzh4eau0', artist: 'Tate McRae' }, // Tate McRae - TIT FOR TAT
+            'DAISIES': { videoId: 'msGuqelopMA', artist: 'Justin Bieber' }, // Justin Bieber - DAISIES (Audio)
+            'Sally, When The Wine Runs Out': { videoId: 'F1oKhsy8wGw', artist: 'ROLE MODEL' }, // ROLE MODEL - Sally, When The Wine Runs Out (Official Music Video)
+            'Music Sounds Better with You': { videoId: 'spDG0n80O0U', artist: 'NEIL FRANCES' }, // NEIL FRANCES - Music Sounds Better with You
             'Roses': { videoId: 'Pm8hK7XxT1g', artist: 'The Chainsmokers, ROZES' }, // The Chainsmokers - Roses ft. ROZES
             'My Way': { videoId: 'kuG88qQZV3Y', artist: 'Calvin Harris' }, // Calvin Harris - My Way
             'Wide Awake': { videoId: 'k0BWlvnBmIE', artist: 'Katy Perry' }, // Katy Perry - Wide Awake
@@ -714,37 +714,37 @@
             'we can\'t be friends (wait for your love)': { videoId: 'HVm76_HUXVU', artist: 'Ariana Grande' }, // Ariana Grande - we can't be friends (wait for your love)
             
             // Portuguese Top Hits - 2026
-            // Note: Using placeholder video IDs - Replace with actual YouTube video IDs when available
-            'Happy Day': { videoId: 'cPAbx5kgCJo', artist: 'Deejay Telio, Deedz B' },
-            'Teu Eternamente': { videoId: 'cPAbx5kgCJp', artist: 'Slow J' },
-            'Ano Novo': { videoId: 'cPAbx5kgCJq', artist: 'Jimmy P, Deejay Telio' },
-            'Como Eu': { videoId: 'cPAbx5kgCJr', artist: 'Bárbara Bandeira' },
-            'Sudamericana': { videoId: 'cPAbx5kgCJs', artist: 'Andra, Pachanga' },
-            'Eterno': { videoId: 'cPAbx5kgCJt', artist: 'Anjos' },
-            'Quem Me Dera': { videoId: 'cPAbx5kgCJu', artist: 'Mariza' },
-            'Vamos Fugir': { videoId: 'cPAbx5kgCJv', artist: 'Djodje, Cuca Roseta' },
-            'Voltas': { videoId: 'cPAbx5kgCJw', artist: 'Fernando Daniel' },
-            'Não Posso': { videoId: 'cPAbx5kgCJx', artist: 'Yasmine' },
-            'Já Não Sei': { videoId: 'cPAbx5kgCJy', artist: 'Badoxa, Yasmine' },
-            'Cuido de Você': { videoId: 'cPAbx5kgCJz', artist: 'David Carreira, Kell Smith' },
-            'O Teu Nome': { videoId: 'cPAbx5kgCJ0', artist: 'Miguel Gameiro, Mariza' },
-            'Paraíso': { videoId: 'cPAbx5kgCJ1', artist: 'Diogo Piçarra' },
-            'Longe': { videoId: 'cPAbx5kgCJ2', artist: 'Nuno Ribeiro' },
-            'És o Teu Primeiro Amor': { videoId: 'cPAbx5kgCJ3', artist: 'Yasmine, Josslyn' },
-            'És Só Tu': { videoId: 'cPAbx5kgCJ4', artist: 'David Carreira, Inês Herédia' },
-            'Não Tem Que Encantar': { videoId: 'cPAbx5kgCJ5', artist: 'Tó Semedo, Yasmine' },
-            'Nem Sequer Doeu': { videoId: 'cPAbx5kgCJ6', artist: 'Bárbara Bandeira' },
-            'Respirar': { videoId: 'cPAbx5kgCJ7', artist: 'Agir, Carolina Deslandes, Diogo Piçarra' },
-            'E Se Eu': { videoId: 'cPAbx5kgCJ8', artist: 'Bárbara Bandeira' },
-            'Pertam': { videoId: 'cPAbx5kgCJ9', artist: 'Josslyn' },
-            'NÓS2': { videoId: 'cPAbx5kgCJa', artist: 'Bispo, Deezy' },
-            'O Problema É Que Ela É Linda': { videoId: 'cPAbx5kgCJb', artist: 'David Carreira, Deejay Telio, MC Zuka' },
-            'Nada Mais': { videoId: 'cPAbx5kgCJc', artist: 'Fernando Daniel' },
-            'Agora Penso por Mim': { videoId: 'cPAbx5kgCJd', artist: 'Soraia Ramos' },
-            'A Última Carta': { videoId: 'cPAbx5kgCJe', artist: 'Bárbara Bandeira' },
-            'Meu Marido': { videoId: 'cPAbx5kgCJf', artist: 'Soraia Ramos' },
-            'Nasty': { videoId: 'cPAbx5kgCJg', artist: 'D.A.M.A' },
-            'Chora Agora': { videoId: 'cPAbx5kgCJh', artist: 'Deejay Telio' }
+            // Note: Updated with actual YouTube video IDs
+            'Happy Day': { videoId: 'mp1eAo110XU', artist: 'Deejay Telio, Deedz B' },
+            'Teu Eternamente': { videoId: '8RN-f3vZVRo', artist: 'Slow J' },
+            'Ano Novo': { videoId: '5Nb644rRKEM', artist: 'Jimmy P, Deejay Telio' },
+            'Como Eu': { videoId: '0Y31fczLM84', artist: 'Bárbara Bandeira' },
+            'Sudamericana': { videoId: '3iCbphY30qk', artist: 'Andra, Pachanga' },
+            'Eterno': { videoId: 'qxg0v7MMX94', artist: 'Anjos' },
+            'Quem Me Dera': { videoId: '-sze5rpbklM', artist: 'Mariza' },
+            'Vamos Fugir': { videoId: 'A9djtYq8hTs', artist: 'Djodje, Cuca Roseta' },
+            'Voltas': { videoId: 'jRsl54WqRNA', artist: 'Fernando Daniel' },
+            'Não Posso': { videoId: 'UuyGVEvJGd4', artist: 'Yasmine' },
+            'Já Não Sei': { videoId: 'Btxj7Kq27YM', artist: 'Badoxa, Yasmine' },
+            'Cuido de Você': { videoId: '3yffE17i8TQ', artist: 'David Carreira, Kell Smith' },
+            'O Teu Nome': { videoId: 'wi4wiJGqmM0', artist: 'Miguel Gameiro, Mariza' },
+            'Paraíso': { videoId: 'zZI4UjFqSZY', artist: 'Diogo Piçarra' },
+            'Longe': { videoId: '5CQ0ke5HpUE', artist: 'Nuno Ribeiro' },
+            'És o Teu Primeiro Amor': { videoId: 'goiheDnJIBY', artist: 'Yasmine, Josslyn' },
+            'És Só Tu': { videoId: 'a5mWm1fMsLU', artist: 'David Carreira, Inês Herédia' },
+            'Não Tem Que Encantar': { videoId: 'oLbLUlOeYpU', artist: 'Tó Semedo, Yasmine' },
+            'Nem Sequer Doeu': { videoId: 'XHIT4EBnN0Q', artist: 'Bárbara Bandeira' },
+            'Respirar': { videoId: 'kiEuz9Ja1tc', artist: 'Agir, Carolina Deslandes, Diogo Piçarra' },
+            'E Se Eu': { videoId: '7n_iTiTVPvQ', artist: 'Bárbara Bandeira' },
+            'Pertam': { videoId: 'ak1exnZZZrQ', artist: 'Josslyn' },
+            'NÓS2': { videoId: 'nWRAIqBX2PU', artist: 'Bispo, Deezy' },
+            'O Problema É Que Ela É Linda': { videoId: 's38xL0lJpUs', artist: 'David Carreira, Deejay Telio, MC Zuka' },
+            'Nada Mais': { videoId: 'fXVqvmpHFoQ', artist: 'Fernando Daniel' },
+            'Agora Penso por Mim': { videoId: 'YC579NWCoL8', artist: 'Soraia Ramos' },
+            'A Última Carta': { videoId: 'kN1OCzuSPgA', artist: 'Bárbara Bandeira' },
+            'Meu Marido': { videoId: 'LGxj_XKwgBI', artist: 'Soraia Ramos' },
+            'Nasty': { videoId: 'EsenQsIUstw', artist: 'D.A.M.A' },
+            'Chora Agora': { videoId: 'SGt23g25VoY', artist: 'Deejay Telio' }
         };
 
         // Get URL parameters
