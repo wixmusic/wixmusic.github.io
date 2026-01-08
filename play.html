@@ -76,7 +76,7 @@
 
             <!-- YouTube Video Player -->
             <div class="frosted-glass p-6 rounded-2xl mb-8">
-                <div class="video-container">
+                <div class="video-container" id="video-container">
                     <iframe 
                         id="youtube-player"
                         src=""
@@ -85,6 +85,15 @@
                         allowfullscreen
                         loading="lazy">
                     </iframe>
+                </div>
+                <!-- YouTube Search Fallback -->
+                <div id="search-container" class="hidden text-center py-8">
+                    <i class="fas fa-search text-4xl text-blue-400 mb-4"></i>
+                    <p class="text-gray-300 mb-4">Search YouTube for the video:</p>
+                    <a id="youtube-search-link" href="#" target="_blank" class="inline-block px-6 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold transition">
+                        <i class="fab fa-youtube mr-2"></i>Search on YouTube
+                    </a>
+                    <p class="text-gray-500 text-xs mt-4">Click the button above to find and play the correct video on YouTube</p>
                 </div>
             </div>
 
@@ -97,10 +106,10 @@
             </div>
 
             <!-- Error Message (hidden by default) -->
-            <div id="error-message" class="hidden p-6 rounded-xl bg-red-900/30 border border-red-500/50 text-center">
-                <i class="fas fa-exclamation-triangle text-3xl text-red-400 mb-3"></i>
-                <p class="text-red-400 font-semibold">Video not available</p>
-                <p class="text-gray-400 text-sm mt-2">The video for this song could not be loaded. Please try another song.</p>
+            <div id="error-message" class="hidden p-6 rounded-xl bg-blue-900/30 border border-blue-500/50 text-center">
+                <i class="fas fa-info-circle text-3xl text-blue-400 mb-3"></i>
+                <p class="text-blue-400 font-semibold mb-2">Video Search Required</p>
+                <p class="text-gray-400 text-sm mt-2">Use the YouTube search button above to find and play the video for this song.</p>
             </div>
 
         </div>
@@ -120,72 +129,9 @@
 
     <!-- JavaScript for Video Loading -->
     <script>
-        // Song to YouTube Video ID mapping
-        const songMap = {
-            // English Top Hits
-            'Opalite': { videoId: 'dQw4w9WgXcQ', artist: 'Taylor Swift' },
-            'Man I Need': { videoId: 'dQw4w9WgXcQ', artist: 'Olivia Dean' },
-            'All the Above': { videoId: 'dQw4w9WgXcQ', artist: 'Maino, T-Pain' },
-            'TIT FOR TAT': { videoId: 'dQw4w9WgXcQ', artist: 'Tate McRae' },
-            'DAISIES': { videoId: 'dQw4w9WgXcQ', artist: 'Justin Bieber' },
-            'Sally, When The Wine Runs Out': { videoId: 'dQw4w9WgXcQ', artist: 'ROLE MODEL' },
-            'Music Sounds Better with You': { videoId: 'dQw4w9WgXcQ', artist: 'NEIL FRANCES' },
-            'Roses': { videoId: 'dQw4w9WgXcQ', artist: 'The Chainsmokers, ROZES' },
-            'My Way': { videoId: 'dQw4w9WgXcQ', artist: 'Calvin Harris' },
-            'Wide Awake': { videoId: 'dQw4w9WgXcQ', artist: 'Katy Perry' },
-            'Thinking \'Bout You': { videoId: 'dQw4w9WgXcQ', artist: 'Dustin Lynch, MacKenzie Porter' },
-            'Stargazing': { videoId: 'dQw4w9WgXcQ', artist: 'Myles Smith' },
-            'Kids - Radio Mix [Edit]': { videoId: 'dQw4w9WgXcQ', artist: 'MGMT' },
-            'Used to Be in Love': { videoId: 'dQw4w9WgXcQ', artist: 'The Jungle Giants' },
-            'Amen': { videoId: 'dQw4w9WgXcQ', artist: 'Shaboozey, Jelly Roll' },
-            'I Had Some Help': { videoId: 'dQw4w9WgXcQ', artist: 'Post Malone, Morgan Wallen' },
-            'Leaveyourlove': { videoId: 'dQw4w9WgXcQ', artist: 'Parcels, Ximena Sariñana, Rawayana' },
-            'Whatever You Like': { videoId: 'dQw4w9WgXcQ', artist: 'T.I.' },
-            'misses': { videoId: 'dQw4w9WgXcQ', artist: 'Dominic Fike' },
-            'Illusion': { videoId: 'dQw4w9WgXcQ', artist: 'Dua Lipa' },
-            'The Tortured Poets Department': { videoId: 'dQw4w9WgXcQ', artist: 'Taylor Swift' },
-            'A Bar Song (Tipsy)': { videoId: 'dQw4w9WgXcQ', artist: 'Shaboozey' },
-            'MILLION DOLLAR BABY': { videoId: 'dQw4w9WgXcQ', artist: 'Tommy Richman' },
-            'Lose Control': { videoId: 'dQw4w9WgXcQ', artist: 'Teddy Swims' },
-            'Winterbreak - Tiësto\'s Deep House Remix': { videoId: 'dQw4w9WgXcQ', artist: 'MUNA, Tiësto' },
-            'This Is What You Came For': { videoId: 'dQw4w9WgXcQ', artist: 'Calvin Harris, Rihanna' },
-            'Dance The Night - From Barbie The Album': { videoId: 'dQw4w9WgXcQ', artist: 'Dua Lipa' },
-            'Where the Wild Things Are': { videoId: 'dQw4w9WgXcQ', artist: 'Luke Combs' },
-            'Run This Town': { videoId: 'dQw4w9WgXcQ', artist: 'JAY-Z, Rihanna, Kanye West' },
-            'we can\'t be friends (wait for your love)': { videoId: 'dQw4w9WgXcQ', artist: 'Ariana Grande' },
-            
-            // Portuguese Top Hits
-            'Happy Day': { videoId: 'dQw4w9WgXcQ', artist: 'Deejay Telio, Deedz B' },
-            'Teu Eternamente': { videoId: 'dQw4w9WgXcQ', artist: 'Slow J' },
-            'Ano Novo': { videoId: 'dQw4w9WgXcQ', artist: 'Jimmy P, Deejay Telio' },
-            'Como Eu': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
-            'Sudamericana': { videoId: 'dQw4w9WgXcQ', artist: 'Andra, Pachanga' },
-            'Eterno': { videoId: 'dQw4w9WgXcQ', artist: 'Anjos' },
-            'Quem Me Dera': { videoId: 'dQw4w9WgXcQ', artist: 'Mariza' },
-            'Vamos Fugir': { videoId: 'dQw4w9WgXcQ', artist: 'Djodje, Cuca Roseta' },
-            'Voltas': { videoId: 'dQw4w9WgXcQ', artist: 'Fernando Daniel' },
-            'Não Posso': { videoId: 'dQw4w9WgXcQ', artist: 'Yasmine' },
-            'Já Não Sei': { videoId: 'dQw4w9WgXcQ', artist: 'Badoxa, Yasmine' },
-            'Cuido de Você': { videoId: 'dQw4w9WgXcQ', artist: 'David Carreira, Kell Smith' },
-            'O Teu Nome': { videoId: 'dQw4w9WgXcQ', artist: 'Miguel Gameiro, Mariza' },
-            'Paraíso': { videoId: 'dQw4w9WgXcQ', artist: 'Diogo Piçarra' },
-            'Longe': { videoId: 'dQw4w9WgXcQ', artist: 'Nuno Ribeiro' },
-            'És o Teu Primeiro Amor': { videoId: 'dQw4w9WgXcQ', artist: 'Yasmine, Josslyn' },
-            'És Só Tu': { videoId: 'dQw4w9WgXcQ', artist: 'David Carreira, Inês Herédia' },
-            'Não Tem Que Encantar': { videoId: 'dQw4w9WgXcQ', artist: 'Tó Semedo, Yasmine' },
-            'Nem Sequer Doeu': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
-            'Respirar': { videoId: 'dQw4w9WgXcQ', artist: 'Agir, Carolina Deslandes, Diogo Piçarra' },
-            'E Se Eu': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
-            'Pertam': { videoId: 'dQw4w9WgXcQ', artist: 'Josslyn' },
-            'NÓS2': { videoId: 'dQw4w9WgXcQ', artist: 'Bispo, Deezy' },
-            'O Problema É Que Ela É Linda': { videoId: 'dQw4w9WgXcQ', artist: 'David Carreira, Deejay Telio, MC Zuka' },
-            'Nada Mais': { videoId: 'dQw4w9WgXcQ', artist: 'Fernando Daniel' },
-            'Agora Penso por Mim': { videoId: 'dQw4w9WgXcQ', artist: 'Soraia Ramos' },
-            'A Última Carta': { videoId: 'dQw4w9WgXcQ', artist: 'Bárbara Bandeira' },
-            'Meu Marido': { videoId: 'dQw4w9WgXcQ', artist: 'Soraia Ramos' },
-            'Nasty': { videoId: 'dQw4w9WgXcQ', artist: 'D.A.M.A' },
-            'Chora Agora': { videoId: 'dQw4w9WgXcQ', artist: 'Deejay Telio' }
-        };
+        // Note: YouTube doesn't allow direct embedding of search results.
+        // We'll provide a search link that opens YouTube in a new tab
+        // Users can then select and play the correct video from search results.
 
         // Get URL parameters
         function getUrlParams() {
@@ -209,8 +155,8 @@
             return title.trim().replace(/\s+/g, ' ');
         }
 
-        // Load video
-        function loadVideo() {
+        // Load video using YouTube search
+        async function loadVideo() {
             const params = getUrlParams();
             // Decode URL parameters and normalize
             let songTitle = params.song ? decodeURIComponent(params.song) : '';
@@ -230,55 +176,34 @@
                 document.getElementById('rank-number').textContent = '#' + rank;
             }
 
-            // Get video ID from mapping
-            let videoId = null;
-            let matchedKey = null;
-            
             if (!songTitle) {
                 console.error('No song title provided');
-                document.getElementById('youtube-player').style.display = 'none';
+                document.getElementById('video-container').style.display = 'none';
                 document.getElementById('error-message').classList.remove('hidden');
                 return;
             }
 
-            // Try exact match first
-            if (songMap[songTitle]) {
-                videoId = songMap[songTitle].videoId;
-                matchedKey = songTitle;
-                console.log('✓ Exact match found:', songTitle, '->', videoId);
-            } else {
-                // Try case-insensitive and normalized match
-                const songTitleLower = songTitle.toLowerCase();
-                for (const key in songMap) {
-                    const normalizedKey = normalizeTitle(key);
-                    if (normalizedKey.toLowerCase() === songTitleLower) {
-                        videoId = songMap[key].videoId;
-                        matchedKey = key;
-                        console.log('✓ Case-insensitive match found:', key, '->', videoId, 'for input:', songTitle);
-                        break;
-                    }
-                }
-            }
+            // Build search query - optimized for finding official music videos
+            const searchQuery = `${songTitle} ${artist || ''} official`.trim();
+            const encodedQuery = encodeURIComponent(searchQuery);
+            const searchUrl = `https://www.youtube.com/results?search_query=${encodedQuery}`;
 
-            // Load video if found
-            if (videoId) {
-                const iframe = document.getElementById('youtube-player');
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-                document.getElementById('error-message').classList.add('hidden');
-                document.getElementById('youtube-player').style.display = 'block';
-                console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
-            } else {
-                // Show error with YouTube search link
-                const searchQuery = encodeURIComponent(songTitle + (artist ? ' ' + artist : ''));
-                document.getElementById('youtube-player').style.display = 'none';
-                document.getElementById('error-message').classList.remove('hidden');
-                const errorMsg = document.querySelector('#error-message p:last-child');
-                if (errorMsg) {
-                    errorMsg.innerHTML = `The video for "${songTitle}" could not be found in our database. <a href="https://www.youtube.com/results?search_query=${searchQuery}" target="_blank" class="text-blue-400 hover:underline">Search on YouTube</a>`;
-                }
-                console.error('✗ Song not found in map:', songTitle);
-                console.log('Available songs in map:', Object.keys(songMap).slice(0, 10), '...');
-            }
+            // Hide the YouTube iframe (since we don't have a specific video ID)
+            const iframe = document.getElementById('youtube-player');
+            iframe.style.display = 'none';
+            
+            // Show the search container
+            const searchContainer = document.getElementById('search-container');
+            const youtubeSearchLink = document.getElementById('youtube-search-link');
+            
+            searchContainer.classList.remove('hidden');
+            youtubeSearchLink.href = searchUrl;
+            youtubeSearchLink.innerHTML = `<i class="fab fa-youtube mr-2"></i>Search "${songTitle}"${artist ? ' by ' + artist : ''} on YouTube`;
+            
+            // Show info message
+            document.getElementById('error-message').classList.remove('hidden');
+            
+            console.log('YouTube search URL:', searchUrl);
         }
 
         // Initialize on page load
