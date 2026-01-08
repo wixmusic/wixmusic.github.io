@@ -43,6 +43,28 @@
             height: 100%;
             border-radius: 1rem;
         }
+        .lyrics-text {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            max-height: 600px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+        .lyrics-text::-webkit-scrollbar {
+            width: 8px;
+        }
+        .lyrics-text::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+        .lyrics-text::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+        .lyrics-text::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -143,6 +165,19 @@
                     </h2>
                     <div id="background-content" class="text-gray-300 leading-relaxed">
                         <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Lyrics Section -->
+                <div id="lyrics-info" class="frosted-glass p-6 rounded-2xl" style="display: none;">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-music text-pink-400 mr-3"></i>Lyrics
+                    </h2>
+                    <div id="lyrics-content" class="text-gray-300 leading-relaxed whitespace-pre-line">
+                        <div class="flex justify-center items-center py-8">
+                            <i class="fas fa-spinner fa-spin text-blue-400 text-2xl mr-3"></i>
+                            <span class="text-gray-400">Loading lyrics...</span>
+                        </div>
                     </div>
                 </div>
 
@@ -846,8 +881,9 @@
                     if (errorMessage) errorMessage.classList.add('hidden');
                 console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
                     
-                    // Load song details
+                    // Load song details and lyrics
                     loadSongDetails(songTitle, matchedKey, artist);
+                    loadLyrics(songTitle, artist);
                 } else {
                     // Show error message
                     const youtubePlayer = document.getElementById('youtube-player');
@@ -1035,6 +1071,127 @@
             }
         }
 
+        // Load lyrics from API
+        async function loadLyrics(songTitle, artist) {
+            try {
+                const lyricsContentEl = document.getElementById('lyrics-content');
+                const lyricsInfoEl = document.getElementById('lyrics-info');
+                
+                if (!lyricsContentEl || !lyricsInfoEl) {
+                    console.warn('Lyrics elements not found');
+                    return;
+                }
+
+                // Show loading state
+                lyricsInfoEl.style.display = 'block';
+                lyricsContentEl.innerHTML = `
+                    <div class="flex justify-center items-center py-8">
+                        <i class="fas fa-spinner fa-spin text-blue-400 text-2xl mr-3"></i>
+                        <span class="text-gray-400">Loading lyrics...</span>
+                    </div>
+                `;
+
+                // Try lrclib.net API first
+                let lyrics = null;
+                const searchQuery = `${songTitle} ${artist}`.trim();
+                
+                try {
+                    // LRCLIB API: Search for lyrics
+                    const searchUrl = `https://lrclib.net/api/search?q=${encodeURIComponent(searchQuery)}`;
+                    const searchResponse = await fetch(searchUrl);
+                    
+                    if (searchResponse.ok) {
+                        const searchData = await searchResponse.json();
+                        
+                        if (searchData && searchData.length > 0) {
+                            // Get the first result
+                            const track = searchData[0];
+                            const trackId = track.id;
+                            
+                            // Fetch lyrics by track ID
+                            const lyricsUrl = `https://lrclib.net/api/get?id=${trackId}`;
+                            const lyricsResponse = await fetch(lyricsUrl);
+                            
+                            if (lyricsResponse.ok) {
+                                const lyricsData = await lyricsResponse.json();
+                                if (lyricsData && lyricsData.syncedLyrics) {
+                                    // Format synced lyrics (LRC format)
+                                    lyrics = formatLRC(lyricsData.syncedLyrics);
+                                } else if (lyricsData && lyricsData.plainLyrics) {
+                                    lyrics = lyricsData.plainLyrics;
+                                }
+                            }
+                        }
+                    }
+                } catch (lrclibError) {
+                    console.log('LRCLIB API failed, trying alternative sources:', lrclibError);
+                }
+
+                // If LRCLIB failed, try alternative: Lyrics.ovh API
+                if (!lyrics) {
+                    try {
+                        const lyricsOvhUrl = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(songTitle)}`;
+                        const ovhResponse = await fetch(lyricsOvhUrl);
+                        
+                        if (ovhResponse.ok) {
+                            const ovhData = await ovhResponse.json();
+                            if (ovhData && ovhData.lyrics) {
+                                lyrics = ovhData.lyrics.trim();
+                            }
+                        }
+                    } catch (ovhError) {
+                        console.log('Lyrics.ovh API failed:', ovhError);
+                    }
+                }
+
+                // Display lyrics or show error message
+                if (lyrics) {
+                    lyricsContentEl.innerHTML = `<div class="lyrics-text">${escapeHtml(lyrics)}</div>`;
+                } else {
+                    lyricsContentEl.innerHTML = `
+                        <div class="text-center py-8">
+                            <i class="fas fa-music text-gray-500 text-3xl mb-3"></i>
+                            <p class="text-gray-400">Lyrics not available for this song.</p>
+                            <p class="text-gray-500 text-sm mt-2">We're working to add more lyrics content.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading lyrics:', error);
+                const lyricsContentEl = document.getElementById('lyrics-content');
+                if (lyricsContentEl) {
+                    lyricsContentEl.innerHTML = `
+                        <div class="text-center py-8">
+                            <i class="fas fa-exclamation-triangle text-yellow-500 text-3xl mb-3"></i>
+                            <p class="text-gray-400">Unable to load lyrics at this time.</p>
+                            <p class="text-gray-500 text-sm mt-2">Please try again later.</p>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        // Format LRC (synchronized lyrics) format
+        function formatLRC(lrcText) {
+            if (!lrcText) return '';
+            
+            // Split by lines and remove time tags for display
+            const lines = lrcText.split('\n');
+            const formattedLines = lines.map(line => {
+                // Remove LRC time tags like [00:12.34]
+                return line.replace(/\[\d{2}:\d{2}\.\d{2}\]/g, '').trim();
+            }).filter(line => line.length > 0);
+            
+            return formattedLines.join('\n');
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // Load default details for songs without specific data
         function loadDefaultDetails(songTitle, artist) {
             try {
@@ -1118,6 +1275,9 @@
                 if (detailsSection) {
                     detailsSection.style.display = 'block';
                 }
+                
+                // Also try to load lyrics for songs without detailed data
+                loadLyrics(songTitle, artist);
             } catch (error) {
                 console.error('Error in loadDefaultDetails:', error);
             }
