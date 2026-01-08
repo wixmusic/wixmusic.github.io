@@ -87,16 +87,26 @@
   <lastmod>2026-01-05T00:00:00+00:00</lastmod>
   <priority>0.75</priority>
 </url>
-<url>
-  <loc>https://www.offline-music.com/blog/how-to-create-smart-playlist.html</loc>
-  <lastmod>2026-01-05T00:00:00+00:00</lastmod>
-  <priority>0.75</priority>
-</url>
-<url>
-  <loc>https://www.offline-music.com/music/top-hits-december-2026.html</loc>
-  <lastmod>2026-01-05T00:00:00+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
+  <url>
+    <loc>https://www.offline-music.com/blog/how-to-create-smart-playlist.html</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://www.offline-music.com/blog/ios-offline-music-players-comparison.html</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.offline-music.com/blog/offline-player-vs-snaptube-alternatives.html</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://www.offline-music.com/music/top-hits-december-2026.html</loc>
+    <lastmod>2026-01-05T00:00:00+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
 <url>
   <loc>https://www.offline-music.com/music/portuguese-top-hits-2026.html</loc>
   <lastmod>2026-01-05T00:00:00+00:00</lastmod>
