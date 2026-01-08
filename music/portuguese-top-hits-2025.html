@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portuguese Music 2026 - Top Portuguese Songs | Offline Player</title>
+    <meta name="description" content="Discover the top Portuguese songs of 2026. Stream and download the hottest Portuguese tracks with Offline Player.">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117;
+            color: #e5e7eb;
+        }
+        .text-accent {
+            color: var(--accent-color);
+        }
+        .frosted-glass {
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .rank-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .rank-1 { background: linear-gradient(135deg, #FFD700, #FFA500); color: #0d1117; }
+        .rank-2 { background: linear-gradient(135deg, #C0C0C0, #808080); color: #0d1117; }
+        .rank-3 { background: linear-gradient(135deg, #CD7F32, #8B4513); color: #fff; }
+        .rank-other { background: rgba(59, 130, 246, 0.2); color: #e5e7eb; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .song-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .song-card:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+        .song-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .song-details.active {
+            max-height: 500px;
+            transition: max-height 0.3s ease-in;
+        }
+        .comment {
+            border-left: 3px solid rgba(34, 197, 94, 0.5);
+            padding-left: 12px;
+            margin-left: 12px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="../index.html#features" class="text-gray-300 hover:text-white transition">Features</a>
+                <a href="../index.html#tutorials" class="text-gray-300 hover:text-white transition">Tutorials</a>
+                <a href="../index.html#charts" class="text-gray-300 hover:text-white transition">Charts</a>
+                <a href="../blog/news.html" class="text-gray-300 hover:text-white transition">Blog</a>
+            </nav>
+            <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-12 md:pt-32 md:pb-16 overflow-hidden bg-gradient-to-b from-green-900/20 to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-6">
+                <span class="inline-block px-4 py-2 rounded-full bg-green-600/30 text-green-400 text-sm font-semibold mb-4">
+                    <i class="fas fa-globe mr-2"></i>Portuguese Music 2026
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                Top Portuguese <span class="text-accent">Songs</span>
+            </h1>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                Discover the hottest Portuguese tracks of 2026. Stream these top hits with Offline Player for uninterrupted playback.
+            </p>
+            <div class="flex items-center justify-center space-x-6 text-sm text-gray-500">
+                <span><i class="fas fa-music mr-2"></i>30 Tracks</span>
+                <span><i class="fas fa-headphones mr-2"></i>1,580+ Saves</span>
+                <span><i class="fas fa-language mr-2"></i>Portuguese</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Introduction & Analysis -->
+    <section class="py-12 bg-gray-900/50 border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Background & Trends -->
+                <div class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-chart-bar text-green-400 mr-3"></i>Chart Background
+                    </h2>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Portuguese music continues to captivate global audiences in 2026. The chart features a vibrant mix of Afrobeat influences, traditional Portuguese sounds, and modern pop elements. Deejay Telio leads with multiple chart entries, showcasing the genre's evolution and international appeal.
+                    </p>
+                    <div class="bg-green-900/30 p-4 rounded-lg border border-green-500/30 mt-4">
+                        <p class="text-sm text-green-200"><strong class="text-white">Trending Genres:</strong> Afrobeat (38%), Pop Português (32%), Hip-Hop (20%), Electronic (10%)</p>
+                    </div>
+                </div>
+
+                <!-- Top Artists Highlight -->
+                <div class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-star text-yellow-400 mr-3"></i>Featured Artists
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-gray-900 font-bold">DT</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Deejay Telio</h3>
+                                <p class="text-gray-400 text-sm">Chart leader with #1 "Happy Day" and multiple top 10 entries</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-bold">SJ</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Slow J</h3>
+                                <p class="text-gray-400 text-sm">Rising star with "Teu Eternamente" at #2</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center text-white font-bold">JP</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Jimmy P</h3>
+                                <p class="text-gray-400 text-sm">Strong presence with "Ano Novo" collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 3 Highlight -->
+    <section class="py-12 bg-gray-900/50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-8 text-center">Top 3 This Month</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- #1 -->
+                <div class="frosted-glass p-6 rounded-2xl border-2 border-yellow-500/50 transform hover:scale-105 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="rank-badge rank-1 mr-4">1</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white">Happy Day</h3>
+                            <p class="text-gray-400">Deejay Telio, Deedz B</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">Uma faixa energética que combina Afrobeat e Pop Português. Deejay Telio e Deedz B criam um hino celebratório perfeito para qualquer ocasião, com batidas cativantes e vocais contagiantes.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-yellow-400 font-semibold text-xs">FãPortugal</span>
+                                <span class="text-gray-500 text-xs ml-2">3 horas atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Esta música é incrível! 🎵 Deejay Telio nunca desaponta. As batidas são viciantes e perfeitas para dançar!</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-yellow-400 font-semibold text-xs">MúsicaPortuguesa</span>
+                                <span class="text-gray-500 text-xs ml-2">1 dia atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">O collab com Deedz B é perfeito! Merece o primeiro lugar. A música portuguesa está no seu melhor! 🇵🇹</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-yellow-400 text-sm font-semibold"><i class="fas fa-crown mr-1"></i>#1 Hit</span>
+                        <a href="../play.html?song=Happy Day&artist=Deejay Telio, Deedz B&rank=1" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
+                    </div>
+                </div>
+
+                <!-- #2 -->
+                <div class="frosted-glass p-6 rounded-2xl border-2 border-gray-400/50 transform hover:scale-105 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="rank-badge rank-2 mr-4">2</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white">Teu Eternamente</h3>
+                            <p class="text-gray-400">Slow J</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">Slow J demonstra sua versatilidade nesta balada romântica. "Teu Eternamente" combina hip-hop sensível com elementos de R&B, criando uma experiência emocional profunda.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-blue-400 font-semibold text-xs">FãSlowJ</span>
+                                <span class="text-gray-500 text-xs ml-2">6 horas atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Slow J está em outro nível! Esta música é linda e emocionante. As letras são poéticas demais! ❤️</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-blue-400 font-semibold text-xs">HipHopPT</span>
+                                <span class="text-gray-500 text-xs ml-2">2 dias atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">A produção é impecável e a voz do Slow J é única. Este é o hip-hop português no seu melhor!</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-gray-400 text-sm font-semibold"><i class="fas fa-medal mr-1"></i>#2</span>
+                        <a href="../play.html?song=Teu Eternamente&artist=Slow J&rank=2" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
+                    </div>
+                </div>
+
+                <!-- #3 -->
+                <div class="frosted-glass p-6 rounded-2xl border-2 border-orange-600/50 transform hover:scale-105 transition">
+                    <div class="flex items-center mb-4">
+                        <div class="rank-badge rank-3 mr-4">3</div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white">Ano Novo</h3>
+                            <p class="text-gray-400">Jimmy P, Deejay Telio</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">Uma colaboração perfeita entre dois grandes nomes da música portuguesa. "Ano Novo" celebra novos começos com energia contagiante, misturando pop e elementos eletrônicos.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-orange-400 font-semibold text-xs">FãJimmyP</span>
+                                <span class="text-gray-500 text-xs ml-2">12 horas atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Jimmy P e Deejay Telio juntos são 🔥! Esta música é perfeita para celebrar! O collab é incrível!</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-orange-400 font-semibold text-xs">Música2026</span>
+                                <span class="text-gray-500 text-xs ml-2">1 dia atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">A música perfeita para começar o ano! As batidas são viciantes e a letra é inspiradora! 🎉</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-orange-400 text-sm font-semibold"><i class="fas fa-medal mr-1"></i>#3</span>
+                        <a href="../play.html?song=Ano Novo&artist=Jimmy P, Deejay Telio&rank=3" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Chart List -->
+    <section class="py-16 md:py-24">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-white">Complete Chart</h2>
+                <div class="flex items-center space-x-4">
+                    <button class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-sm transition">
+                        <i class="fas fa-filter mr-2"></i>Filter
+                    </button>
+                    <button class="px-4 py-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-white text-sm transition">
+                        <i class="fas fa-sort mr-2"></i>Sort
+                    </button>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <!-- Chart Items -->
+                <div class="song-card frosted-glass p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="rank-badge rank-other">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-white">Como Eu</h3>
+                            <p class="text-gray-400 text-sm">Bárbara Bandeira</p>
+                        </div>
+                        <button onclick="toggleDetails('song4')" class="px-3 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 text-sm transition">
+                            <i class="fas fa-info-circle mr-2"></i>Details
+                        </button>
+                        <a href="../play.html?song=Como Eu&artist=Bárbara Bandeira&rank=4" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
+                    </div>
+                    <div id="song4" class="song-details mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-gray-300 text-sm mb-3">Bárbara Bandeira apresenta uma balada pop emocional com vocais poderosos. "Como Eu" explora temas de identidade e autenticidade, ressoando com ouvintes que buscam representação na música portuguesa.</p>
+                        <div class="space-y-3">
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-green-400 font-semibold text-sm">FãBárbara</span>
+                                    <span class="text-gray-500 text-xs ml-3">3 dias atrás</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">Bárbara Bandeira é uma voz única na música portuguesa! Esta música é emocionante e as letras são tão poderosas! ❤️</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">5</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Sudamericana</h3>
+                        <p class="text-gray-400 text-sm">Andra, Pachanga</p>
+                    </div>
+                    <a href="../play.html?song=Sudamericana&artist=Andra, Pachanga&rank=5" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">6</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Eterno</h3>
+                        <p class="text-gray-400 text-sm">Anjos</p>
+                    </div>
+                    <a href="../play.html?song=Eterno&artist=Anjos&rank=6" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">7</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Quem Me Dera</h3>
+                        <p class="text-gray-400 text-sm">Mariza</p>
+                    </div>
+                    <a href="../play.html?song=Quem Me Dera&artist=Mariza&rank=7" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">8</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Vamos Fugir</h3>
+                        <p class="text-gray-400 text-sm">Djodje, Cuca Roseta</p>
+                    </div>
+                    <a href="../play.html?song=Vamos Fugir&artist=Djodje, Cuca Roseta&rank=8" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">9</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Voltas</h3>
+                        <p class="text-gray-400 text-sm">Fernando Daniel</p>
+                    </div>
+                    <a href="../play.html?song=Voltas&artist=Fernando Daniel&rank=9" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">10</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Não Posso</h3>
+                        <p class="text-gray-400 text-sm">Yasmine</p>
+                    </div>
+                    <a href="../play.html?song=Não Posso&artist=Yasmine&rank=10" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">11</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Já Não Sei</h3>
+                        <p class="text-gray-400 text-sm">Badoxa, Yasmine</p>
+                    </div>
+                    <a href="../play.html?song=Já Não Sei&artist=Badoxa, Yasmine&rank=11" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">12</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Cuido de Você</h3>
+                        <p class="text-gray-400 text-sm">David Carreira, Kell Smith</p>
+                    </div>
+                    <a href="../play.html?song=Cuido de Você&artist=David Carreira, Kell Smith&rank=12" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">13</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">O Teu Nome</h3>
+                        <p class="text-gray-400 text-sm">Miguel Gameiro, Mariza</p>
+                    </div>
+                    <a href="../play.html?song=O Teu Nome&artist=Miguel Gameiro, Mariza&rank=13" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">14</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Paraíso</h3>
+                        <p class="text-gray-400 text-sm">Diogo Piçarra</p>
+                    </div>
+                    <a href="../play.html?song=Paraíso&artist=Diogo Piçarra&rank=14" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">15</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Longe</h3>
+                        <p class="text-gray-400 text-sm">Nuno Ribeiro</p>
+                    </div>
+                    <a href="../play.html?song=Longe&artist=Nuno Ribeiro&rank=15" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">16</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">És o Teu Primeiro Amor</h3>
+                        <p class="text-gray-400 text-sm">Yasmine, Josslyn</p>
+                    </div>
+                    <a href="../play.html?song=És o Teu Primeiro Amor&artist=Yasmine, Josslyn&rank=16" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">17</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">És Só Tu</h3>
+                        <p class="text-gray-400 text-sm">David Carreira, Inês Herédia</p>
+                    </div>
+                    <a href="../play.html?song=És Só Tu&artist=David Carreira, Inês Herédia&rank=17" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">18</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Não Tem Que Encantar</h3>
+                        <p class="text-gray-400 text-sm">Tó Semedo, Yasmine</p>
+                    </div>
+                    <a href="../play.html?song=Não Tem Que Encantar&artist=Tó Semedo, Yasmine&rank=18" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">19</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Nem Sequer Doeu</h3>
+                        <p class="text-gray-400 text-sm">Bárbara Bandeira</p>
+                    </div>
+                    <a href="../play.html?song=Nem Sequer Doeu&artist=Bárbara Bandeira&rank=19" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">20</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Respirar</h3>
+                        <p class="text-gray-400 text-sm">Agir, Carolina Deslandes, Diogo Piçarra</p>
+                    </div>
+                    <a href="../play.html?song=Respirar&artist=Agir, Carolina Deslandes, Diogo Piçarra&rank=20" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">21</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">E Se Eu</h3>
+                        <p class="text-gray-400 text-sm">Bárbara Bandeira</p>
+                    </div>
+                    <a href="../play.html?song=E Se Eu&artist=Bárbara Bandeira&rank=21" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">22</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Pertam</h3>
+                        <p class="text-gray-400 text-sm">Josslyn</p>
+                    </div>
+                    <a href="../play.html?song=Pertam&artist=Josslyn&rank=22" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">23</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">NÓS2</h3>
+                        <p class="text-gray-400 text-sm">Bispo, Deezy</p>
+                    </div>
+                    <a href="../play.html?song=NÓS2&artist=Bispo, Deezy&rank=23" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">24</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">O Problema É Que Ela É Linda</h3>
+                        <p class="text-gray-400 text-sm">David Carreira, Deejay Telio, MC Zuka</p>
+                    </div>
+                    <a href="../play.html?song=O Problema É Que Ela É Linda&artist=David Carreira, Deejay Telio, MC Zuka&rank=24" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">25</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Nada Mais</h3>
+                        <p class="text-gray-400 text-sm">Fernando Daniel</p>
+                    </div>
+                    <a href="../play.html?song=Nada Mais&artist=Fernando Daniel&rank=25" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">26</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Agora Penso por Mim</h3>
+                        <p class="text-gray-400 text-sm">Soraia Ramos</p>
+                    </div>
+                    <a href="../play.html?song=Agora Penso por Mim&artist=Soraia Ramos&rank=26" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">27</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">A Última Carta</h3>
+                        <p class="text-gray-400 text-sm">Bárbara Bandeira</p>
+                    </div>
+                    <a href="../play.html?song=A Última Carta&artist=Bárbara Bandeira&rank=27" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">28</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Meu Marido</h3>
+                        <p class="text-gray-400 text-sm">Soraia Ramos</p>
+                    </div>
+                    <a href="../play.html?song=Meu Marido&artist=Soraia Ramos&rank=28" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">29</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Nasty</h3>
+                        <p class="text-gray-400 text-sm">D.A.M.A</p>
+                    </div>
+                    <a href="../play.html?song=Nasty&artist=D.A.M.A&rank=29" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+
+                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
+                    <div class="rank-badge rank-other">30</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold text-white">Chora Agora</h3>
+                        <p class="text-gray-400 text-sm">Deejay Telio</p>
+                    </div>
+                    <a href="../play.html?song=Chora Agora&artist=Deejay Telio&rank=30" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                        <i class="fas fa-play mr-2"></i>Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 md:py-20 bg-gradient-to-r from-green-900/30 to-blue-900/30 border-t border-gray-700">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Stream Portuguese Hits Offline</h2>
+            <p class="text-xl text-gray-400 mb-8">
+                Download Offline Player to enjoy these top Portuguese songs anytime, anywhere - even without internet connection.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="../index.html#download" class="px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg transition shadow-lg">
+                    <i class="fab fa-apple mr-2"></i>Download on App Store
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Links -->
+    <section class="py-12 bg-gray-900/50 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-6 text-center">Explore More</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="top-hits-december-2026.html" class="p-5 rounded-xl bg-gray-800 border border-gray-700 hover:border-blue-500 transition">
+                    <i class="fas fa-chart-line text-3xl text-blue-400 mb-3"></i>
+                    <h3 class="text-lg font-semibold text-white mb-2">Top Hits - December 2026</h3>
+                    <p class="text-sm text-gray-400">Check out the English music charts</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2026 Offline Player. All rights reserved.</p>
+            <p class="mt-2 text-xs text-gray-600">Chart data sourced from <a href="https://open.spotify.com/playlist/7sKSwkokJvWgmDMmFg7UXF" target="_blank" class="text-blue-400 hover:underline">Spotify</a></p>
+            <div class="mt-4 space-x-4">
+                <a href="../index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="../index.html#charts" class="hover:text-yellow-400 transition">Charts</a>
+                <a href="../blog/news.html" class="hover:text-yellow-400 transition">Blog</a>
+                <a href="../legal/privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleDetails(songId) {
+            const details = document.getElementById(songId);
+            if (details) {
+                details.classList.toggle('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
+
