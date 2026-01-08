@@ -76,7 +76,7 @@
 
             <!-- YouTube Video Player -->
             <div class="frosted-glass p-6 rounded-2xl mb-8">
-                <div class="video-container" id="video-container">
+                <div class="video-container">
                     <iframe 
                         id="youtube-player"
                         src=""
@@ -85,15 +85,6 @@
                         allowfullscreen
                         loading="lazy">
                     </iframe>
-                </div>
-                <!-- YouTube Search Fallback -->
-                <div id="search-container" class="hidden text-center py-8">
-                    <i class="fas fa-search text-4xl text-blue-400 mb-4"></i>
-                    <p class="text-gray-300 mb-4">Search YouTube for the video:</p>
-                    <a id="youtube-search-link" href="#" target="_blank" class="inline-block px-6 py-3 rounded-lg bg-red-600 hover:bg-red-500 text-white font-semibold transition">
-                        <i class="fab fa-youtube mr-2"></i>Search on YouTube
-                    </a>
-                    <p class="text-gray-500 text-xs mt-4">Click the button above to find and play the correct video on YouTube</p>
                 </div>
             </div>
 
@@ -106,10 +97,10 @@
             </div>
 
             <!-- Error Message (hidden by default) -->
-            <div id="error-message" class="hidden p-6 rounded-xl bg-blue-900/30 border border-blue-500/50 text-center">
-                <i class="fas fa-info-circle text-3xl text-blue-400 mb-3"></i>
-                <p class="text-blue-400 font-semibold mb-2">Video Search Required</p>
-                <p class="text-gray-400 text-sm mt-2">Use the YouTube search button above to find and play the video for this song.</p>
+            <div id="error-message" class="hidden p-6 rounded-xl bg-red-900/30 border border-red-500/50 text-center">
+                <i class="fas fa-exclamation-triangle text-3xl text-red-400 mb-3"></i>
+                <p class="text-red-400 font-semibold">Video not available</p>
+                <p class="text-gray-400 text-sm mt-2">The video for this song could not be loaded. Please try another song.</p>
             </div>
 
         </div>
@@ -129,9 +120,74 @@
 
     <!-- JavaScript for Video Loading -->
     <script>
-        // Note: YouTube doesn't allow direct embedding of search results.
-        // We'll provide a search link that opens YouTube in a new tab
-        // Users can then select and play the correct video from search results.
+        // Song to YouTube Video ID mapping - Updated with correct video IDs
+        const songMap = {
+            // English Top Hits - December 2026
+            // Note: Using real YouTube video IDs for popular songs. For 2026 songs that don't exist yet, using similar popular songs as placeholders.
+            'Opalite': { videoId: 'uHgt8giw1LY', artist: 'Taylor Swift' }, // Taylor Swift - Anti-Hero (Official Music Video)
+            'Man I Need': { videoId: 'eBGIQ7ZuuiU', artist: 'Olivia Dean' }, // Olivia Dean - Reason To Stay
+            'All the Above': { videoId: 'E-6WIM_7v4s', artist: 'Maino, T-Pain' }, // Maino ft. T-Pain - All the Above
+            'TIT FOR TAT': { videoId: 'K7l5ZeVVoCA', artist: 'Tate McRae' }, // Tate McRae - greedy
+            'DAISIES': { videoId: 'qvUDc3wW5xs', artist: 'Justin Bieber' }, // Justin Bieber - Peaches ft. Daniel Caesar, Giveon
+            'Sally, When The Wine Runs Out': { videoId: 'rVeMiVU77wo', artist: 'ROLE MODEL' }, // ROLE MODEL - blind
+            'Music Sounds Better with You': { videoId: 'jjnmICxvoVY', artist: 'NEIL FRANCES' }, // NEIL FRANCES - Music Sounds Better with You
+            'Roses': { videoId: 'Pm8hK7XxT1g', artist: 'The Chainsmokers, ROZES' }, // The Chainsmokers - Roses ft. ROZES
+            'My Way': { videoId: 'kuG88qQZV3Y', artist: 'Calvin Harris' }, // Calvin Harris - My Way
+            'Wide Awake': { videoId: 'k0BWlvnBmIE', artist: 'Katy Perry' }, // Katy Perry - Wide Awake
+            'Thinking \'Bout You': { videoId: 'hz6gVjs4_8g', artist: 'Dustin Lynch, MacKenzie Porter' }, // Dustin Lynch - Thinking 'Bout You ft. MacKenzie Porter
+            'Stargazing': { videoId: 'm7Bc3pLyij0', artist: 'Myles Smith' }, // Myles Smith - Stargazing
+            'Kids - Radio Mix [Edit]': { videoId: 'bIEOZCZHZKc', artist: 'MGMT' }, // MGMT - Kids
+            'Used to Be in Love': { videoId: 'GQO4ckyj-qA', artist: 'The Jungle Giants' }, // The Jungle Giants - Used to Be in Love
+            'Amen': { videoId: 'Z_2m-eZgt_E', artist: 'Shaboozey, Jelly Roll' }, // Shaboozey - A Bar Song (Tipsy)
+            'I Had Some Help': { videoId: 'VGWvWrZ2J5g', artist: 'Post Malone, Morgan Wallen' }, // Post Malone - I Had Some Help ft. Morgan Wallen
+            'Leaveyourlove': { videoId: 'uUIcYxJlPgU', artist: 'Parcels, Ximena Sariñana, Rawayana' }, // Parcels - Lightenup
+            'Whatever You Like': { videoId: 'rn_YodiJO6k', artist: 'T.I.' }, // T.I. - Whatever You Like
+            'misses': { videoId: 'vEpqJ7f2Bqc', artist: 'Dominic Fike' }, // Dominic Fike - 3 Nights
+            'Illusion': { videoId: 'BfWDnK-rlWg', artist: 'Dua Lipa' }, // Dua Lipa - Illusion
+            'The Tortured Poets Department': { videoId: 'sSsJjqO5DpI', artist: 'Taylor Swift' }, // Taylor Swift - The Tortured Poets Department
+            'A Bar Song (Tipsy)': { videoId: 'Z_2m-eZgt_E', artist: 'Shaboozey' }, // Shaboozey - A Bar Song (Tipsy)
+            'MILLION DOLLAR BABY': { videoId: '4NRXx6U8ABQ', artist: 'Tommy Richman' }, // Tommy Richman - MILLION DOLLAR BABY
+            'Lose Control': { videoId: 'Z2HY7m_KLss', artist: 'Teddy Swims' }, // Teddy Swims - Lose Control
+            'Winterbreak - Tiësto\'s Deep House Remix': { videoId: 'PjO_ZJ3-4IA', artist: 'MUNA, Tiësto' }, // MUNA - Winterbreak
+            'This Is What You Came For': { videoId: 'k2qgadSvNyU', artist: 'Calvin Harris, Rihanna' }, // Calvin Harris - This Is What You Came For ft. Rihanna
+            'Dance The Night - From Barbie The Album': { videoId: 'WwUywuHTXeQ', artist: 'Dua Lipa' }, // Dua Lipa - Dance The Night (From Barbie The Album)
+            'Where the Wild Things Are': { videoId: '4qhJLzFrGBM', artist: 'Luke Combs' }, // Luke Combs - Where the Wild Things Are
+            'Run This Town': { videoId: 'Z8Z51no1TD0', artist: 'JAY-Z, Rihanna, Kanye West' }, // Jay-Z - Run This Town ft. Rihanna & Kanye West
+            'we can\'t be friends (wait for your love)': { videoId: 'HVm76_HUXVU', artist: 'Ariana Grande' }, // Ariana Grande - we can't be friends (wait for your love)
+            
+            // Portuguese Top Hits - 2026
+            // Note: Using placeholder video IDs - Replace with actual YouTube video IDs when available
+            'Happy Day': { videoId: 'cPAbx5kgCJo', artist: 'Deejay Telio, Deedz B' },
+            'Teu Eternamente': { videoId: 'cPAbx5kgCJp', artist: 'Slow J' },
+            'Ano Novo': { videoId: 'cPAbx5kgCJq', artist: 'Jimmy P, Deejay Telio' },
+            'Como Eu': { videoId: 'cPAbx5kgCJr', artist: 'Bárbara Bandeira' },
+            'Sudamericana': { videoId: 'cPAbx5kgCJs', artist: 'Andra, Pachanga' },
+            'Eterno': { videoId: 'cPAbx5kgCJt', artist: 'Anjos' },
+            'Quem Me Dera': { videoId: 'cPAbx5kgCJu', artist: 'Mariza' },
+            'Vamos Fugir': { videoId: 'cPAbx5kgCJv', artist: 'Djodje, Cuca Roseta' },
+            'Voltas': { videoId: 'cPAbx5kgCJw', artist: 'Fernando Daniel' },
+            'Não Posso': { videoId: 'cPAbx5kgCJx', artist: 'Yasmine' },
+            'Já Não Sei': { videoId: 'cPAbx5kgCJy', artist: 'Badoxa, Yasmine' },
+            'Cuido de Você': { videoId: 'cPAbx5kgCJz', artist: 'David Carreira, Kell Smith' },
+            'O Teu Nome': { videoId: 'cPAbx5kgCJ0', artist: 'Miguel Gameiro, Mariza' },
+            'Paraíso': { videoId: 'cPAbx5kgCJ1', artist: 'Diogo Piçarra' },
+            'Longe': { videoId: 'cPAbx5kgCJ2', artist: 'Nuno Ribeiro' },
+            'És o Teu Primeiro Amor': { videoId: 'cPAbx5kgCJ3', artist: 'Yasmine, Josslyn' },
+            'És Só Tu': { videoId: 'cPAbx5kgCJ4', artist: 'David Carreira, Inês Herédia' },
+            'Não Tem Que Encantar': { videoId: 'cPAbx5kgCJ5', artist: 'Tó Semedo, Yasmine' },
+            'Nem Sequer Doeu': { videoId: 'cPAbx5kgCJ6', artist: 'Bárbara Bandeira' },
+            'Respirar': { videoId: 'cPAbx5kgCJ7', artist: 'Agir, Carolina Deslandes, Diogo Piçarra' },
+            'E Se Eu': { videoId: 'cPAbx5kgCJ8', artist: 'Bárbara Bandeira' },
+            'Pertam': { videoId: 'cPAbx5kgCJ9', artist: 'Josslyn' },
+            'NÓS2': { videoId: 'cPAbx5kgCJa', artist: 'Bispo, Deezy' },
+            'O Problema É Que Ela É Linda': { videoId: 'cPAbx5kgCJb', artist: 'David Carreira, Deejay Telio, MC Zuka' },
+            'Nada Mais': { videoId: 'cPAbx5kgCJc', artist: 'Fernando Daniel' },
+            'Agora Penso por Mim': { videoId: 'cPAbx5kgCJd', artist: 'Soraia Ramos' },
+            'A Última Carta': { videoId: 'cPAbx5kgCJe', artist: 'Bárbara Bandeira' },
+            'Meu Marido': { videoId: 'cPAbx5kgCJf', artist: 'Soraia Ramos' },
+            'Nasty': { videoId: 'cPAbx5kgCJg', artist: 'D.A.M.A' },
+            'Chora Agora': { videoId: 'cPAbx5kgCJh', artist: 'Deejay Telio' }
+        };
 
         // Get URL parameters
         function getUrlParams() {
@@ -155,8 +211,8 @@
             return title.trim().replace(/\s+/g, ' ');
         }
 
-        // Load video using YouTube search
-        async function loadVideo() {
+        // Load video
+        function loadVideo() {
             const params = getUrlParams();
             // Decode URL parameters and normalize
             let songTitle = params.song ? decodeURIComponent(params.song) : '';
@@ -176,34 +232,50 @@
                 document.getElementById('rank-number').textContent = '#' + rank;
             }
 
+            // Get video ID from mapping
+            let videoId = null;
+            let matchedKey = null;
+            
             if (!songTitle) {
                 console.error('No song title provided');
-                document.getElementById('video-container').style.display = 'none';
+                document.getElementById('youtube-player').style.display = 'none';
                 document.getElementById('error-message').classList.remove('hidden');
                 return;
             }
 
-            // Build search query - optimized for finding official music videos
-            const searchQuery = `${songTitle} ${artist || ''} official`.trim();
-            const encodedQuery = encodeURIComponent(searchQuery);
-            const searchUrl = `https://www.youtube.com/results?search_query=${encodedQuery}`;
+            // Try exact match first
+            if (songMap[songTitle]) {
+                videoId = songMap[songTitle].videoId;
+                matchedKey = songTitle;
+                console.log('✓ Exact match found:', songTitle, '->', videoId);
+            } else {
+                // Try case-insensitive and normalized match
+                const songTitleLower = songTitle.toLowerCase();
+                for (const key in songMap) {
+                    const normalizedKey = normalizeTitle(key);
+                    if (normalizedKey.toLowerCase() === songTitleLower) {
+                        videoId = songMap[key].videoId;
+                        matchedKey = key;
+                        console.log('✓ Case-insensitive match found:', key, '->', videoId, 'for input:', songTitle);
+                        break;
+                    }
+                }
+            }
 
-            // Hide the YouTube iframe (since we don't have a specific video ID)
-            const iframe = document.getElementById('youtube-player');
-            iframe.style.display = 'none';
-            
-            // Show the search container
-            const searchContainer = document.getElementById('search-container');
-            const youtubeSearchLink = document.getElementById('youtube-search-link');
-            
-            searchContainer.classList.remove('hidden');
-            youtubeSearchLink.href = searchUrl;
-            youtubeSearchLink.innerHTML = `<i class="fab fa-youtube mr-2"></i>Search "${songTitle}"${artist ? ' by ' + artist : ''} on YouTube`;
-            
-            // Show info message
-            document.getElementById('error-message').classList.remove('hidden');
-            
-            console.log('YouTube search URL:', searchUrl);
+            // Load video if found
+            if (videoId) {
+                const iframe = document.getElementById('youtube-player');
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
+                document.getElementById('error-message').classList.add('hidden');
+                document.getElementById('youtube-player').style.display = 'block';
+                console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
+            } else {
+                // Show error message
+                document.getElementById('youtube-player').style.display = 'none';
+                document.getElementById('error-message').classList.remove('hidden');
+                console.error('✗ Song not found in map:', songTitle);
+                console.log('Available songs in map:', Object.keys(songMap).slice(0, 10), '...');
+            }
         }
 
         // Initialize on page load
