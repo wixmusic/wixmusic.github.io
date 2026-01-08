@@ -189,7 +189,7 @@
         const songDetailsDB = {
             // English Top Hits - December 2026
             'Opalite': {
-                videoId: '3PJC6uPIekc',
+                videoId: '3y02IN5_fnY',
                 artist: 'Taylor Swift',
                 artistInfo: 'Taylor Swift is an American singer-songwriter and global pop icon. Born in 1989, she began her music career in country music and transitioned to pop, becoming one of the best-selling music artists of all time. Known for her autobiographical songwriting, Swift has won numerous Grammy Awards and is celebrated for her artistic evolution and storytelling prowess.',
                 album: {
@@ -350,7 +350,7 @@
                 }
             },
             'All the Above': {
-                videoId: 'E-6WIM_7v4s',
+                videoId: 'UxvteLnrVzc',
                 artist: 'Maino, T-Pain',
                 artistInfo: 'Maino is an American rapper from Brooklyn, New York, known for his street-smart lyrics and authentic storytelling. T-Pain is a Grammy-winning American singer, rapper, and record producer, famous for his use of Auto-Tune and hit-making abilities. This collaboration brings together Maino\'s raw hip-hop style with T-Pain\'s melodic hooks.',
                 album: {
@@ -378,7 +378,7 @@
                 }
             },
             'DAISIES': {
-                videoId: 'msGuqelopMA',
+                videoId: 'QyvREl7epGY',
                 artist: 'Justin Bieber',
                 artistInfo: 'Justin Bieber is a Canadian singer, songwriter, and pop icon. Discovered on YouTube at age 13, Bieber has become one of the best-selling music artists of all time. Known for his smooth vocals and evolution from teen pop to mature R&B-influenced pop, Bieber continues to dominate charts worldwide.',
                 album: {
@@ -681,12 +681,12 @@
         // Song to YouTube Video ID mapping - Updated with correct video IDs
         const songMap = {
             // English Top Hits - December 2026
-            // Note: Using real YouTube video IDs for popular songs.
-            'Opalite': { videoId: '3PJC6uPIekc', artist: 'Taylor Swift' }, // Taylor Swift - Opalite (Lyric Video)
+            // Note: Updated with verified and playable YouTube video IDs.
+            'Opalite': { videoId: '3y02IN5_fnY', artist: 'Taylor Swift' }, // Taylor Swift - Opalite (Official Music Video)
             'Man I Need': { videoId: 'oIv_Y2RPQ_A', artist: 'Olivia Dean' }, // Olivia Dean - Man I Need
-            'All the Above': { videoId: 'E-6WIM_7v4s', artist: 'Maino, T-Pain' }, // Maino ft. T-Pain - All the Above
+            'All the Above': { videoId: 'UxvteLnrVzc', artist: 'Maino, T-Pain' }, // Maino ft. T-Pain - All the Above (Official Video)
             'TIT FOR TAT': { videoId: 'MoTZzh4eau0', artist: 'Tate McRae' }, // Tate McRae - TIT FOR TAT
-            'DAISIES': { videoId: 'msGuqelopMA', artist: 'Justin Bieber' }, // Justin Bieber - DAISIES (Audio)
+            'DAISIES': { videoId: 'QyvREl7epGY', artist: 'Justin Bieber' }, // Justin Bieber - DAISIES (Music Video)
             'Sally, When The Wine Runs Out': { videoId: 'F1oKhsy8wGw', artist: 'ROLE MODEL' }, // ROLE MODEL - Sally, When The Wine Runs Out (Official Music Video)
             'Music Sounds Better with You': { videoId: 'spDG0n80O0U', artist: 'NEIL FRANCES' }, // NEIL FRANCES - Music Sounds Better with You
             'Roses': { videoId: 'Pm8hK7XxT1g', artist: 'The Chainsmokers, ROZES' }, // The Chainsmokers - Roses ft. ROZES
@@ -714,7 +714,7 @@
             'we can\'t be friends (wait for your love)': { videoId: 'HVm76_HUXVU', artist: 'Ariana Grande' }, // Ariana Grande - we can't be friends (wait for your love)
             
             // Portuguese Top Hits - 2026
-            // Note: Updated with actual YouTube video IDs
+            // Note: Updated with verified and playable YouTube video IDs.
             'Happy Day': { videoId: 'mp1eAo110XU', artist: 'Deejay Telio, Deedz B' },
             'Teu Eternamente': { videoId: '8RN-f3vZVRo', artist: 'Slow J' },
             'Ano Novo': { videoId: '5Nb644rRKEM', artist: 'Jimmy P, Deejay Telio' },
@@ -772,14 +772,14 @@
         // Load video
         function loadVideo() {
             try {
-                const params = getUrlParams();
-                // Decode URL parameters and normalize
-                let songTitle = params.song ? decodeURIComponent(params.song) : '';
-                songTitle = normalizeTitle(songTitle);
-                const artist = params.artist ? decodeURIComponent(params.artist).trim() : '';
-                const rank = params.rank;
+            const params = getUrlParams();
+            // Decode URL parameters and normalize
+            let songTitle = params.song ? decodeURIComponent(params.song) : '';
+            songTitle = normalizeTitle(songTitle);
+            const artist = params.artist ? decodeURIComponent(params.artist).trim() : '';
+            const rank = params.rank;
 
-                console.log('Parsed params:', { songTitle, artist, rank });
+            console.log('Parsed params:', { songTitle, artist, rank });
 
                 // Update song info - Ensure elements exist
                 const titleElement = document.getElementById('song-title');
@@ -793,58 +793,58 @@
                 titleElement.textContent = songTitle || 'Unknown Song';
                 artistElement.textContent = artist || 'Unknown Artist';
 
-                // Show rank if provided
-                if (rank) {
+            // Show rank if provided
+            if (rank) {
                     const rankElement = document.getElementById('song-rank');
                     const rankNumberElement = document.getElementById('rank-number');
                     if (rankElement && rankNumberElement) {
                         rankElement.style.display = 'inline-block';
                         rankNumberElement.textContent = '#' + rank;
                     }
-                }
+            }
 
-                // Get video ID from mapping
-                let videoId = null;
-                let matchedKey = null;
-                
-                if (!songTitle) {
-                    console.error('No song title provided');
+            // Get video ID from mapping
+            let videoId = null;
+            let matchedKey = null;
+            
+            if (!songTitle) {
+                console.error('No song title provided');
                     const youtubePlayer = document.getElementById('youtube-player');
                     const errorMessage = document.getElementById('error-message');
                     if (youtubePlayer) youtubePlayer.style.display = 'none';
                     if (errorMessage) errorMessage.classList.remove('hidden');
-                    return;
-                }
+                return;
+            }
 
-                // Try exact match first
-                if (songMap[songTitle]) {
-                    videoId = songMap[songTitle].videoId;
-                    matchedKey = songTitle;
-                    console.log('✓ Exact match found:', songTitle, '->', videoId);
-                } else {
-                    // Try case-insensitive and normalized match
-                    const songTitleLower = songTitle.toLowerCase();
-                    for (const key in songMap) {
-                        const normalizedKey = normalizeTitle(key);
-                        if (normalizedKey.toLowerCase() === songTitleLower) {
-                            videoId = songMap[key].videoId;
-                            matchedKey = key;
-                            console.log('✓ Case-insensitive match found:', key, '->', videoId, 'for input:', songTitle);
-                            break;
-                        }
+            // Try exact match first
+            if (songMap[songTitle]) {
+                videoId = songMap[songTitle].videoId;
+                matchedKey = songTitle;
+                console.log('✓ Exact match found:', songTitle, '->', videoId);
+            } else {
+                // Try case-insensitive and normalized match
+                const songTitleLower = songTitle.toLowerCase();
+                for (const key in songMap) {
+                    const normalizedKey = normalizeTitle(key);
+                    if (normalizedKey.toLowerCase() === songTitleLower) {
+                        videoId = songMap[key].videoId;
+                        matchedKey = key;
+                        console.log('✓ Case-insensitive match found:', key, '->', videoId, 'for input:', songTitle);
+                        break;
                     }
                 }
+            }
 
-                // Load video if found
-                if (videoId) {
-                    const iframe = document.getElementById('youtube-player');
+            // Load video if found
+            if (videoId) {
+                const iframe = document.getElementById('youtube-player');
                     const errorMessage = document.getElementById('error-message');
                     if (iframe) {
                         iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1`;
                         iframe.style.display = 'block';
                     }
                     if (errorMessage) errorMessage.classList.add('hidden');
-                    console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
+                console.log('✓ Loading video:', videoId, 'for song:', matchedKey);
                     
                     // Load song details
                     loadSongDetails(songTitle, matchedKey, artist);
@@ -1024,7 +1024,7 @@
 
                 // Show details section
                 document.getElementById('song-details-section').style.display = 'block';
-                } else {
+            } else {
                     // Load default/placeholder information for songs without detailed data
                     loadDefaultDetails(songTitle, artist);
                 }
@@ -1125,7 +1125,7 @@
 
         // Initialize on page load
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadVideo);
+        document.addEventListener('DOMContentLoaded', loadVideo);
         } else {
             // DOM is already loaded
             loadVideo();
