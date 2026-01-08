@@ -51,6 +51,20 @@
             transform: translateX(8px);
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
+        .song-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .song-details.active {
+            max-height: 500px;
+            transition: max-height 0.3s ease-in;
+        }
+        .comment {
+            border-left: 3px solid rgba(34, 197, 94, 0.5);
+            padding-left: 12px;
+            margin-left: 12px;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -93,6 +107,56 @@
         </div>
     </section>
 
+    <!-- Chart Introduction & Analysis -->
+    <section class="py-12 bg-gray-900/50 border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Background & Trends -->
+                <div class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-chart-bar text-green-400 mr-3"></i>Chart Background
+                    </h2>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        Portuguese music continues to captivate global audiences in 2026. The chart features a vibrant mix of Afrobeat influences, traditional Portuguese sounds, and modern pop elements. Deejay Telio leads with multiple chart entries, showcasing the genre's evolution and international appeal.
+                    </p>
+                    <div class="bg-green-900/30 p-4 rounded-lg border border-green-500/30 mt-4">
+                        <p class="text-sm text-green-200"><strong class="text-white">Trending Genres:</strong> Afrobeat (38%), Pop Português (32%), Hip-Hop (20%), Electronic (10%)</p>
+                    </div>
+                </div>
+
+                <!-- Top Artists Highlight -->
+                <div class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-star text-yellow-400 mr-3"></i>Featured Artists
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-gray-900 font-bold">DT</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Deejay Telio</h3>
+                                <p class="text-gray-400 text-sm">Chart leader with #1 "Happy Day" and multiple top 10 entries</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-bold">SJ</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Slow J</h3>
+                                <p class="text-gray-400 text-sm">Rising star with "Teu Eternamente" at #2</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center text-white font-bold">JP</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Jimmy P</h3>
+                                <p class="text-gray-400 text-sm">Strong presence with "Ano Novo" collaboration</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Top 3 Highlight -->
     <section class="py-12 bg-gray-900/50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,9 +166,26 @@
                 <div class="frosted-glass p-6 rounded-2xl border-2 border-yellow-500/50 transform hover:scale-105 transition">
                     <div class="flex items-center mb-4">
                         <div class="rank-badge rank-1 mr-4">1</div>
-                        <div>
+                        <div class="flex-1">
                             <h3 class="text-xl font-bold text-white">Happy Day</h3>
                             <p class="text-gray-400">Deejay Telio, Deedz B</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">Uma faixa energética que combina Afrobeat e Pop Português. Deejay Telio e Deedz B criam um hino celebratório perfeito para qualquer ocasião, com batidas cativantes e vocais contagiantes.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-yellow-400 font-semibold text-xs">FãPortugal</span>
+                                <span class="text-gray-500 text-xs ml-2">3 horas atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Esta música é incrível! 🎵 Deejay Telio nunca desaponta. As batidas são viciantes e perfeitas para dançar!</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-yellow-400 font-semibold text-xs">MúsicaPortuguesa</span>
+                                <span class="text-gray-500 text-xs ml-2">1 dia atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">O collab com Deedz B é perfeito! Merece o primeiro lugar. A música portuguesa está no seu melhor! 🇵🇹</p>
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
@@ -119,9 +200,26 @@
                 <div class="frosted-glass p-6 rounded-2xl border-2 border-gray-400/50 transform hover:scale-105 transition">
                     <div class="flex items-center mb-4">
                         <div class="rank-badge rank-2 mr-4">2</div>
-                        <div>
+                        <div class="flex-1">
                             <h3 class="text-xl font-bold text-white">Teu Eternamente</h3>
                             <p class="text-gray-400">Slow J</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">Slow J demonstra sua versatilidade nesta balada romântica. "Teu Eternamente" combina hip-hop sensível com elementos de R&B, criando uma experiência emocional profunda.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-blue-400 font-semibold text-xs">FãSlowJ</span>
+                                <span class="text-gray-500 text-xs ml-2">6 horas atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Slow J está em outro nível! Esta música é linda e emocionante. As letras são poéticas demais! ❤️</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-blue-400 font-semibold text-xs">HipHopPT</span>
+                                <span class="text-gray-500 text-xs ml-2">2 dias atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">A produção é impecável e a voz do Slow J é única. Este é o hip-hop português no seu melhor!</p>
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
@@ -136,9 +234,26 @@
                 <div class="frosted-glass p-6 rounded-2xl border-2 border-orange-600/50 transform hover:scale-105 transition">
                     <div class="flex items-center mb-4">
                         <div class="rank-badge rank-3 mr-4">3</div>
-                        <div>
+                        <div class="flex-1">
                             <h3 class="text-xl font-bold text-white">Ano Novo</h3>
                             <p class="text-gray-400">Jimmy P, Deejay Telio</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">Uma colaboração perfeita entre dois grandes nomes da música portuguesa. "Ano Novo" celebra novos começos com energia contagiante, misturando pop e elementos eletrônicos.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-orange-400 font-semibold text-xs">FãJimmyP</span>
+                                <span class="text-gray-500 text-xs ml-2">12 horas atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Jimmy P e Deejay Telio juntos são 🔥! Esta música é perfeita para celebrar! O collab é incrível!</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-orange-400 font-semibold text-xs">Música2026</span>
+                                <span class="text-gray-500 text-xs ml-2">1 dia atrás</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">A música perfeita para começar o ano! As batidas são viciantes e a letra é inspiradora! 🎉</p>
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
@@ -169,15 +284,32 @@
 
             <div class="space-y-3">
                 <!-- Chart Items -->
-                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
-                    <div class="rank-badge rank-other">4</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-semibold text-white">Como Eu</h3>
-                        <p class="text-gray-400 text-sm">Bárbara Bandeira</p>
+                <div class="song-card frosted-glass p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="rank-badge rank-other">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-white">Como Eu</h3>
+                            <p class="text-gray-400 text-sm">Bárbara Bandeira</p>
+                        </div>
+                        <button onclick="toggleDetails('song4')" class="px-3 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 text-sm transition">
+                            <i class="fas fa-info-circle mr-2"></i>Details
+                        </button>
+                        <a href="../play.html?song=Como Eu&artist=Bárbara Bandeira&rank=4" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
                     </div>
-                    <a href="../play.html?song=Como Eu&artist=Bárbara Bandeira&rank=4" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
-                        <i class="fas fa-play mr-2"></i>Play
-                    </a>
+                    <div id="song4" class="song-details mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-gray-300 text-sm mb-3">Bárbara Bandeira apresenta uma balada pop emocional com vocais poderosos. "Como Eu" explora temas de identidade e autenticidade, ressoando com ouvintes que buscam representação na música portuguesa.</p>
+                        <div class="space-y-3">
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-green-400 font-semibold text-sm">FãBárbara</span>
+                                    <span class="text-gray-500 text-xs ml-3">3 dias atrás</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">Bárbara Bandeira é uma voz única na música portuguesa! Esta música é emocionante e as letras são tão poderosas! ❤️</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
@@ -511,6 +643,15 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleDetails(songId) {
+            const details = document.getElementById(songId);
+            if (details) {
+                details.classList.toggle('active');
+            }
+        }
+    </script>
 
 </body>
 </html>

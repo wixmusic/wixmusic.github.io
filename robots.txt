@@ -11,4 +11,4 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://offline-music.com/sitemap.xml
+Sitemap: https://www.offline-music.com/sitemap.xml

@@ -51,6 +51,20 @@
             transform: translateX(8px);
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
+        .song-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .song-details.active {
+            max-height: 500px;
+            transition: max-height 0.3s ease-in;
+        }
+        .comment {
+            border-left: 3px solid rgba(59, 130, 246, 0.5);
+            padding-left: 12px;
+            margin-left: 12px;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -92,6 +106,56 @@
         </div>
     </section>
 
+    <!-- Chart Introduction & Analysis -->
+    <section class="py-12 bg-gray-900/50 border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Background & Trends -->
+                <div class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-chart-bar text-blue-400 mr-3"></i>Chart Background
+                    </h2>
+                    <p class="text-gray-300 mb-4 leading-relaxed">
+                        December 2026 brings a dynamic mix of pop, hip-hop, and electronic music dominating the charts. Taylor Swift continues her reign with "Opalite" leading the pack, while emerging artists like Olivia Dean and Tate McRae make significant strides with their latest releases.
+                    </p>
+                    <div class="bg-blue-900/30 p-4 rounded-lg border border-blue-500/30 mt-4">
+                        <p class="text-sm text-blue-200"><strong class="text-white">Trending Genres:</strong> Pop (45%), Hip-Hop (28%), Electronic (15%), Country (12%)</p>
+                    </div>
+                </div>
+
+                <!-- Top Artists Highlight -->
+                <div class="frosted-glass p-6 rounded-2xl">
+                    <h2 class="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i class="fas fa-star text-yellow-400 mr-3"></i>Featured Artists
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-gray-900 font-bold">TS</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Taylor Swift</h3>
+                                <p class="text-gray-400 text-sm">Dominating with multiple chart entries including #1 "Opalite"</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white font-bold">OD</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Olivia Dean</h3>
+                                <p class="text-gray-400 text-sm">Rising star with "Man I Need" climbing to #2</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-teal-600 flex items-center justify-center text-white font-bold">TM</div>
+                            <div>
+                                <h3 class="text-white font-semibold">Tate McRae</h3>
+                                <p class="text-gray-400 text-sm">Strong presence with "TIT FOR TAT" in top 5</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Top 3 Highlight -->
     <section class="py-12 bg-gray-900/50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,9 +165,26 @@
                 <div class="frosted-glass p-6 rounded-2xl border-2 border-yellow-500/50 transform hover:scale-105 transition">
                     <div class="flex items-center mb-4">
                         <div class="rank-badge rank-1 mr-4">1</div>
-                        <div>
+                        <div class="flex-1">
                             <h3 class="text-xl font-bold text-white">Opalite</h3>
                             <p class="text-gray-400">Taylor Swift</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">A mesmerizing ballad showcasing Taylor Swift's lyrical prowess. "Opalite" combines ethereal melodies with introspective themes, capturing listeners with its emotional depth and stunning vocal performance.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-yellow-400 font-semibold text-xs">SwiftieForever</span>
+                                <span class="text-gray-500 text-xs ml-2">2 hours ago</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">This song is absolutely magical! Taylor's storytelling is unmatched. The production is so dreamy! ✨</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-yellow-400 font-semibold text-xs">MusicCritic</span>
+                                <span class="text-gray-500 text-xs ml-2">1 day ago</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Deserves the #1 spot! The bridge is hauntingly beautiful. Taylor continues to evolve as an artist.</p>
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
@@ -118,9 +199,26 @@
                 <div class="frosted-glass p-6 rounded-2xl border-2 border-gray-400/50 transform hover:scale-105 transition">
                     <div class="flex items-center mb-4">
                         <div class="rank-badge rank-2 mr-4">2</div>
-                        <div>
+                        <div class="flex-1">
                             <h3 class="text-xl font-bold text-white">Man I Need</h3>
                             <p class="text-gray-400">Olivia Dean</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">Olivia Dean's soulful voice takes center stage in this heartfelt track. A perfect blend of R&B and pop that explores themes of longing and connection, proving why she's one of 2026's rising stars.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-blue-400 font-semibold text-xs">SoulMusicFan</span>
+                                <span class="text-gray-500 text-xs ml-2">5 hours ago</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Olivia Dean is incredible! Her voice gives me chills. This song deserves more recognition! 🎵</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-blue-400 font-semibold text-xs">NewMusic2026</span>
+                                <span class="text-gray-500 text-xs ml-2">2 days ago</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">Finally found my new favorite artist! The production is smooth and her vocals are pure gold.</p>
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
@@ -135,9 +233,26 @@
                 <div class="frosted-glass p-6 rounded-2xl border-2 border-orange-600/50 transform hover:scale-105 transition">
                     <div class="flex items-center mb-4">
                         <div class="rank-badge rank-3 mr-4">3</div>
-                        <div>
+                        <div class="flex-1">
                             <h3 class="text-xl font-bold text-white">All the Above</h3>
                             <p class="text-gray-400">Maino, T-Pain</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-4 leading-relaxed">A classic hip-hop collaboration that's making a comeback. Maino and T-Pain's dynamic verses over a catchy beat make this track an instant party anthem and a fan favorite.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-orange-400 font-semibold text-xs">HipHopHead</span>
+                                <span class="text-gray-500 text-xs ml-2">8 hours ago</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">This collab is fire! 🔥 T-Pain's hook and Maino's flow are perfect together. Reminds me of the golden era of hip-hop!</p>
+                        </div>
+                        <div class="comment">
+                            <div class="flex items-center mb-1">
+                                <span class="text-orange-400 font-semibold text-xs">PartyVibes</span>
+                                <span class="text-gray-500 text-xs ml-2">1 day ago</span>
+                            </div>
+                            <p class="text-gray-300 text-xs">This is my go-to track for car rides! The energy is unmatched. Always gets the party started!</p>
                         </div>
                     </div>
                     <div class="flex items-center justify-between mt-4">
@@ -168,37 +283,102 @@
 
             <div class="space-y-3">
                 <!-- Chart Items -->
-                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
-                    <div class="rank-badge rank-other">4</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-semibold text-white">TIT FOR TAT</h3>
-                        <p class="text-gray-400 text-sm">Tate McRae</p>
+                <div class="song-card frosted-glass p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="rank-badge rank-other">4</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-white">TIT FOR TAT</h3>
+                            <p class="text-gray-400 text-sm">Tate McRae</p>
+                        </div>
+                        <button onclick="toggleDetails('song4')" class="px-3 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 text-sm transition">
+                            <i class="fas fa-info-circle mr-2"></i>Details
+                        </button>
+                        <a href="../play.html?song=TIT FOR TAT&artist=Tate McRae&rank=4" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
                     </div>
-                    <a href="../play.html?song=TIT FOR TAT&artist=Tate McRae&rank=4" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
-                        <i class="fas fa-play mr-2"></i>Play
-                    </a>
+                    <div id="song4" class="song-details mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-gray-300 text-sm mb-3">A powerful pop anthem exploring themes of reciprocity and emotional resilience. Tate McRae delivers an energetic performance that resonates with listeners navigating complex relationships.</p>
+                        <div class="space-y-3">
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-blue-400 font-semibold text-sm">MusicLover92</span>
+                                    <span class="text-gray-500 text-xs ml-3">2 days ago</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">This song hits different! Tate's vocals are incredible and the beat is so catchy. Been on repeat all week! 🔥</p>
+                            </div>
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-blue-400 font-semibold text-sm">PopEnthusiast</span>
+                                    <span class="text-gray-500 text-xs ml-3">5 days ago</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">The production quality is amazing. Perfect blend of pop and electronic elements. Deserves to be higher on the chart!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
-                    <div class="rank-badge rank-other">5</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-semibold text-white">DAISIES</h3>
-                        <p class="text-gray-400 text-sm">Justin Bieber</p>
+                <div class="song-card frosted-glass p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="rank-badge rank-other">5</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-white">DAISIES</h3>
+                            <p class="text-gray-400 text-sm">Justin Bieber</p>
+                        </div>
+                        <button onclick="toggleDetails('song5')" class="px-3 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 text-sm transition">
+                            <i class="fas fa-info-circle mr-2"></i>Details
+                        </button>
+                        <a href="../play.html?song=DAISIES&artist=Justin Bieber&rank=5" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
                     </div>
-                    <a href="../play.html?song=DAISIES&artist=Justin Bieber&rank=5" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
-                        <i class="fas fa-play mr-2"></i>Play
-                    </a>
+                    <div id="song5" class="song-details mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-gray-300 text-sm mb-3">An uplifting pop track celebrating resilience and personal growth. Justin Bieber's smooth vocals combined with an infectious melody make this a feel-good anthem.</p>
+                        <div class="space-y-3">
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-blue-400 font-semibold text-sm">BieberFan2026</span>
+                                    <span class="text-gray-500 text-xs ml-3">1 day ago</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">Justin never disappoints! The lyrics are so positive and inspiring. This is my go-to song when I need a mood boost! 💛</p>
+                            </div>
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-blue-400 font-semibold text-sm">ChillVibes</span>
+                                    <span class="text-gray-500 text-xs ml-3">3 days ago</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">The acoustic version is even better! Such a beautiful message about staying strong through tough times.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
-                    <div class="rank-badge rank-other">6</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-semibold text-white">Sally, When The Wine Runs Out</h3>
-                        <p class="text-gray-400 text-sm">ROLE MODEL</p>
+                <div class="song-card frosted-glass p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="rank-badge rank-other">6</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-white">Sally, When The Wine Runs Out</h3>
+                            <p class="text-gray-400 text-sm">ROLE MODEL</p>
+                        </div>
+                        <button onclick="toggleDetails('song6')" class="px-3 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 text-sm transition">
+                            <i class="fas fa-info-circle mr-2"></i>Details
+                        </button>
+                        <a href="../play.html?song=Sally, When The Wine Runs Out&artist=ROLE MODEL&rank=6" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
                     </div>
-                    <a href="../play.html?song=Sally, When The Wine Runs Out&artist=ROLE MODEL&rank=6" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
-                        <i class="fas fa-play mr-2"></i>Play
-                    </a>
+                    <div id="song6" class="song-details mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-gray-300 text-sm mb-3">ROLE MODEL delivers an introspective indie-pop track with memorable storytelling. The song's narrative-driven approach and catchy hooks make it a standout track this month.</p>
+                        <div class="space-y-3">
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-blue-400 font-semibold text-sm">IndieMusicLover</span>
+                                    <span class="text-gray-500 text-xs ml-3">4 days ago</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">ROLE MODEL never disappoints! The storytelling in this song is incredible. Love the indie vibes! 🎸</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
@@ -300,15 +480,32 @@
                     </a>
                 </div>
 
-                <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
-                    <div class="rank-badge rank-other">16</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-semibold text-white">I Had Some Help</h3>
-                        <p class="text-gray-400 text-sm">Post Malone, Morgan Wallen</p>
+                <div class="song-card frosted-glass p-4 rounded-xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="rank-badge rank-other">16</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-white">I Had Some Help</h3>
+                            <p class="text-gray-400 text-sm">Post Malone, Morgan Wallen</p>
+                        </div>
+                        <button onclick="toggleDetails('song16')" class="px-3 py-2 rounded-lg bg-gray-700/50 hover:bg-gray-700 text-gray-300 text-sm transition">
+                            <i class="fas fa-info-circle mr-2"></i>Details
+                        </button>
+                        <a href="../play.html?song=I Had Some Help&artist=Post Malone, Morgan Wallen&rank=16" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
+                            <i class="fas fa-play mr-2"></i>Play
+                        </a>
                     </div>
-                    <a href="../play.html?song=I Had Some Help&artist=Post Malone, Morgan Wallen&rank=16" class="px-4 py-2 rounded-lg bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 text-sm transition">
-                        <i class="fas fa-play mr-2"></i>Play
-                    </a>
+                    <div id="song16" class="song-details mt-4 pt-4 border-t border-gray-700">
+                        <p class="text-gray-300 text-sm mb-3">A powerful country-rap crossover collaboration that showcases both artists' strengths. Post Malone's smooth delivery pairs perfectly with Morgan Wallen's authentic country vocals.</p>
+                        <div class="space-y-3">
+                            <div class="comment">
+                                <div class="flex items-center mb-2">
+                                    <span class="text-blue-400 font-semibold text-sm">CountryRapMix</span>
+                                    <span class="text-gray-500 text-xs ml-3">3 days ago</span>
+                                </div>
+                                <p class="text-gray-300 text-sm">This collab is 🔥! Love how they blend country and rap so seamlessly. Post and Morgan are a dream team!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="song-card frosted-glass p-4 rounded-xl flex items-center space-x-4">
@@ -509,6 +706,15 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        function toggleDetails(songId) {
+            const details = document.getElementById(songId);
+            if (details) {
+                details.classList.toggle('active');
+            }
+        }
+    </script>
 
 </body>
 </html>
