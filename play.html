@@ -856,8 +856,23 @@
                     return;
                 }
 
-                titleElement.textContent = songTitle || 'Unknown Song';
-                artistElement.textContent = artist || 'Unknown Artist';
+                // Set song title as clickable link
+                const escapedSongTitle = (songTitle || 'Unknown Song')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+                titleElement.innerHTML = `<a href="../feature/dynamic-lyrics.html" class="hover:text-accent transition">${escapedSongTitle}</a>`;
+                
+                // Set artist name as clickable link
+                const escapedArtist = (artist || 'Unknown Artist')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+                artistElement.innerHTML = `<a href="../blog/how-to-use-dynamic-lyrics.html" class="hover:text-accent transition">${escapedArtist}</a>`;
 
             // Show rank if provided
             if (rank) {
@@ -931,7 +946,7 @@
                 // Update title even on error
                 const titleElement = document.getElementById('song-title');
                 if (titleElement) {
-                    titleElement.textContent = 'Error Loading Song';
+                    titleElement.innerHTML = '<a href="../blog/tutorials.html" class="hover:text-accent transition">Error Loading Song</a>';
                 }
             }
         }
