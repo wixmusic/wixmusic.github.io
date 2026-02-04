@@ -18,6 +18,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://www.offline-music.com/contact.html</loc>
+  <lastmod>2025-01-05T00:00:00+00:00</lastmod>
+  <priority>0.85</priority>
+</url>
+<url>
   <loc>https://www.offline-music.com/support/faq.html</loc>
   <lastmod>2025-01-05T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
