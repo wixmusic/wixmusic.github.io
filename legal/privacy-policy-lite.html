@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Offline Player</title>
-    <meta name="description" content="Read Offline Player's Privacy Policy. Learn how we collect, use, and protect your data including usage data and personalization settings. Last updated October 8, 2026.">
-    <link rel="canonical" href="https://www.offline-music.com/legal/privacy-policy.html" />
+    <title>Privacy Policy | Offline Player Lite</title>
+    <meta name="description" content="Read Offline Player Lite's Privacy Policy. Learn how we collect, use, and protect your data in our lightweight music player app. Last updated October 8, 2026.">
+    <link rel="canonical" href="https://www.offline-music.com/legal/privacy-policy-lite.html" />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.offline-music.com/legal/privacy-policy.html" />
-    <meta property="og:title" content="Privacy Policy | Offline Player" />
-    <meta property="og:description" content="Read Offline Player's Privacy Policy. Learn how we collect, use, and protect your data including usage data." />
+    <meta property="og:url" content="https://www.offline-music.com/legal/privacy-policy-lite.html" />
+    <meta property="og:title" content="Privacy Policy | Offline Player Lite" />
+    <meta property="og:description" content="Read Offline Player Lite's Privacy Policy. Learn how we collect, use, and protect your data." />
     <!-- Twitter -->
     <meta property="twitter:card" content="summary" />
-    <meta property="twitter:url" content="https://www.offline-music.com/legal/privacy-policy.html" />
-    <meta property="twitter:title" content="Privacy Policy | Offline Player" />
-    <meta property="twitter:description" content="Read Offline Player's Privacy Policy. Learn how we collect, use, and protect your data." />
+    <meta property="twitter:url" content="https://www.offline-music.com/legal/privacy-policy-lite.html" />
+    <meta property="twitter:title" content="Privacy Policy | Offline Player Lite" />
+    <meta property="twitter:description" content="Read Offline Player Lite's Privacy Policy. Learn how we collect, use, and protect your data." />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3b82f6; /* Blue 500 */
-            --accent-color: #facc15; /* Yellow 400 */
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Deep Charcoal/Dark Gray background */
-            color: #e5e7eb; /* Light Gray text */
+            background-color: #0d1117;
+            color: #e5e7eb;
         }
         .text-accent {
             color: var(--accent-color);
@@ -40,14 +40,8 @@
 </head>
 <body class="antialiased">
 <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyCbq08rdnF8OrXgxUSj5E8d77dxYB1jDrs",
     authDomain: "website-offline-music.firebaseapp.com",
@@ -57,8 +51,6 @@
     appId: "1:52531532636:web:d3fb8a445630671228e799",
     measurementId: "G-618ZL7NDPH"
   };
-
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
@@ -66,9 +58,9 @@
     <!-- Header & Navigation -->
     <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <a href="../lite.html" class="text-2xl font-bold text-white tracking-widest">Offline Player <span class="text-accent text-lg">Lite</span></a>
             <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
-                Back to Home
+                Full Version
             </a>
         </div>
     </header>
@@ -80,7 +72,10 @@
                 <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">
                     Privacy Policy
                 </h1>
-                <p class="text-gray-400">Last updated: October 8, 2026</p>
+                <p class="text-gray-400">Offline Player Lite · Last updated: October 8, 2026</p>
+                <p class="text-sm text-gray-500 mt-2">
+                    <a href="./privacy-policy.html" class="text-accent hover:underline">View Privacy Policy for Offline Player (Full)</a>
+                </p>
             </header>
 
             <div class="text-gray-300 space-y-8">
@@ -88,82 +83,88 @@
                 <section id="introduction">
                     <h2 class="text-3xl font-bold text-accent mb-4">1. Introduction</h2>
                     <p>
-                        This is the Privacy Policy of apps of Offline Player and its various & next versions (hereinafter collectively referred to as "us", "we", or "our") and is incorporated into and is subject to our Terms of Use which can be found at https://www.offline-music.com/legal/terms-of-use.html. In this Privacy Policy, we refer to our products and services as the "Service". Please read on to learn more about our data handling practices. Your use of the Service signifies that you agree with the terms of this Privacy Policy. If you do not agree with the terms of this Privacy Policy, please do not use the Service.
+                        This Privacy Policy applies to Offline Player Lite (hereinafter "us", "we", or "our"), a lightweight version of our music player application. It is incorporated into and subject to our Terms of Use for Offline Player Lite, available at <a href="./terms-of-use-lite.html" class="text-blue-400 hover:underline">https://www.offline-music.com/legal/terms-of-use-lite.html</a>. Your use of Offline Player Lite signifies that you agree with the terms of this Privacy Policy. If you do not agree, please do not use the Service.
+                    </p>
+                </section>
+
+                <section id="about-lite">
+                    <h2 class="text-3xl font-bold text-accent mb-4">2. About Offline Player Lite</h2>
+                    <p>
+                        Offline Player Lite is a streamlined, lightweight music player designed for users who prefer a simpler experience with reduced storage footprint. While it offers fewer features than the full Offline Player app, we maintain the same commitment to protecting your privacy. We collect minimal data necessary to provide and improve the Lite experience.
                     </p>
                 </section>
 
                 <section id="data-collection">
-                    <h2 class="text-3xl font-bold text-accent mb-4">2. Information We Collect</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">3. Information We Collect</h2>
                     <p class="mb-4">
-                        We collect several types of information for various purposes to provide and improve our Service to you:
+                        Offline Player Lite collects the following types of information:
                     </p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li>
-                            <strong class="text-white">Usage Data:</strong> Information on how the Service is accessed and used. This may include usage time, features accessed (e.g., Equalizer use, Volume Boost activation), and interaction patterns.
+                            <strong class="text-white">Usage Data:</strong> Basic information on how the app is used, including feature access and interaction patterns. Lite collects less usage data than the full version due to its simplified feature set.
                         </li>
                         <li>
-                            <strong class="text-white">Music Data:</strong> Information about songs played and added to playlists. This data is primarily stored **locally** on your device to facilitate the seamless offline playback feature, but we collect aggregated, non-identifiable statistics on library size and usage frequency to monitor feature performance.
+                            <strong class="text-white">Music Data:</strong> Information about songs played and playlists. This data is stored <strong>locally</strong> on your device. We may collect aggregated, non-identifiable statistics for service improvement.
                         </li>
                         <li>
-                            <strong class="text-white">Device Information:</strong> Information about the mobile device you use, such as the operating system version, unique device identifiers, and diagnostic data related to crashes or errors.
-                        </li>
-                        <li>
-                            <strong class="text-white">Personalization Data:</strong> Your selected themes and skin colors. This information is typically stored locally but may be synced to provide a consistent experience across devices, if applicable.
+                            <strong class="text-white">Device Information:</strong> Operating system version and unique device identifiers for compatibility and crash diagnostics.
                         </li>
                     </ul>
                 </section>
 
                 <section id="data-use">
-                    <h2 class="text-3xl font-bold text-accent mb-4">3. How We Use Your Information</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">4. How We Use Your Information</h2>
                     <p class="mb-4">
-                        We use the collected data for the following purposes:
+                        We use collected data to:
                     </p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
-                        <li>To provide and maintain the Service.</li>
-                        <li>To notify you about changes to our Service.</li>
-                        <li>To provide customer care and support.</li>
-                        <li>To monitor the usage of the Service and analyze performance of key features (e.g., Volume Boost and Liquid Glass rendering).</li>
-                        <li>To detect, prevent and address technical issues.</li>
-                        <li>To provide personalized content and recommendations based on your listening history (non-identifiable).</li>
+                        <li>Provide and maintain Offline Player Lite.</li>
+                        <li>Notify you about updates and changes.</li>
+                        <li>Provide customer support.</li>
+                        <li>Monitor usage and improve app performance.</li>
+                        <li>Detect, prevent, and address technical issues.</li>
                     </ul>
                 </section>
 
                 <section id="data-sharing">
-                    <h2 class="text-3xl font-bold text-accent mb-4">4. Sharing Your Information</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">5. Sharing Your Information</h2>
                     <p class="mb-4">
-                        We do not sell your personal data. We may share your information only in these limited circumstances:
+                        We do not sell your personal data. We may share information only:
                     </p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
                         <li>
-                            <strong class="text-white">With Service Providers:</strong> We may employ third-party companies and individuals to facilitate our Service (e.g., analytics providers, hosting providers). These third parties have access to your data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+                            <strong class="text-white">With Service Providers:</strong> Third parties who assist in operating the Service, bound by confidentiality obligations.
                         </li>
                         <li>
-                            <strong class="text-white">For Legal Requirements:</strong> If required to do so by law or in response to valid requests by public authorities (e.g., a court or a government agency).
+                            <strong class="text-white">For Legal Requirements:</strong> When required by law or valid requests by public authorities.
                         </li>
                     </ul>
                 </section>
 
                 <section id="security">
-                    <h2 class="text-3xl font-bold text-accent mb-4">5. Security of Data</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">6. Security of Data</h2>
                     <p>
-                        The security of your data is important to us. We strive to use commercially acceptable means to protect your Personal Data, including encryption and access control. However, remember that no method of transmission over the Internet or method of electronic storage is 100% secure.
+                        We use commercially acceptable means to protect your data. However, no method of transmission over the Internet or electronic storage is 100% secure.
                     </p>
                 </section>
 
                 <section id="user-rights">
-                    <h2 class="text-3xl font-bold text-accent mb-4">6. Your Data Protection Rights</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">7. Your Data Protection Rights</h2>
                     <p>
-                        Depending on your location, you have the right to access, update, or to request deletion of the personal information we hold about you. Please contact us using the information below to exercise these rights.
+                        Depending on your location, you may access, update, or request deletion of your personal information. Contact us using the information below to exercise these rights.
                     </p>
                 </section>
 
                 <section id="contact">
-                    <h2 class="text-3xl font-bold text-accent mb-4">7. Contact Us</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">8. Contact Us</h2>
                     <p>
-                        If you have any questions about this Privacy Policy, please contact us:
+                        For questions about this Privacy Policy for Offline Player Lite:
                     </p>
                     <p class="mt-2 ml-4">
                         By email: <a href="mailto:music.player.250617@gmail.com" class="text-blue-400 hover:underline">music.player.250617@gmail.com</a>
+                    </p>
+                    <p class="mt-4 text-sm text-gray-500">
+                        <a href="./privacy-policy.html" class="text-accent hover:underline">Privacy Policy (Full Offline Player)</a> · <a href="./terms-of-use-lite.html" class="text-accent hover:underline">Terms of Use (Lite)</a>
                     </p>
                 </section>
             </div>
@@ -175,11 +176,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
             <p>&copy; 2026 Offline Player. All rights reserved.</p>
             <div class="mt-4 space-x-4">
-                <a href="./privacy-policy.html" class="text-yellow-400 transition">Privacy Policy</a>
-                <a href="./terms-of-use.html" class="hover:text-yellow-400 transition">Terms of Service</a>
-                <a href="./privacy-policy-lite.html" class="hover:text-yellow-400 transition">Privacy (Lite)</a>
+                <a href="./privacy-policy.html" class="hover:text-yellow-400 transition">Privacy (Full)</a>
+                <a href="./privacy-policy-lite.html" class="text-yellow-400 transition">Privacy (Lite)</a>
+                <a href="./terms-of-use.html" class="hover:text-yellow-400 transition">Terms (Full)</a>
                 <a href="./terms-of-use-lite.html" class="hover:text-yellow-400 transition">Terms (Lite)</a>
-                <a href="../lite.html" class="hover:text-yellow-400 transition">Lite</a>
                 <a href="../contact.html" class="hover:text-yellow-400 transition">Contact</a>
             </div>
         </div>

@@ -18,6 +18,11 @@
   <priority>0.80</priority>
 </url>
 <url>
+  <loc>https://www.offline-music.com/lite.html</loc>
+  <lastmod>2025-01-05T00:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
   <loc>https://www.offline-music.com/contact.html</loc>
   <lastmod>2025-01-05T00:00:00+00:00</lastmod>
   <priority>0.85</priority>
@@ -76,6 +81,16 @@
   <loc>https://www.offline-music.com/legal/terms-of-use.html</loc>
   <lastmod>2025-01-05T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.offline-music.com/legal/privacy-policy-lite.html</loc>
+  <lastmod>2025-01-05T00:00:00+00:00</lastmod>
+  <priority>0.75</priority>
+</url>
+<url>
+  <loc>https://www.offline-music.com/legal/terms-of-use-lite.html</loc>
+  <lastmod>2025-01-05T00:00:00+00:00</lastmod>
+  <priority>0.75</priority>
 </url>
 <url>
   <loc>https://www.offline-music.com/blog/how-to-boost-volume.html</loc>

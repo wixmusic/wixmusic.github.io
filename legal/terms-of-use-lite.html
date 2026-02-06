@@ -3,32 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of Use | Offline Player</title>
-    <meta name="description" content="Read Offline Player's Terms of Use. Learn about license terms, user content policies, prohibited activities, and service disclaimers. Effective October 8, 2026.">
-    <link rel="canonical" href="https://www.offline-music.com/legal/terms-of-use.html" />
+    <title>Terms of Use | Offline Player Lite</title>
+    <meta name="description" content="Read Offline Player Lite's Terms of Use. Learn about license terms, user content policies, prohibited activities, and service disclaimers. Effective October 8, 2026.">
+    <link rel="canonical" href="https://www.offline-music.com/legal/terms-of-use-lite.html" />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.offline-music.com/legal/terms-of-use.html" />
-    <meta property="og:title" content="Terms of Use | Offline Player" />
-    <meta property="og:description" content="Read Offline Player's Terms of Use. Learn about license terms, user content policies, and service disclaimers." />
+    <meta property="og:url" content="https://www.offline-music.com/legal/terms-of-use-lite.html" />
+    <meta property="og:title" content="Terms of Use | Offline Player Lite" />
+    <meta property="og:description" content="Read Offline Player Lite's Terms of Use. Learn about license terms, user content policies, and service disclaimers." />
     <!-- Twitter -->
     <meta property="twitter:card" content="summary" />
-    <meta property="twitter:url" content="https://www.offline-music.com/legal/terms-of-use.html" />
-    <meta property="twitter:title" content="Terms of Use | Offline Player" />
-    <meta property="twitter:description" content="Read Offline Player's Terms of Use. Learn about license terms, user content policies, and service disclaimers." />
+    <meta property="twitter:url" content="https://www.offline-music.com/legal/terms-of-use-lite.html" />
+    <meta property="twitter:title" content="Terms of Use | Offline Player Lite" />
+    <meta property="twitter:description" content="Read Offline Player Lite's Terms of Use. Learn about license terms, user content policies, and service disclaimers." />
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Font: Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #3b82f6; /* Blue 500 */
-            --accent-color: #facc15; /* Yellow 400 */
+            --primary-color: #3b82f6;
+            --accent-color: #facc15;
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0d1117; /* Deep Charcoal/Dark Gray background */
-            color: #e5e7eb; /* Light Gray text */
+            background-color: #0d1117;
+            color: #e5e7eb;
         }
         .text-accent {
             color: var(--accent-color);
@@ -40,14 +40,8 @@
 </head>
 <body class="antialiased">
 <script type="module">
-  // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyCbq08rdnF8OrXgxUSj5E8d77dxYB1jDrs",
     authDomain: "website-offline-music.firebaseapp.com",
@@ -57,8 +51,6 @@
     appId: "1:52531532636:web:d3fb8a445630671228e799",
     measurementId: "G-618ZL7NDPH"
   };
-
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
@@ -66,9 +58,9 @@
     <!-- Header & Navigation -->
     <header class="p-4 border-b border-gray-800 bg-black/70 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="../index.html" class="text-2xl font-bold text-white tracking-widest">Offline Player</a>
+            <a href="../lite.html" class="text-2xl font-bold text-white tracking-widest">Offline Player <span class="text-accent text-lg">Lite</span></a>
             <a href="../index.html" class="px-4 py-2 text-sm font-semibold rounded-full bg-blue-500 hover:bg-blue-600 transition text-white">
-                Back to Home
+                Full Version
             </a>
         </div>
     </header>
@@ -80,7 +72,10 @@
                 <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-2">
                     Terms of Use
                 </h1>
-                <p class="text-gray-400">Effective Date: October 8, 2026</p>
+                <p class="text-gray-400">Offline Player Lite · Effective Date: October 8, 2026</p>
+                <p class="text-sm text-gray-500 mt-2">
+                    <a href="./terms-of-use.html" class="text-accent hover:underline">View Terms of Use for Offline Player (Full)</a>
+                </p>
             </header>
 
             <div class="text-gray-300 space-y-8">
@@ -88,77 +83,82 @@
                 <section id="acceptance">
                     <h2 class="text-3xl font-bold text-accent mb-4">1. Agreement to Terms</h2>
                     <p>
-                        These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity ("you") and Offline Player concerning your access to and use of the Offline Player mobile application (the "Service"). By accessing or using the Service, you agree that you have read, understood, and agree to be bound by all of these Terms of Use.
+                        These Terms of Use constitute a legally binding agreement between you ("you") and Offline Player concerning your access to and use of Offline Player Lite (the "Service"), a lightweight version of our music player application. By accessing or using Offline Player Lite, you agree that you have read, understood, and agree to be bound by all of these Terms of Use.
+                    </p>
+                </section>
+
+                <section id="about-lite">
+                    <h2 class="text-3xl font-bold text-accent mb-4">2. About Offline Player Lite</h2>
+                    <p>
+                        Offline Player Lite is a streamlined music player designed for users who prefer a simpler, lighter-weight experience. It offers core playback and playlist features with a reduced app size and simpler interface. These Terms apply specifically to Offline Player Lite. The full Offline Player app is governed by separate Terms of Use.
                     </p>
                 </section>
 
                 <section id="license">
-                    <h2 class="text-3xl font-bold text-accent mb-4">2. Limited License and Access</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">3. Limited License and Access</h2>
                     <p class="mb-4">
-                        Subject to your compliance with these Terms, Offline Player grants you a limited, non-exclusive, non-transferable, non-sublicensable license to download and install a copy of the Service on a mobile device that you own or control and to run such copy of the Service solely for your own personal, non-commercial purposes.
+                        Subject to your compliance with these Terms, Offline Player grants you a limited, non-exclusive, non-transferable, non-sublicensable license to download and install Offline Player Lite on a mobile device that you own or control, and to run it solely for your personal, non-commercial purposes.
                     </p>
-                    <ul class="list-disc list-inside space-y-2 ml-4">
-                        <li>
-                            <strong class="text-white">Volume Boost:</strong> The Volume Boost feature is provided to enhance sound clarity. You agree to use this feature responsibly and acknowledge that excessive volume levels may cause damage to your hearing or speakers, for which Offline Player is not liable.
-                        </li>
-                    </ul>
                 </section>
 
                 <section id="user-content">
-                    <h2 class="text-3xl font-bold text-accent mb-4">3. User Content and Playlists</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">4. User Content and Playlists</h2>
                     <p>
-                        You retain ownership of any data, text, files, information, playlists, and other material that you submit or create through the Service ("User Content"). By submitting User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, and display the User Content solely for the purpose of operating and providing the Service to you.
+                        You retain ownership of any data, playlists, and other material that you create through the Service ("User Content"). By submitting User Content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, and display the User Content solely for the purpose of operating and providing Offline Player Lite to you.
                     </p>
                 </section>
 
                 <section id="prohibited">
-                    <h2 class="text-3xl font-bold text-accent mb-4">4. Prohibited Activities</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">5. Prohibited Activities</h2>
                     <p class="mb-4">
-                        You may not access or use the Service for any purpose other than that for which we make the Service available. Prohibited activities include, but are not limited to:
+                        You may not use Offline Player Lite for any purpose other than personal music playback. Prohibited activities include, but are not limited to:
                     </p>
                     <ul class="list-disc list-inside space-y-2 ml-4">
-                        <li>Systematically retrieving data or other content from the Service to create or compile a collection, compilation, database, or directory.</li>
-                        <li>Making any unauthorized use of the Service, including collecting usernames and/or email addresses of users by electronic or other means for the purpose of sending unsolicited email.</li>
+                        <li>Systematically retrieving data from the Service to create a collection, database, or directory.</li>
+                        <li>Making any unauthorized use of the Service.</li>
                         <li>Using the Service to download or distribute copyrighted material in violation of applicable law.</li>
-                        <li>Attempting to bypass any measures of the Service designed to prevent or restrict access to the Service, or any portion of the Service.</li>
+                        <li>Attempting to bypass any measures designed to prevent or restrict access to the Service.</li>
                     </ul>
                 </section>
 
                 <section id="termination">
-                    <h2 class="text-3xl font-bold text-accent mb-4">5. Termination</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">6. Termination</h2>
                     <p>
-                        We may terminate or suspend your account and bar access to the Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever, including without limitation if you breach the Terms.
+                        We may terminate or suspend your access to Offline Player Lite immediately, without prior notice or liability, at our sole discretion, for any reason, including if you breach these Terms.
                     </p>
                 </section>
 
                 <section id="disclaimer">
-                    <h2 class="text-3xl font-bold text-accent mb-4">6. Disclaimer of Warranties</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">7. Disclaimer of Warranties</h2>
                     <p>
-                        THE SERVICE IS PROVIDED ON AN "AS-IS" AND "AS-AVAILABLE" BASIS. Offline Player EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE.
+                        Offline Player Lite IS PROVIDED ON AN "AS-IS" AND "AS-AVAILABLE" BASIS. Offline Player EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE.
                     </p>
                 </section>
 
                 <section id="limitation">
-                    <h2 class="text-3xl font-bold text-accent mb-4">7. Limitation of Liability</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">8. Limitation of Liability</h2>
                     <p>
-                        IN NO EVENT SHALL Offline Player, NOR ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES, BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM (I) YOUR USE OR INABILITY TO USE THE SERVICE; (II) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SERVERS AND/OR ANY PERSONAL INFORMATION STORED THEREIN.
+                        IN NO EVENT SHALL Offline Player, NOR ITS DIRECTORS, EMPLOYEES, PARTNERS, AGENTS, SUPPLIERS, OR AFFILIATES, BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM (I) YOUR USE OR INABILITY TO USE Offline Player Lite; (II) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SERVERS AND/OR ANY PERSONAL INFORMATION STORED THEREIN.
                     </p>
                 </section>
 
                 <section id="governing-law">
-                    <h2 class="text-3xl font-bold text-accent mb-4">8. Governing Law</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">9. Governing Law</h2>
                     <p>
-                        These Terms shall be governed and construed in accordance with the laws of [Jurisdiction of Company], without regard to its conflict of law provisions.
+                        These Terms shall be governed and construed in accordance with applicable laws, without regard to conflict of law provisions.
                     </p>
                 </section>
                 
                 <section id="contact">
-                    <h2 class="text-3xl font-bold text-accent mb-4">9. Contact Us</h2>
+                    <h2 class="text-3xl font-bold text-accent mb-4">10. Contact Us</h2>
                     <p>
-                        If you have any questions about these Terms of Use, please contact us:
+                        If you have any questions about these Terms of Use for Offline Player Lite:
                     </p>
                     <p class="mt-2 ml-4">
                         By email: <a href="mailto:music.player.250617@gmail.com" class="text-blue-400 hover:underline">music.player.250617@gmail.com</a>
+                    </p>
+                    <p class="mt-4 text-sm text-gray-500">
+                        <a href="./terms-of-use.html" class="text-accent hover:underline">Terms of Use (Full Offline Player)</a> · <a href="./privacy-policy-lite.html" class="text-accent hover:underline">Privacy Policy (Lite)</a>
                     </p>
                 </section>
             </div>
@@ -170,11 +170,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-500 text-sm">
             <p>&copy; 2026 Offline Player. All rights reserved.</p>
             <div class="mt-4 space-x-4">
-                <a href="./privacy-policy.html" class="hover:text-yellow-400 transition">Privacy Policy</a>
-                <a href="./terms-of-use.html" class="text-yellow-400 transition">Terms of Service</a>
+                <a href="./privacy-policy.html" class="hover:text-yellow-400 transition">Privacy (Full)</a>
                 <a href="./privacy-policy-lite.html" class="hover:text-yellow-400 transition">Privacy (Lite)</a>
-                <a href="./terms-of-use-lite.html" class="hover:text-yellow-400 transition">Terms (Lite)</a>
-                <a href="../lite.html" class="hover:text-yellow-400 transition">Lite</a>
+                <a href="./terms-of-use.html" class="hover:text-yellow-400 transition">Terms (Full)</a>
+                <a href="./terms-of-use-lite.html" class="text-yellow-400 transition">Terms (Lite)</a>
                 <a href="../contact.html" class="hover:text-yellow-400 transition">Contact</a>
             </div>
         </div>
